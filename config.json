@@ -10,7 +10,7 @@
           "services": [
             {
               "name": "CueCommander",
-              "url": "http://uacts-g001:1880/dashboard",
+              "url": "http://cumu-g001:1880/dashboard",
               "description": "AV automation and cue control dashboard",
               "icon": "🎛️"
             },
@@ -23,7 +23,7 @@
             {
               "name": "ProPresenter Control",
               "url": "http://192.168.0.210:1025/v1/control/",
-              "description": "ProPresenter remote control interface",
+              "description": "ProPresenter remote control interface(CUMU-G002)",
               "icon": "📽️"
             },
             {
@@ -50,27 +50,27 @@
           "title": "Projectors",
           "services": [
             {
-              "name": "Projector — Confidence",
+              "name": "Projector — Rear",
               "url": "http://192.168.0.183",
               "description": "Confidence monitor projector web interface (ZVVU-0001)",
               "icon": "🖧"
             },
             {
               "name": "Projector — FoH East",
-              "url": "http://192.168.0.193",
-              "description": "Front-of-house projector east web interface (ZVVU-A001)",
+              "url": "http://192.168.201.20",
+              "description": "Front-of-house projector east web interface (2604-2401)",
               "icon": "🖧"
             },
             {
               "name": "Projector — FoH Centre",
-              "url": "http://192.168.0.194",
-              "description": "Front-of-house projector centre web interface (ZVVU-A002)",
+              "url": "http://192.168.201.21",
+              "description": "Front-of-house projector centre web interface (2604-2402)",
               "icon": "🖧"
             },
             {
               "name": "Projector — FoH West",
-              "url": "http://192.168.0.195",
-              "description": "Front-of-house projector west web interface (ZVVU-A003)",
+              "url": "http://192.168.201.22",
+              "description": "Front-of-house projector west web interface (2604-2403)",
               "icon": "🖧"
             }
           ]
@@ -116,7 +116,7 @@
             {
               "name": "Kaleo AI",
               "url": "http://getkaleo.ai",
-              "description": "AI-assisted worship planning and song curation",
+              "description": "Realtime AI-translation of service audio. Must use CHROME.",
               "icon": "🎵"
             },
             {
