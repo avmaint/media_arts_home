@@ -25,27 +25,28 @@
         <h2 class="section-title">{{ section.title }}</h2>
         <p class="section-description">{{ section.description }}</p>
       </div>
-      <div class="card-grid">
-        {% for svc in section.services %}
-          {% if svc.url %}
-          <a href="{{ svc.url }}" target="_blank" rel="noopener noreferrer" class="card">
-            <div class="card-icon">{{ svc.icon }}</div>
-            <div class="card-body">
-              <div class="card-name">{{ svc.name }}</div>
-              <div class="card-description">{{ svc.description }}</div>
-            </div>
-          </a>
-          {% else %}
-          <div class="card card-todo">
-            <div class="card-icon">{{ svc.icon }}</div>
-            <div class="card-body">
-              <div class="card-name">{{ svc.name }} <span class="todo-badge">TBD</span></div>
-              <div class="card-description">{{ svc.description }}</div>
-            </div>
+
+      {% if section.subsections %}
+        {% for sub in section.subsections %}
+        <div class="subsection">
+          <div class="subsection-header">
+            <span class="subsection-title">{{ sub.title }}</span>
           </div>
-          {% endif %}
+          <div class="card-grid">
+            {% for svc in sub.services %}
+              {% include "card.html" %}
+            {% endfor %}
+          </div>
+        </div>
         {% endfor %}
-      </div>
+      {% else %}
+        <div class="card-grid">
+          {% for svc in section.services %}
+            {% include "card.html" %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
     </section>
     {% endfor %}
   </main>

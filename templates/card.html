@@ -1,0 +1,17 @@
+{% if svc.url %}
+<a href="{{ svc.url }}" target="_blank" rel="noopener noreferrer" class="card">
+  <div class="card-icon">{{ svc.icon }}</div>
+  <div class="card-body">
+    <div class="card-name">{{ svc.name }}</div>
+    <div class="card-description">{{ svc.description }}</div>
+  </div>
+</a>
+{% else %}
+<div class="card card-todo">
+  <div class="card-icon">{{ svc.icon }}</div>
+  <div class="card-body">
+    <div class="card-name">{{ svc.name }} <span class="todo-badge">TBD</span></div>
+    <div class="card-description">{{ svc.description }}</div>
+  </div>
+</div>
+{% endif %}
