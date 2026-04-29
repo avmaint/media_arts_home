@@ -7,8 +7,8 @@
       "services": [
         {
           "name": "CueCommander",
-          "url": "http://uacts-g001:1880",
-          "description": "AV automation and cue control hub",
+          "url": "http://uacts-g001:1880/dashboard",
+          "description": "AV automation and cue control dashboard",
           "icon": "🎛️"
         },
         {
@@ -20,7 +20,7 @@
         {
           "name": "Companion",
           "url": "http://cumu-g001:8000/emulator/QILZbNAkPdKxFfqRmpvMs",
-          "description": "Bitfocus Companion button emulator for show control",
+          "description": "Bitfocus Companion web buttons for show control",
           "icon": "🎮"
         },
         {
@@ -120,6 +120,18 @@
       "title": "Administration",
       "description": "Infrastructure configuration and management",
       "services": [
+        {
+          "name": "CueCommander IDE",
+          "url": "http://uacts-g001:1880",
+          "description": "Node-RED flow editor for CueCommander",
+          "icon": "🎛️"
+        },
+        {
+          "name": "Companion Admin",
+          "url": "http://cumu-g001:8000",
+          "description": "Bitfocus Companion configuration and admin UI",
+          "icon": "🎮"
+        },
         {
           "name": "Omada Controller",
           "url": "https://192.168.201.2/#dashboardGlobal",
