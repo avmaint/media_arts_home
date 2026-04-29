@@ -56,10 +56,21 @@ def index():
 
 
 @app.get("/docs/")
-@app.get("/docs/<path:filename>")
-def serve_docs(filename="index.html"):
+def docs_index():
     if not os.path.isdir(DOCS_PATH):
-        abort(404, "Documentation not yet published. Run publish_docs.sh first.")
+        abort(503, "Documentation not yet published. Run publish_docs.sh first.")
+    html_files = sorted(
+        f for f in os.listdir(DOCS_PATH)
+        if f.endswith(".html") and not f.startswith("_")
+    )
+    docs = [{"name": f.replace(".html", "").replace("_", " "), "file": f} for f in html_files]
+    return render_template("docs_index.html", docs=docs)
+
+
+@app.get("/docs/<path:filename>")
+def serve_docs(filename):
+    if not os.path.isdir(DOCS_PATH):
+        abort(503, "Documentation not yet published. Run publish_docs.sh first.")
     return send_from_directory(DOCS_PATH, filename)
 
 

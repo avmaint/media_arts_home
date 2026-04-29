@@ -8,5 +8,5 @@ SRC="/Users/donert/Documents/UACTech/SystemDocumentation/github/uactechdoc/_outp
 DEST="avuser@uacts-g001:/Users/avuser/media_arts_home/docs/"
 
 echo "Publishing docs to $DEST ..."
-rsync -avz --delete "$SRC" "$DEST"
+rsync -avz --delete --exclude '_work' "$SRC" "$DEST"
 echo "Done."

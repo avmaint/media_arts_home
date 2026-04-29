@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Documentation — UAC Media Arts</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .doc-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #e8ecf0;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.15s, border-color 0.15s, transform 0.12s;
+    }
+    .doc-card:hover {
+      box-shadow: 0 6px 20px rgba(0,82,204,0.15);
+      border-color: #0052cc;
+      transform: translateY(-2px);
+    }
+    .doc-icon { font-size: 24px; flex-shrink: 0; }
+    .doc-name { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Media Arts <span style="font-weight:400;opacity:.75;font-size:20px;">/ System Documentation</span></span>
+      </div>
+      <a href="/" style="margin-left:auto;color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:500;">&#8592; Home</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">System Documentation</h2>
+        <p class="section-description">HTML-generated Quarto documents. Published from the Mac via publish_docs.sh.</p>
+      </div>
+
+      {% if docs %}
+      <div class="docs-grid">
+        {% for doc in docs %}
+        <a href="/docs/{{ doc.file }}" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-icon">📄</span>
+          <span class="doc-name">{{ doc.name }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p style="color:#999; margin-top:20px;">No documents found. Run <code>publish_docs.sh</code> to publish.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+</body>
+</html>
