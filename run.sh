@@ -38,8 +38,9 @@ case "$1" in
     fi
     echo "Starting Media Arts home on port $PORT..."
     cd "$APP_DIR"
-    nohup "$VENV/bin/python3" app.py < /dev/null >> "$LOG_FILE" 2>&1 &
+    "$VENV/bin/python3" app.py < /dev/null >> "$LOG_FILE" 2>&1 &
     echo $! > "$PID_FILE"
+    disown $!
     echo "Started (PID $!)."
     ;;
 
