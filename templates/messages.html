@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message Admin — UAC Media Arts</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/messages.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Media Arts <span class="header-subtitle">/ Message Admin</span></span>
+      </div>
+      <a href="/" class="header-back">&#8592; Home</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section">
+      <div class="section-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div style="border-left:4px solid #0052cc; padding-left:14px;">
+          <h2 class="section-title" style="margin-bottom:4px;">Scheduled Messages</h2>
+          <p class="section-description">Messages are shown as a banner on the home page when currently active.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openModal()">+ New Message</button>
+      </div>
+
+      <div class="msg-table-wrap">
+        <table class="msg-table" id="msgTable">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Message</th>
+              <th>Start</th>
+              <th>End</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="msgBody">
+            <tr><td colspan="6" class="msg-empty">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h3 class="modal-title" id="modalTitle">New Message</h3>
+      <form id="msgForm" onsubmit="submitForm(event)">
+        <input type="hidden" id="editId" />
+
+        <label class="form-label">Message text</label>
+        <textarea id="fText" class="form-input" rows="3" required placeholder="Enter message…"></textarea>
+
+        <label class="form-label">Priority</label>
+        <select id="fPriority" class="form-input">
+          <option value="high">High — Red</option>
+          <option value="medium" selected>Medium — Amber</option>
+          <option value="low">Low — Green</option>
+        </select>
+
+        <div class="form-row">
+          <div>
+            <label class="form-label">Start</label>
+            <input type="datetime-local" id="fStart" class="form-input" required />
+          </div>
+          <div>
+            <label class="form-label">End</label>
+            <input type="datetime-local" id="fEnd" class="form-input" required />
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const PRIORITY_LABEL = { high: "High", medium: "Medium", low: "Low" };
+
+    function msgStatus(start, end) {
+      const now = new Date();
+      const s   = new Date(start);
+      const e   = new Date(end);
+      if (now < s) return { label: "Scheduled", cls: "status-scheduled" };
+      if (now > e) return { label: "Past",      cls: "status-past" };
+      return          { label: "Active",    cls: "status-active" };
+    }
+
+    function fmtDt(iso) {
+      if (!iso) return "—";
+      return new Date(iso).toLocaleString([], { dateStyle: "short", timeStyle: "short" });
+    }
+
+    async function loadMessages() {
+      const res  = await fetch("/api/messages");
+      const msgs = await res.json();
+      msgs.sort((a, b) => a.start.localeCompare(b.start));
+      const tbody = document.getElementById("msgBody");
+      if (!msgs.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="msg-empty">No messages yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = msgs.map(m => {
+        const st = msgStatus(m.start, m.end);
+        return `<tr>
+          <td><span class="status-badge ${st.cls}">${st.label}</span></td>
+          <td><span class="priority-badge priority-${m.priority}">${PRIORITY_LABEL[m.priority]}</span></td>
+          <td class="msg-text-cell">${escHtml(m.text)}</td>
+          <td class="dt-cell">${fmtDt(m.start)}</td>
+          <td class="dt-cell">${fmtDt(m.end)}</td>
+          <td class="action-cell">
+            <button class="btn btn-sm btn-secondary" onclick='editMsg(${JSON.stringify(m)})'>Edit</button>
+            <button class="btn btn-sm btn-danger"    onclick="deleteMsg('${m.id}')">Delete</button>
+          </td>
+        </tr>`;
+      }).join("");
+    }
+
+    function escHtml(s) {
+      return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    }
+
+    function openModal(msg) {
+      document.getElementById("modalTitle").textContent = msg ? "Edit Message" : "New Message";
+      document.getElementById("editId").value    = msg ? msg.id  : "";
+      document.getElementById("fText").value     = msg ? msg.text : "";
+      document.getElementById("fPriority").value = msg ? msg.priority : "medium";
+      document.getElementById("fStart").value    = msg ? toLocalInput(msg.start) : "";
+      document.getElementById("fEnd").value      = msg ? toLocalInput(msg.end)   : "";
+      document.getElementById("submitBtn").textContent = msg ? "Update" : "Save";
+      document.getElementById("modalOverlay").classList.add("open");
+    }
+
+    function closeModal(e) {
+      if (!e || e.target === document.getElementById("modalOverlay")) {
+        document.getElementById("modalOverlay").classList.remove("open");
+      }
+    }
+
+    function editMsg(m) { openModal(m); }
+
+    function toLocalInput(iso) {
+      // datetime-local needs "YYYY-MM-DDTHH:MM"
+      const d = new Date(iso);
+      const pad = n => String(n).padStart(2, "0");
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+
+    function toIso(localDt) {
+      // Store as ISO string without timezone offset (local time)
+      return new Date(localDt).toISOString().slice(0, 16);
+    }
+
+    async function submitForm(e) {
+      e.preventDefault();
+      const id  = document.getElementById("editId").value;
+      const body = {
+        text:     document.getElementById("fText").value.trim(),
+        priority: document.getElementById("fPriority").value,
+        start:    toIso(document.getElementById("fStart").value),
+        end:      toIso(document.getElementById("fEnd").value),
+      };
+      const url    = id ? `/api/messages/${id}` : "/api/messages";
+      const method = id ? "PUT" : "POST";
+      const res    = await fetch(url, { method, headers: {"Content-Type":"application/json"}, body: JSON.stringify(body) });
+      if (!res.ok) { alert("Error saving message."); return; }
+      closeModal();
+      loadMessages();
+    }
+
+    async function deleteMsg(id) {
+      if (!confirm("Delete this message?")) return;
+      await fetch(`/api/messages/${id}`, { method: "DELETE" });
+      loadMessages();
+    }
+
+    loadMessages();
+  </script>
+</body>
+</html>

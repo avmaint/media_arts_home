@@ -55,6 +55,37 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* ── Banner ───────────────────────────────────────────────── */
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 3px solid transparent;
+}
+
+.banner-high   { background: #fde8e8; color: #c0392b; border-color: #c0392b; }
+.banner-medium { background: #fef3cd; color: #b7720a; border-color: #e8a020; }
+.banner-low    { background: #e6f4ea; color: #276749; border-color: #2e7d52; }
+
+.banner-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.banner-high   .banner-label { background: #c0392b; color: #fff; }
+.banner-medium .banner-label { background: #e8a020; color: #fff; }
+.banner-low    .banner-label { background: #2e7d52; color: #fff; }
+
+.banner-text { flex: 1; }
+
 /* ── Main content ─────────────────────────────────────────── */
 .main-content {
   flex: 1;

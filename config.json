@@ -141,6 +141,12 @@
       "description": "Infrastructure configuration and management",
       "services": [
         {
+          "name": "Message Admin",
+          "url": "/admin/messages",
+          "description": "Schedule and manage home page announcement banners",
+          "icon": "📢"
+        },
+        {
           "name": "CueCommander IDE",
           "url": "http://uacts-g001:1880",
           "description": "Node-RED flow editor for CueCommander",

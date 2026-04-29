@@ -18,6 +18,13 @@
     </div>
   </header>
 
+  {% if banner %}
+  <div class="banner banner-{{ banner.priority }}">
+    <span class="banner-label">{{ banner.priority | upper }}</span>
+    <span class="banner-text">{{ banner.text }}</span>
+  </div>
+  {% endif %}
+
   <main class="main-content">
     {% for section in sections %}
     <section class="section" id="{{ section.id }}">
