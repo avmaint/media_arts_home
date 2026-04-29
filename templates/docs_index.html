@@ -54,15 +54,22 @@
         <p class="section-description">HTML-generated Quarto documents. Published from the Mac via publish_docs.sh.</p>
       </div>
 
-      {% if docs %}
-      <div class="docs-grid">
-        {% for doc in docs %}
-        <a href="/docs/{{ doc.file }}" target="_blank" rel="noopener noreferrer" class="doc-card">
-          <span class="doc-icon">📄</span>
-          <span class="doc-name">{{ doc.name }}</span>
-        </a>
+      {% if sections %}
+        {% for section in sections %}
+        <div class="subsection" style="margin-top:28px;">
+          <div class="subsection-header">
+            <span class="subsection-title">{{ section.title }}</span>
+          </div>
+          <div class="docs-grid">
+            {% for doc in section.docs %}
+            <a href="/docs/{{ doc.file }}" target="_blank" rel="noopener noreferrer" class="doc-card">
+              <span class="doc-icon">📄</span>
+              <span class="doc-name">{{ doc.name }}</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
         {% endfor %}
-      </div>
       {% else %}
       <p style="color:#999; margin-top:20px;">No documents found. Run <code>publish_docs.sh</code> to publish.</p>
       {% endif %}

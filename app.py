@@ -55,6 +55,13 @@ def index():
     return render_template("index.html", sections=config["sections"], banners=banners)
 
 
+_DOC_SECTIONS = [
+    ("System Design",     "SystemDesign"),
+    ("System Operations", "SystemOperations"),
+    ("Other",             None),
+]
+
+
 @app.get("/docs/")
 def docs_index():
     if not os.path.isdir(DOCS_PATH):
@@ -63,8 +70,25 @@ def docs_index():
         f for f in os.listdir(DOCS_PATH)
         if f.endswith(".html") and not f.startswith("_")
     )
-    docs = [{"name": f.replace(".html", "").replace("_", " "), "file": f} for f in html_files]
-    return render_template("docs_index.html", docs=docs)
+    # Group by prefix; strip prefix from display name
+    sections = []
+    claimed = set()
+    for title, prefix in _DOC_SECTIONS:
+        if prefix:
+            matched = [f for f in html_files if f.startswith(prefix)]
+            claimed.update(matched)
+        else:
+            matched = [f for f in html_files if f not in claimed]
+        docs = [
+            {
+                "name": f.replace(".html", "")[len(prefix):] if prefix else f.replace(".html", ""),
+                "file": f,
+            }
+            for f in matched
+        ]
+        if docs:
+            sections.append({"title": title, "docs": docs})
+    return render_template("docs_index.html", sections=sections)
 
 
 @app.get("/docs/<path:filename>")
