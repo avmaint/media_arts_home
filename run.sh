@@ -9,11 +9,24 @@ LOG_FILE="$APP_DIR/server.log"
 
 case "$1" in
 
+  install)
+    echo "Creating virtual environment..."
+    python3 -m venv "$VENV"
+    echo "Installing dependencies..."
+    "$VENV/bin/pip" install -q --upgrade pip
+    "$VENV/bin/pip" install -q -r "$APP_DIR/requirements.txt"
+    echo "Install complete."
+    ;;
+
   deploy)
+    if [ ! -d "$VENV" ]; then
+      echo "Virtual environment not found — run './run.sh install' first."
+      exit 1
+    fi
     echo "Pulling latest from repo..."
     cd "$APP_DIR"
     git pull
-    echo "Installing/updating dependencies..."
+    echo "Updating dependencies..."
     "$VENV/bin/pip" install -q -r requirements.txt
     echo "Deploy complete."
     ;;
@@ -54,7 +67,7 @@ case "$1" in
     ;;
 
   *)
-    echo "Usage: $0 {deploy|start|stop}"
+    echo "Usage: $0 {install|deploy|start|stop}"
     exit 1
     ;;
 
