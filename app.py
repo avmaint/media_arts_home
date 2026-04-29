@@ -2,6 +2,7 @@ import json
 import os
 import uuid
 import datetime
+from typing import Optional
 from flask import Flask, render_template, request, jsonify, abort
 
 app = Flask(__name__)
@@ -33,7 +34,7 @@ def save_messages(messages: list) -> None:
         json.dump(messages, f, indent=2)
 
 
-def active_message(messages: list) -> dict | None:
+def active_message(messages: list) -> Optional[dict]:
     """Return the highest-priority message that is currently active, or None."""
     now = datetime.datetime.now().isoformat()
     active = [
