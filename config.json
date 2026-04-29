@@ -1,0 +1,211 @@
+{
+  "sections": [
+    {
+      "id": "operational",
+      "title": "Operational",
+      "description": "Tools used during services and events",
+      "services": [
+        {
+          "name": "CueCommander",
+          "url": "http://uacts-g001:1880",
+          "description": "AV automation and cue control hub",
+          "icon": "🎛️"
+        },
+        {
+          "name": "AVL Assistant",
+          "url": "http://uacts-g001:9000",
+          "description": "Asset management, network monitoring, and knowledge base",
+          "icon": "🖥️"
+        },
+        {
+          "name": "Companion",
+          "url": "http://cumu-g001:8000/emulator/QILZbNAkPdKxFfqRmpvMs",
+          "description": "Bitfocus Companion button emulator for show control",
+          "icon": "🎮"
+        },
+        {
+          "name": "Planning Centre",
+          "url": "https://services.planningcenteronline.com",
+          "description": "Service planning and team scheduling",
+          "icon": "📋"
+        },
+        {
+          "name": "ProPresenter Control",
+          "url": "http://192.168.0.210:1025/v1/control/",
+          "description": "ProPresenter remote control interface",
+          "icon": "📽️"
+        },
+        {
+          "name": "Lighting Console",
+          "url": "http://192.168.0.197:8080",
+          "description": "ETC ColorSource lighting console web interface (ZLKU-C001)",
+          "icon": "💡"
+        },
+        {
+          "name": "Resi",
+          "url": "https://studio.resi.io",
+          "description": "Live streaming and broadcast control",
+          "icon": "📡"
+        },
+        {
+          "name": "Kaleo AI",
+          "url": "http://getkaleo.ai",
+          "description": "AI-assisted worship planning and song curation",
+          "icon": "🎵"
+        },
+        {
+          "name": "Church Motion Graphics",
+          "url": "https://www.churchmotiongraphics.com",
+          "description": "Motion graphics and media resources for worship",
+          "icon": "🎬"
+        },
+        {
+          "name": "SongSelect",
+          "url": "https://songselect.ccli.com/search/",
+          "description": "CCLI song search and lyrics",
+          "icon": "🎼"
+        },
+        {
+          "name": "Kramer Matrix",
+          "url": "http://192.168.206.7",
+          "description": "Video matrix switch control (ZVKU-A001)",
+          "icon": "🔀"
+        },
+        {
+          "name": "PTZ Camera 1",
+          "url": "http://192.168.0.186",
+          "description": "PTZ camera 1 web interface (ZVCU-A001)",
+          "icon": "📷"
+        },
+        {
+          "name": "PTZ Camera 2",
+          "url": "http://192.168.0.187",
+          "description": "PTZ camera 2 web interface (ZVCU-A002)",
+          "icon": "📷"
+        },
+        {
+          "name": "PTZ Camera 3",
+          "url": "http://192.168.0.188",
+          "description": "PTZ camera 3 web interface (ZVCU-A003)",
+          "icon": "📷"
+        },
+        {
+          "name": "Projector — Confidence",
+          "url": "http://192.168.0.183",
+          "description": "Confidence monitor projector web interface (ZVVU-0001)",
+          "icon": "🖧"
+        },
+        {
+          "name": "Projector — FoH East",
+          "url": "http://192.168.0.193",
+          "description": "Front-of-house projector east web interface (ZVVU-A001)",
+          "icon": "🖧"
+        },
+        {
+          "name": "Projector — FoH Centre",
+          "url": "http://192.168.0.194",
+          "description": "Front-of-house projector centre web interface (ZVVU-A002)",
+          "icon": "🖧"
+        },
+        {
+          "name": "Projector — FoH West",
+          "url": "http://192.168.0.195",
+          "description": "Front-of-house projector west web interface (ZVVU-A003)",
+          "icon": "🖧"
+        }
+      ]
+    },
+    {
+      "id": "administration",
+      "title": "Administration",
+      "description": "Infrastructure configuration and management",
+      "services": [
+        {
+          "name": "Omada Controller",
+          "url": "https://192.168.201.2/#dashboardGlobal",
+          "description": "TP-Link Omada Wi-Fi and network controller",
+          "icon": "📶"
+        },
+        {
+          "name": "Switch — NSCU-A001",
+          "url": "http://192.168.0.22",
+          "description": "Cisco network switch (192.168.0.22)",
+          "icon": "🔌"
+        },
+        {
+          "name": "Switch — NSCU-A002",
+          "url": "http://192.168.0.23",
+          "description": "Cisco network switch (192.168.0.23)",
+          "icon": "🔌"
+        },
+        {
+          "name": "Switch — NSCU-A003",
+          "url": "http://192.168.0.24",
+          "description": "Cisco network switch (192.168.0.24)",
+          "icon": "🔌"
+        },
+        {
+          "name": "Switch — NSCU-A004",
+          "url": "http://192.168.0.25",
+          "description": "Cisco network switch (192.168.0.25)",
+          "icon": "🔌"
+        },
+        {
+          "name": "Switch — NSCU-A005",
+          "url": "http://192.168.0.26",
+          "description": "Cisco network switch (192.168.0.26)",
+          "icon": "🔌"
+        },
+        {
+          "name": "Q-SYS Core (Local)",
+          "url": "https://192.168.200.50",
+          "description": "QSC Q-SYS Core audio processor local interface",
+          "icon": "🔊"
+        },
+        {
+          "name": "Q-SYS Reflect",
+          "url": "https://reflect.qsc.com/login",
+          "description": "QSC cloud remote management portal",
+          "icon": "☁️"
+        },
+        {
+          "name": "NDI Transmitter",
+          "url": null,
+          "description": "NDI video transmitter web interface — IP not yet configured",
+          "icon": "📤"
+        },
+        {
+          "name": "NDI Receiver",
+          "url": null,
+          "description": "NDI video receiver web interface — IP not yet configured",
+          "icon": "📥"
+        }
+      ]
+    },
+    {
+      "id": "reference",
+      "title": "Reference",
+      "description": "Documentation, training, and technical resources",
+      "services": [
+        {
+          "name": "MXU Training",
+          "url": "http://getmxu.com",
+          "description": "Online training platform for AV and media arts skills",
+          "icon": "🎓"
+        },
+        {
+          "name": "System Documentation",
+          "url": null,
+          "description": "HTML-generated technical documentation — URL not yet configured",
+          "icon": "📄"
+        },
+        {
+          "name": "Equipment Manuals",
+          "url": null,
+          "description": "PDF manual index by asset tag — coming soon",
+          "icon": "📚"
+        }
+      ]
+    }
+  ]
+}

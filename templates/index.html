@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UAC Media Arts</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Media Arts</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {% for section in sections %}
+    <section class="section" id="{{ section.id }}">
+      <div class="section-header">
+        <h2 class="section-title">{{ section.title }}</h2>
+        <p class="section-description">{{ section.description }}</p>
+      </div>
+      <div class="card-grid">
+        {% for svc in section.services %}
+          {% if svc.url %}
+          <a href="{{ svc.url }}" target="_blank" rel="noopener noreferrer" class="card">
+            <div class="card-icon">{{ svc.icon }}</div>
+            <div class="card-body">
+              <div class="card-name">{{ svc.name }}</div>
+              <div class="card-description">{{ svc.description }}</div>
+            </div>
+          </a>
+          {% else %}
+          <div class="card card-todo">
+            <div class="card-icon">{{ svc.icon }}</div>
+            <div class="card-body">
+              <div class="card-name">{{ svc.name }} <span class="todo-badge">TBD</span></div>
+              <div class="card-description">{{ svc.description }}</div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+</body>
+</html>

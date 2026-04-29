@@ -1,0 +1,180 @@
+/* ── Reset & base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f4f6f9;
+  color: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.site-header {
+  background: #0052cc;
+  color: #fff;
+  padding: 18px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-org {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.header-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ── Main content ─────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* ── Section ──────────────────────────────────────────────── */
+.section-header {
+  margin-bottom: 18px;
+  border-left: 4px solid #0052cc;
+  padding-left: 14px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0052cc;
+  margin-bottom: 4px;
+}
+
+.section-description {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ── Card grid ────────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 20px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #e8ecf0;
+  transition: box-shadow 0.15s, transform 0.12s, border-color 0.15s;
+  cursor: pointer;
+}
+
+a.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 82, 204, 0.15);
+  border-color: #0052cc;
+  transform: translateY(-2px);
+}
+
+.card-todo {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.card-icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.card-description {
+  font-size: 12.5px;
+  color: #666;
+  line-height: 1.45;
+}
+
+/* ── TBD badge ────────────────────────────────────────────── */
+.todo-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #e8ecf0;
+  color: #888;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.site-footer {
+  background: #1a1a2e;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  font-size: 12px;
+  padding: 14px 32px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .main-content { padding: 24px 16px; }
+  .site-header  { padding: 14px 16px; }
+  .header-title { font-size: 20px; }
+  .card-grid    { grid-template-columns: 1fr; }
+}
