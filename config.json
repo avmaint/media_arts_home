@@ -233,8 +233,8 @@
         },
         {
           "name": "System Documentation",
-          "url": null,
-          "description": "HTML-generated technical documentation — URL not yet configured",
+          "url": "/docs/",
+          "description": "HTML-generated Quarto system documentation",
           "icon": "📄"
         },
         {

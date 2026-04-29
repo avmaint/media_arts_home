@@ -3,12 +3,13 @@ import os
 import uuid
 import datetime
 from typing import Optional
-from flask import Flask, render_template, request, jsonify, abort
+from flask import Flask, render_template, request, jsonify, abort, send_from_directory
 
 app = Flask(__name__)
 
 CONFIG_PATH   = os.path.join(os.path.dirname(__file__), "config.json")
 MESSAGES_PATH = os.path.join(os.path.dirname(__file__), "messages.json")
+DOCS_PATH     = os.path.join(os.path.dirname(__file__), "docs")
 
 PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
@@ -52,6 +53,14 @@ def index():
     messages = load_messages()
     banners  = active_messages(messages)
     return render_template("index.html", sections=config["sections"], banners=banners)
+
+
+@app.get("/docs/")
+@app.get("/docs/<path:filename>")
+def serve_docs(filename="index.html"):
+    if not os.path.isdir(DOCS_PATH):
+        abort(404, "Documentation not yet published. Run publish_docs.sh first.")
+    return send_from_directory(DOCS_PATH, filename)
 
 
 @app.get("/admin/messages")
