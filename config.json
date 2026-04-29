@@ -10,13 +10,13 @@
           "services": [
             {
               "name": "CueCommander",
-              "url": "http://cumu-g001:1880/dashboard",
+              "url": "http://cumu-g001.local:1880/dashboard",
               "description": "AV automation and cue control dashboard",
               "icon": "🎛️"
             },
             {
               "name": "Companion",
-              "url": "http://cumu-g001:8000/emulator/QILZbNAkPdKxFfqRmpvMs",
+              "url": "http://cumu-g001.local:8000/emulator/QILZbNAkPdKxFfqRmpvMs",
               "description": "Bitfocus Companion web buttons for show control",
               "icon": "🎮"
             },
@@ -109,7 +109,7 @@
             },
             {
               "name": "AVL Assistant",
-              "url": "http://uacts-g001:9000",
+              "url": "http://uacts-g001.local:9000",
               "description": "Asset management, network monitoring, and knowledge base",
               "icon": "🖥️"
             },
@@ -148,13 +148,13 @@
         },
         {
           "name": "CueCommander IDE",
-          "url": "http://uacts-g001:1880",
+          "url": "http://uacts-g001.local:1880",
           "description": "Node-RED flow editor for CueCommander",
           "icon": "🎛️"
         },
         {
           "name": "Companion Admin",
-          "url": "http://cumu-g001:8000",
+          "url": "http://cumu-g001.local:8000",
           "description": "Bitfocus Companion configuration and admin UI",
           "icon": "🎮"
         },
