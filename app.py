@@ -34,16 +34,14 @@ def save_messages(messages: list) -> None:
         json.dump(messages, f, indent=2)
 
 
-def active_message(messages: list) -> Optional[dict]:
-    """Return the highest-priority message that is currently active, or None."""
+def active_messages(messages: list) -> list:
+    """Return all currently active messages sorted high → low priority."""
     now = datetime.datetime.now().isoformat()
     active = [
         m for m in messages
         if m.get("start", "") <= now <= m.get("end", "")
     ]
-    if not active:
-        return None
-    return min(active, key=lambda m: PRIORITY_ORDER.get(m.get("priority", "low"), 2))
+    return sorted(active, key=lambda m: PRIORITY_ORDER.get(m.get("priority", "low"), 2))
 
 
 # ── Routes ──────────────────────────────────────────────────────────────────────
@@ -52,8 +50,8 @@ def active_message(messages: list) -> Optional[dict]:
 def index():
     config   = load_config()
     messages = load_messages()
-    banner   = active_message(messages)
-    return render_template("index.html", sections=config["sections"], banner=banner)
+    banners  = active_messages(messages)
+    return render_template("index.html", sections=config["sections"], banners=banners)
 
 
 @app.get("/admin/messages")

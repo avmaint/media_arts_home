@@ -107,10 +107,13 @@
       return new Date(iso).toLocaleString([], { dateStyle: "short", timeStyle: "short" });
     }
 
+    let msgMap = {};
+
     async function loadMessages() {
       const res  = await fetch("/api/messages");
       const msgs = await res.json();
       msgs.sort((a, b) => a.start.localeCompare(b.start));
+      msgMap = Object.fromEntries(msgs.map(m => [m.id, m]));
       const tbody = document.getElementById("msgBody");
       if (!msgs.length) {
         tbody.innerHTML = '<tr><td colspan="6" class="msg-empty">No messages yet.</td></tr>';
@@ -125,12 +128,14 @@
           <td class="dt-cell">${fmtDt(m.start)}</td>
           <td class="dt-cell">${fmtDt(m.end)}</td>
           <td class="action-cell">
-            <button class="btn btn-sm btn-secondary" onclick='editMsg(${JSON.stringify(m)})'>Edit</button>
+            <button class="btn btn-sm btn-secondary" onclick="editMsg('${m.id}')">Edit</button>
             <button class="btn btn-sm btn-danger"    onclick="deleteMsg('${m.id}')">Delete</button>
           </td>
         </tr>`;
       }).join("");
     }
+
+    function editMsg(id) { openModal(msgMap[id]); }
 
     function escHtml(s) {
       return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
@@ -152,8 +157,6 @@
         document.getElementById("modalOverlay").classList.remove("open");
       }
     }
-
-    function editMsg(m) { openModal(m); }
 
     function toLocalInput(iso) {
       // datetime-local needs "YYYY-MM-DDTHH:MM"
