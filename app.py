@@ -3,6 +3,7 @@ import os
 import uuid
 import datetime
 from pathlib import Path
+from typing import Optional
 from flask import Flask, render_template, request, jsonify, abort, send_from_directory
 
 app = Flask(__name__)
@@ -30,7 +31,7 @@ def load_manual_index() -> list:
         return json.load(f)
 
 
-def find_manual_asset(asset_tag: str) -> dict | None:
+def find_manual_asset(asset_tag: str) -> Optional[dict]:
     needle = asset_tag.strip().lower()
     if not needle:
         return None
