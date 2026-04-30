@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Manuals</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Equipment Manuals</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Manual Index</h2>
+        <p class="section-description">Sortable and filterable asset inventory with links to published manual PDFs.</p>
+      </div>
+
+      <div class="manuals-toolbar">
+        <input id="manualSearch" class="manuals-search" type="search" placeholder="Filter by asset tag, make, model, room, description..." />
+        <label class="manuals-toggle">
+          <input id="manualHasDocs" type="checkbox" />
+          <span>Only assets with manuals</span>
+        </label>
+        <div class="manuals-summary">
+          <span id="manualVisibleCount">{{ assets|length }}</span>
+          <span>shown</span>
+          <span class="manuals-summary-divider">/</span>
+          <span>{{ assets|length }}</span>
+          <span>total</span>
+        </div>
+      </div>
+
+      <div class="manuals-table-wrap">
+        <table class="manuals-table" id="manualsTable">
+          <thead>
+            <tr>
+              <th><button type="button" class="sort-button" data-sort="asset_tag">Asset Tag</button></th>
+              <th><button type="button" class="sort-button" data-sort="category">Category</button></th>
+              <th><button type="button" class="sort-button" data-sort="manufacturer">Manufacturer</button></th>
+              <th><button type="button" class="sort-button" data-sort="model">Model</button></th>
+              <th><button type="button" class="sort-button" data-sort="type">Type</button></th>
+              <th><button type="button" class="sort-button" data-sort="room">Room</button></th>
+              <th><button type="button" class="sort-button" data-sort="manual_count">Manuals</button></th>
+            </tr>
+          </thead>
+          <tbody id="manualsBody">
+            {% for asset in assets %}
+            <tr
+              data-search="{{ [
+                asset.asset_tag,
+                asset.category,
+                asset.manufacturer,
+                asset.model,
+                asset.type,
+                asset.description,
+                asset.room,
+                asset.location,
+                asset.in_service
+              ]|join(' ')|lower }}"
+            >
+              <td class="asset-tag-cell">
+                <div class="asset-tag">{{ asset.asset_tag }}</div>
+                {% if asset.description %}
+                <div class="asset-meta">{{ asset.description }}</div>
+                {% endif %}
+              </td>
+              <td>{{ asset.category or "—" }}</td>
+              <td>{{ asset.manufacturer or "—" }}</td>
+              <td>{{ asset.model or "—" }}</td>
+              <td>{{ asset.type or "—" }}</td>
+              <td>{{ asset.room or "—" }}</td>
+              <td data-manual-count="{{ asset.manual_count }}">
+                {% if asset.manuals %}
+                <div class="manual-link-list">
+                  {% for manual in asset.manuals %}
+                  <a href="{{ manual.url }}" target="_blank" rel="noopener noreferrer">{{ manual.name }}</a>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <span class="manuals-empty">No manual mapped</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+  <script>
+    const table = document.getElementById("manualsTable");
+    const tbody = document.getElementById("manualsBody");
+    const searchInput = document.getElementById("manualSearch");
+    const hasDocsToggle = document.getElementById("manualHasDocs");
+    const visibleCount = document.getElementById("manualVisibleCount");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    let sortKey = "asset_tag";
+    let sortDirection = "asc";
+
+    function cellText(row, key) {
+      const map = {
+        asset_tag: 0,
+        category: 1,
+        manufacturer: 2,
+        model: 3,
+        type: 4,
+        room: 5,
+        manual_count: 6,
+      };
+      const cell = row.cells[map[key]];
+      if (!cell) return "";
+      if (key === "manual_count") {
+        return Number(cell.dataset.manualCount || 0);
+      }
+      return cell.innerText.trim().toLowerCase();
+    }
+
+    function applySort() {
+      rows.sort((a, b) => {
+        const aValue = cellText(a, sortKey);
+        const bValue = cellText(b, sortKey);
+        if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+        return 0;
+      });
+      rows.forEach((row) => tbody.appendChild(row));
+      document.querySelectorAll(".sort-button").forEach((button) => {
+        const isActive = button.dataset.sort === sortKey;
+        button.dataset.direction = isActive ? sortDirection : "";
+      });
+    }
+
+    function applyFilter() {
+      const query = searchInput.value.trim().toLowerCase();
+      const requireManuals = hasDocsToggle.checked;
+      let shown = 0;
+
+      rows.forEach((row) => {
+        const matchesSearch = !query || row.dataset.search.includes(query);
+        const manualCount = Number(row.cells[6].dataset.manualCount || 0);
+        const matchesManuals = !requireManuals || manualCount > 0;
+        const show = matchesSearch && matchesManuals;
+        row.hidden = !show;
+        if (show) shown += 1;
+      });
+
+      visibleCount.textContent = shown;
+    }
+
+    document.querySelectorAll(".sort-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const nextKey = button.dataset.sort;
+        if (sortKey === nextKey) {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+        } else {
+          sortKey = nextKey;
+          sortDirection = nextKey === "manual_count" ? "desc" : "asc";
+        }
+        applySort();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilter);
+    hasDocsToggle.addEventListener("change", applyFilter);
+
+    applySort();
+    applyFilter();
+  </script>
+</body>
+</html>

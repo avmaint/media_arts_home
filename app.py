@@ -2,7 +2,7 @@ import json
 import os
 import uuid
 import datetime
-from typing import Optional
+from pathlib import Path
 from flask import Flask, render_template, request, jsonify, abort, send_from_directory
 
 app = Flask(__name__)
@@ -10,6 +10,8 @@ app = Flask(__name__)
 CONFIG_PATH   = os.path.join(os.path.dirname(__file__), "config.json")
 MESSAGES_PATH = os.path.join(os.path.dirname(__file__), "messages.json")
 DOCS_PATH     = os.path.join(os.path.dirname(__file__), "docs")
+MANUALS_PATH  = os.path.join(os.path.dirname(__file__), "manuals")
+MANUALS_INDEX_PATH = os.path.join(MANUALS_PATH, "assets_manuals_index.json")
 
 PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
@@ -18,6 +20,13 @@ PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
 def load_config():
     with open(CONFIG_PATH, "r") as f:
+        return json.load(f)
+
+
+def load_manual_index() -> list:
+    if not os.path.exists(MANUALS_INDEX_PATH):
+        abort(503, "Manual index not yet built. Run scripts/build_manuals_index.py first.")
+    with open(MANUALS_INDEX_PATH, "r") as f:
         return json.load(f)
 
 
@@ -96,6 +105,23 @@ def serve_docs(filename):
     if not os.path.isdir(DOCS_PATH):
         abort(503, "Documentation not yet published. Run publish_docs.sh first.")
     return send_from_directory(DOCS_PATH, filename)
+
+
+@app.get("/manuals/")
+def manuals_index():
+    if not os.path.isdir(MANUALS_PATH):
+        abort(503, "Manuals not yet published. Run publish_manuals.sh first.")
+    return render_template("manuals_index.html", assets=load_manual_index())
+
+
+@app.get("/manuals/files/<path:filename>")
+def serve_manual(filename):
+    if not os.path.isdir(MANUALS_PATH):
+        abort(503, "Manuals not yet published. Run publish_manuals.sh first.")
+    requested = Path(filename)
+    if requested.name.startswith(".") or requested.suffix.lower() != ".pdf":
+        abort(404)
+    return send_from_directory(MANUALS_PATH, filename)
 
 
 @app.get("/admin/messages")

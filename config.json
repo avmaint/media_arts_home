@@ -239,8 +239,8 @@
         },
         {
           "name": "Equipment Manuals",
-          "url": null,
-          "description": "PDF manual index by asset tag — coming soon",
+          "url": "/manuals/",
+          "description": "Searchable asset inventory with links to published PDF manuals.",
           "icon": "📚"
         }
       ]
