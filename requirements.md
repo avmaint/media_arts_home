@@ -24,14 +24,17 @@ The page header shall display the UAC cross logo and the title "Media Arts". Sty
 ## MA-04 — Configuration-Driven
 All service data (name, URL, description, icon, category) shall be stored in `config.json`. No code change is needed to add, remove, or update a service — only `config.json` requires editing.
 
-## MA-05 — Manual / PDF Index (Future)
-The system shall provide an index mapping asset tags to PDF manuals, accessible from the Reference section. Implementation deferred.
+## MA-05 — Manual / PDF Index
+The system shall provide an Equipment Manuals page accessible from the Reference section. The page shall display a sortable and filterable table of assets that have mapped manuals, and each manual shall link to a PDF served by the web application.
+
+## MA-05.1 — Manual Lookup API
+The system shall provide an API endpoint that accepts an `AssetTag` and returns the associated manual URLs for that asset.
 
 ## MA-06 — NDI Device Links (Todo)
 NDI Transmitter and NDI Receiver shall be listed under Administration once their IPs are confirmed in network.xlsx.
 
-## MA-07 — System Documentation Link (Todo)
-A link to the HTML-generated technical documentation shall be added to the Reference section once its URL is confirmed.
+## MA-07 — System Documentation Link
+A link to the HTML-generated technical documentation shall be available from the Reference section.
 
 ---
 
@@ -55,10 +58,10 @@ A link to the HTML-generated technical documentation shall be added to the Refer
 | PTZ Camera 1 | http://192.168.0.186 | ZVCU-A001 |
 | PTZ Camera 2 | http://192.168.0.187 | ZVCU-A002 |
 | PTZ Camera 3 | http://192.168.0.188 | ZVCU-A003 |
-| Projector — Confidence | http://192.168.0.183 | ZVVU-0001 |
-| Projector — FoH East | http://192.168.0.193 | ZVVU-A001 |
-| Projector — FoH Centre | http://192.168.0.194 | ZVVU-A002 |
-| Projector — FoH West | http://192.168.0.195 | ZVVU-A003 |
+| Projector — Rear | http://192.168.0.183 | ZVVU-0001 |
+| Projector — FoH East | http://192.168.201.20 | 2604-2401 |
+| Projector — FoH Centre | http://192.168.201.21 | 2604-2402 |
+| Projector — FoH West | http://192.168.201.22 | 2604-2403 |
 
 ## Administration
 
@@ -80,8 +83,8 @@ A link to the HTML-generated technical documentation shall be added to the Refer
 | Name | URL | Notes |
 |---|---|---|
 | MXU Training | http://getmxu.com | AV skills training platform |
-| System Documentation | TBD | HTML-generated docs |
-| Equipment Manuals | TBD | PDF index by asset tag (future) |
+| System Documentation | /docs/ | HTML-generated docs |
+| Equipment Manuals | /manuals/ | PDF index by asset tag |
 
 ---
 
@@ -89,5 +92,7 @@ A link to the HTML-generated technical documentation shall be added to the Refer
 
 - Server: `uacts-g001` (alias `cumu-g001`)
 - Port: 80 (requires root or `CAP_NET_BIND_SERVICE`)
-- Start: `sudo python3 app.py`
-- Config: edit `config.json` to add/update/remove services; no restart needed (config is reloaded on each request)
+- Start: `./run.sh start`
+- Stop: `./run.sh stop`
+- Config: edit `config.json` to add/update/remove services; no restart needed for config changes because it is reloaded on each request
+- Manuals index: run `python3 scripts/build_manuals_index.py` after updating `assets.xlsx` or `manuals/asset_manual_map.json`, then redeploy/restart as needed

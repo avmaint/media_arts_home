@@ -80,6 +80,8 @@ def build_index() -> list[dict]:
     for row in rows:
         asset_tag = row.get("AssetTag", "").strip()
         manuals = normalize_manuals(manual_map.get(asset_tag, []))
+        if not manuals:
+            continue
         index.append(
             {
                 "asset_tag": asset_tag,

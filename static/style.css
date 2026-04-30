@@ -55,6 +55,26 @@ body {
   letter-spacing: 0.01em;
 }
 
+.header-subtitle {
+  font-weight: 400;
+  opacity: 0.75;
+  font-size: 20px;
+}
+
+.header-back {
+  margin-left: auto;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.header-back:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 /* ── Banner ───────────────────────────────────────────────── */
 .banner {
   display: flex;
@@ -358,6 +378,7 @@ a.card:hover {
   .main-content { padding: 24px 16px; }
   .site-header  { padding: 14px 16px; }
   .header-title { font-size: 20px; }
+  .header-subtitle { font-size: 16px; }
   .card-grid    { grid-template-columns: 1fr; }
   .manuals-toolbar { align-items: stretch; }
   .manuals-search { min-width: 0; width: 100%; }

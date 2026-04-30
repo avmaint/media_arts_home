@@ -30,6 +30,16 @@ def load_manual_index() -> list:
         return json.load(f)
 
 
+def find_manual_asset(asset_tag: str) -> dict | None:
+    needle = asset_tag.strip().lower()
+    if not needle:
+        return None
+    for asset in load_manual_index():
+        if asset.get("asset_tag", "").lower() == needle:
+            return asset
+    return None
+
+
 # ── Messages persistence ────────────────────────────────────────────────────────
 
 def load_messages() -> list:
@@ -122,6 +132,20 @@ def serve_manual(filename):
     if requested.name.startswith(".") or requested.suffix.lower() != ".pdf":
         abort(404)
     return send_from_directory(MANUALS_PATH, filename)
+
+
+@app.get("/api/manuals/<asset_tag>")
+def api_manuals_for_asset(asset_tag):
+    asset = find_manual_asset(asset_tag)
+    if asset is None:
+        abort(404, f"no manuals found for asset tag {asset_tag}")
+    return jsonify(
+        {
+            "asset_tag": asset["asset_tag"],
+            "manual_count": asset["manual_count"],
+            "manuals": asset["manuals"],
+        }
+    )
 
 
 @app.get("/admin/messages")

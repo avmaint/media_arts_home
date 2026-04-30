@@ -12,8 +12,9 @@
       <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
       <div class="header-text">
         <span class="header-org">Unionville Alliance Church</span>
-        <span class="header-title">Equipment Manuals</span>
+        <span class="header-title">Media Arts <span class="header-subtitle">/ Equipment Manuals</span></span>
       </div>
+      <a href="/" class="header-back">&#8592; Home</a>
     </div>
   </header>
 
@@ -21,15 +22,11 @@
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Manual Index</h2>
-        <p class="section-description">Sortable and filterable asset inventory with links to published manual PDFs.</p>
+        <p class="section-description">Sortable and filterable asset inventory with links to published manual PDFs. Only assets with mapped manuals are shown.</p>
       </div>
 
       <div class="manuals-toolbar">
         <input id="manualSearch" class="manuals-search" type="search" placeholder="Filter by asset tag, make, model, room, description..." />
-        <label class="manuals-toggle">
-          <input id="manualHasDocs" type="checkbox" />
-          <span>Only assets with manuals</span>
-        </label>
         <div class="manuals-summary">
           <span id="manualVisibleCount">{{ assets|length }}</span>
           <span>shown</span>
@@ -79,15 +76,11 @@
               <td>{{ asset.type or "—" }}</td>
               <td>{{ asset.room or "—" }}</td>
               <td data-manual-count="{{ asset.manual_count }}">
-                {% if asset.manuals %}
                 <div class="manual-link-list">
                   {% for manual in asset.manuals %}
                   <a href="{{ manual.url }}" target="_blank" rel="noopener noreferrer">{{ manual.name }}</a>
                   {% endfor %}
                 </div>
-                {% else %}
-                <span class="manuals-empty">No manual mapped</span>
-                {% endif %}
               </td>
             </tr>
             {% endfor %}
@@ -105,7 +98,6 @@
     const table = document.getElementById("manualsTable");
     const tbody = document.getElementById("manualsBody");
     const searchInput = document.getElementById("manualSearch");
-    const hasDocsToggle = document.getElementById("manualHasDocs");
     const visibleCount = document.getElementById("manualVisibleCount");
     const rows = Array.from(tbody.querySelectorAll("tr"));
     let sortKey = "asset_tag";
@@ -146,14 +138,11 @@
 
     function applyFilter() {
       const query = searchInput.value.trim().toLowerCase();
-      const requireManuals = hasDocsToggle.checked;
       let shown = 0;
 
       rows.forEach((row) => {
         const matchesSearch = !query || row.dataset.search.includes(query);
-        const manualCount = Number(row.cells[6].dataset.manualCount || 0);
-        const matchesManuals = !requireManuals || manualCount > 0;
-        const show = matchesSearch && matchesManuals;
+        const show = matchesSearch;
         row.hidden = !show;
         if (show) shown += 1;
       });
@@ -175,7 +164,6 @@
     });
 
     searchInput.addEventListener("input", applyFilter);
-    hasDocsToggle.addEventListener("change", applyFilter);
 
     applySort();
     applyFilter();
