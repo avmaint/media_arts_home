@@ -234,7 +234,7 @@
         {
           "name": "System Documentation",
           "url": "/docs/",
-          "description": "HTML-generated Quarto system documentation",
+          "description": "Design and Operational documentation for all major systems.",
           "icon": "📄"
         },
         {
