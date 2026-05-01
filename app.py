@@ -115,7 +115,15 @@ def docs_index():
 def serve_docs(filename):
     if not os.path.isdir(DOCS_PATH):
         abort(503, "Documentation not yet published. Run publish_docs.sh first.")
-    return send_from_directory(DOCS_PATH, filename)
+    safe = os.path.normpath(filename)
+    if safe.startswith("..") or os.path.isabs(safe):
+        abort(404)
+    if Path(safe).suffix.lower() not in {".html", ".css", ".js", ".png", ".jpg", ".svg"}:
+        abort(404)
+    resolved = os.path.realpath(os.path.join(DOCS_PATH, safe))
+    if not resolved.startswith(os.path.realpath(DOCS_PATH) + os.sep):
+        abort(404)
+    return send_from_directory(DOCS_PATH, safe)
 
 
 @app.get("/manuals/")
@@ -129,10 +137,16 @@ def manuals_index():
 def serve_manual(filename):
     if not os.path.isdir(MANUALS_PATH):
         abort(503, "Manuals not yet published. Run publish_manuals.sh first.")
-    requested = Path(filename)
+    safe = os.path.normpath(filename)
+    if safe.startswith("..") or os.path.isabs(safe):
+        abort(404)
+    requested = Path(safe)
     if requested.name.startswith(".") or requested.suffix.lower() != ".pdf":
         abort(404)
-    return send_from_directory(MANUALS_PATH, filename)
+    resolved = os.path.realpath(os.path.join(MANUALS_PATH, safe))
+    if not resolved.startswith(os.path.realpath(MANUALS_PATH) + os.sep):
+        abort(404)
+    return send_from_directory(MANUALS_PATH, safe)
 
 
 @app.get("/api/manuals/<asset_tag>")
