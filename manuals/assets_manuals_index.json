@@ -225,6 +225,51 @@
     ]
   },
   {
+    "asset_tag": "2507-0700",
+    "category": "Video",
+    "manufacturer": "BMD",
+    "model": "VideoHub 40x40",
+    "type": "",
+    "description": "VideoHub 40x40",
+    "building": "B1",
+    "room": "202",
+    "location": "Rack",
+    "in_service": "Y",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "Videohub12GInstallation.pdf",
+        "path": "Videohub12GInstallation.pdf",
+        "url": "/manuals/files/Videohub12GInstallation.pdf"
+      },
+      {
+        "name": "VideohubEthernetProtocol.pdf",
+        "path": "VideohubEthernetProtocol.pdf",
+        "url": "/manuals/files/VideohubEthernetProtocol.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2601-2800",
+    "category": "Video",
+    "manufacturer": "BMD",
+    "model": "Constellation 2ME",
+    "type": "",
+    "description": "ATEM 2ME",
+    "building": "B1",
+    "room": "202",
+    "location": "Rack",
+    "in_service": "Y",
+    "manual_count": 1,
+    "manuals": [
+      {
+        "name": "ATEM_Constellation_Switchers_Manual.pdf",
+        "path": "ATEM_Constellation_Switchers_Manual.pdf",
+        "url": "/manuals/files/ATEM_Constellation_Switchers_Manual.pdf"
+      }
+    ]
+  },
+  {
     "asset_tag": "2602-1201",
     "category": "Lighting",
     "manufacturer": "ADJ",
@@ -341,6 +386,81 @@
         "name": "AKG_c418.pdf",
         "path": "audio/AKG_c418.pdf",
         "url": "/manuals/files/audio/AKG_c418.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2604-2401",
+    "category": "Video",
+    "manufacturer": "Sony",
+    "model": "VPL-FHZ85",
+    "type": "Projector",
+    "description": "8000 LM WUXGA Laser Projector",
+    "building": "B1",
+    "room": "207",
+    "location": "Bulkhead",
+    "in_service": "Y",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "VPL-FHZ85_help.pdf",
+        "path": "VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+      },
+      {
+        "name": "VPL-FHZ85_setup.pdf",
+        "path": "VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2604-2402",
+    "category": "Video",
+    "manufacturer": "Sony",
+    "model": "VPL-FHZ85",
+    "type": "Projector",
+    "description": "8000 LM WUXGA Laser Projector",
+    "building": "B1",
+    "room": "207",
+    "location": "Bulkhead",
+    "in_service": "Y",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "VPL-FHZ85_help.pdf",
+        "path": "VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+      },
+      {
+        "name": "VPL-FHZ85_setup.pdf",
+        "path": "VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2604-2403",
+    "category": "Video",
+    "manufacturer": "Sony",
+    "model": "VPL-FHZ85",
+    "type": "Projector",
+    "description": "8000 LM WUXGA Laser Projector",
+    "building": "B1",
+    "room": "207",
+    "location": "Bulkhead",
+    "in_service": "Y",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "VPL-FHZ85_help.pdf",
+        "path": "VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+      },
+      {
+        "name": "VPL-FHZ85_setup.pdf",
+        "path": "VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
       }
     ]
   },
