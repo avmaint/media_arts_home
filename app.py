@@ -1,7 +1,9 @@
 import json
 import os
+import re
 import uuid
 import datetime
+from markupsafe import Markup, escape
 from pathlib import Path
 from typing import Optional
 from flask import Flask, render_template, request, jsonify, abort, send_from_directory
@@ -15,6 +17,31 @@ MANUALS_PATH  = os.path.join(os.path.dirname(__file__), "manuals")
 MANUALS_INDEX_PATH = os.path.join(MANUALS_PATH, "assets_manuals_index.json")
 
 PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
+
+# URL of the AVL Tech Assistant — overridable via environment variable
+AVL_ASSISTANT_URL = os.environ.get("AVL_ASSISTANT_URL", "http://localhost:8080")
+
+_MENTION_RE = re.compile(r'@([A-Za-z0-9_-]+)')
+
+
+def render_mentions(text: str) -> Markup:
+    """Convert @KB1234 and @ASSET-TAG mentions to clickable links."""
+    safe = str(escape(text))
+
+    def replace(m):
+        ref = m.group(1)
+        if re.match(r'^KB\d+$', ref, re.IGNORECASE):
+            url = f"{AVL_ASSISTANT_URL}?tab=knowledgeBase&issue={ref}"
+            label = f"@{ref}"
+        else:
+            url = f"{AVL_ASSISTANT_URL}?tab=assetDetails&tag={ref}"
+            label = f"@{ref}"
+        return f'<a href="{url}" target="_blank" rel="noopener noreferrer" class="mention-link">{label}</a>'
+
+    return Markup(_MENTION_RE.sub(replace, safe))
+
+
+app.jinja_env.filters["mentions"] = render_mentions
 
 
 # ── Config ─────────────────────────────────────────────────────────────────────

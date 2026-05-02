@@ -124,7 +124,7 @@
         return `<tr>
           <td><span class="status-badge ${st.cls}">${st.label}</span></td>
           <td><span class="priority-badge priority-${m.priority}">${PRIORITY_LABEL[m.priority]}</span></td>
-          <td class="msg-text-cell">${escHtml(m.text)}</td>
+          <td class="msg-text-cell">${renderMentions(escHtml(m.text))}</td>
           <td class="dt-cell">${fmtDt(m.start)}</td>
           <td class="dt-cell">${fmtDt(m.end)}</td>
           <td class="action-cell">
@@ -139,6 +139,17 @@
 
     function escHtml(s) {
       return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    }
+
+    const AVL_URL = window.location.protocol + "//" + window.location.hostname + ":8080";
+
+    function renderMentions(html) {
+      return html.replace(/@([A-Za-z0-9_-]+)/g, (_, ref) => {
+        const url = /^KB\d+$/i.test(ref)
+          ? `${AVL_URL}?tab=knowledgeBase&issue=${ref}`
+          : `${AVL_URL}?tab=assetDetails&tag=${ref}`;
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="mention-link">@${ref}</a>`;
+      });
     }
 
     function openModal(msg) {

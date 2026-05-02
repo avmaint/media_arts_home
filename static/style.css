@@ -347,6 +347,19 @@ a.card:hover {
   color: #123;
 }
 
+/* ── @mention links ──────────────────────────────────────── */
+.mention-link {
+  color: #0052cc;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dotted #0052cc;
+  white-space: nowrap;
+}
+
+.mention-link:hover {
+  text-decoration: underline;
+}
+
 .asset-meta {
   margin-top: 4px;
   color: #667;

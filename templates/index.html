@@ -21,7 +21,7 @@
   {% for banner in banners %}
   <div class="banner banner-{{ banner.priority }}">
     <span class="banner-label">{{ banner.priority | upper }}</span>
-    <span class="banner-text">{{ banner.text }}</span>
+    <span class="banner-text">{{ banner.text | mentions }}</span>
   </div>
   {% endfor %}
 
