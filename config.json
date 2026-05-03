@@ -109,7 +109,7 @@
             },
             {
               "name": "AVL Assistant",
-              "url": "http://uacts-g001.local:8080",
+              "url": "http://cumu-g001.local:8080",
               "description": "Asset management, network monitoring, and knowledge base",
               "icon": "🖥️"
             },
