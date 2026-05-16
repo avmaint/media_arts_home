@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary — UAC Media Arts</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .glossary-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .glossary-topic-select {
+      border: 1px solid #cdd6e1;
+      border-radius: 8px;
+      padding: 11px 13px;
+      font-size: 14px;
+      background: #fff;
+      color: #1a1a2e;
+      min-width: 180px;
+    }
+
+    .glossary-search {
+      flex: 1 1 320px;
+      min-width: 200px;
+      border: 1px solid #cdd6e1;
+      border-radius: 8px;
+      padding: 11px 13px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .glossary-table-wrap {
+      overflow-x: auto;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .glossary-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .glossary-table th,
+    .glossary-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #edf1f5;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    .glossary-table thead th {
+      background: #f8fafc;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #445;
+      white-space: nowrap;
+    }
+
+    .glossary-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .glossary-table tbody tr:hover td {
+      background: #f4f7fb;
+    }
+
+    .glossary-term {
+      font-weight: 700;
+      color: #1a1a2e;
+      white-space: nowrap;
+      min-width: 140px;
+    }
+
+    .glossary-topic-cell {
+      white-space: nowrap;
+      color: #667;
+      min-width: 90px;
+    }
+
+    .glossary-def {
+      line-height: 1.55;
+      color: #2a2a3e;
+      max-width: 600px;
+    }
+
+    .glossary-seealso {
+      white-space: nowrap;
+      min-width: 110px;
+    }
+
+    .seealso-link {
+      color: #0052cc;
+      text-decoration: none;
+      border-bottom: 1px dotted #0052cc;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .seealso-link:hover {
+      text-decoration: underline;
+      border-bottom-color: transparent;
+    }
+
+    .glossary-empty {
+      padding: 32px 16px;
+      text-align: center;
+      color: #8892a0;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .glossary-toolbar { align-items: stretch; }
+      .glossary-topic-select,
+      .glossary-search { min-width: 0; width: 100%; }
+      .glossary-term { white-space: normal; }
+      .glossary-seealso { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Media Arts <span class="header-subtitle">/ Glossary</span></span>
+      </div>
+      <a href="/" class="header-back">&#8592; Home</a>
+    </div>
+  </header>
+
+  {% include "_banners.html" %}
+
+  <main class="main-content">
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Glossary</h2>
+        <p class="section-description">AV terminology and acronym reference for the Media Arts team.</p>
+      </div>
+
+      <div class="glossary-toolbar">
+        <select id="topicSelect" class="glossary-topic-select">
+          <option value="">All Topics</option>
+          {% for topic in topics %}
+          <option value="{{ topic }}">{{ topic }}</option>
+          {% endfor %}
+        </select>
+        <input id="glossarySearch" class="glossary-search" type="search"
+               placeholder="Filter by term or keyword (space-separated words)..." />
+        <div class="manuals-summary">
+          <span id="glossaryVisibleCount">{{ entries|length }}</span>
+          <span>shown</span>
+          <span class="manuals-summary-divider">/</span>
+          <span>{{ entries|length }}</span>
+          <span>total</span>
+        </div>
+      </div>
+
+      <div class="glossary-table-wrap">
+        <table class="glossary-table" id="glossaryTable">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Topic</th>
+              <th>Definition</th>
+              <th>See Also</th>
+            </tr>
+          </thead>
+          <tbody id="glossaryBody">
+            {% for entry in entries %}
+            <tr
+              data-topic="{{ entry.topic | lower }}"
+              data-search="{{ (entry.topic + ' ' + entry.term + ' ' + entry.definition + ' ' + entry.see_also) | lower }}"
+            >
+              <td class="glossary-term">{{ entry.term }}</td>
+              <td class="glossary-topic-cell">{{ entry.topic or "—" }}</td>
+              <td class="glossary-def">{{ entry.definition }}</td>
+              <td class="glossary-seealso">
+                {% if entry.see_also %}
+                  {% for ref in entry.see_also.split(',') %}
+                    {% set ref = ref.strip() %}
+                    {% if ref %}
+                      <a class="seealso-link" data-term="{{ ref }}">{{ ref }}</a>{% if not loop.last %}, {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div id="glossaryEmpty" class="glossary-empty" style="display:none;">No matching terms found.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+  <script>
+    (function () {
+      const topicSelect  = document.getElementById("topicSelect");
+      const searchInput  = document.getElementById("glossarySearch");
+      const visibleCount = document.getElementById("glossaryVisibleCount");
+      const emptyMsg     = document.getElementById("glossaryEmpty");
+      const tbody        = document.getElementById("glossaryBody");
+      const rows         = Array.from(tbody.querySelectorAll("tr"));
+
+      function applyFilter() {
+        const topic = topicSelect.value.toLowerCase();
+        const words = searchInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        let shown = 0;
+
+        rows.forEach(function (row) {
+          const rowTopic  = row.dataset.topic  || "";
+          const rowSearch = row.dataset.search || "";
+
+          const topicMatch  = !topic || rowTopic === topic;
+          const wordsMatch  = words.every(function (w) { return rowSearch.includes(w); });
+
+          const visible = topicMatch && wordsMatch;
+          row.hidden = !visible;
+          if (visible) shown += 1;
+        });
+
+        visibleCount.textContent = shown;
+        emptyMsg.style.display   = shown === 0 ? "" : "none";
+      }
+
+      topicSelect.addEventListener("change", applyFilter);
+      searchInput.addEventListener("input",  applyFilter);
+
+      // SeeAlso links: set search to the referenced term and show all topics
+      document.querySelectorAll(".seealso-link").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          topicSelect.value  = "";
+          searchInput.value  = link.dataset.term;
+          applyFilter();
+          // Scroll the first visible matching row into view
+          var first = rows.find(function (r) { return !r.hidden; });
+          if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+
+      applyFilter();
+    })();
+  </script>
+
+</body>
+</html>

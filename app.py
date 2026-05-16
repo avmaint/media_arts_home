@@ -3,6 +3,8 @@ import os
 import re
 import uuid
 import datetime
+import urllib.error
+import urllib.request
 from markupsafe import Markup, escape
 from pathlib import Path
 from typing import Optional
@@ -18,8 +20,11 @@ MANUALS_INDEX_PATH = os.path.join(MANUALS_PATH, "assets_manuals_index.json")
 
 PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
-# URL of the AVL Tech Assistant — overridable via environment variable
+# URL of the AVL Tech Assistant frontend — overridable via environment variable
 AVL_ASSISTANT_URL = os.environ.get("AVL_ASSISTANT_URL", "http://localhost:8080")
+
+# URL of the AVL Tech Assistant backend API — overridable via environment variable
+AVL_API_URL = os.environ.get("AVL_API_URL", "http://cumu-g001.local:9000")
 
 _MENTION_RE = re.compile(r'@([A-Za-z0-9_-]+)')
 
@@ -188,6 +193,20 @@ def api_manuals_for_asset(asset_tag):
             "manuals": asset["manuals"],
         }
     )
+
+
+@app.get("/glossary/")
+def glossary_index():
+    url = f"{AVL_API_URL}/glossary"
+    try:
+        with urllib.request.urlopen(url, timeout=10) as resp:
+            entries = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as exc:
+        abort(502, f"Glossary API error: {exc.code}")
+    except Exception as exc:
+        abort(503, f"Glossary service unavailable: {exc}")
+    topics = sorted({e["topic"] for e in entries if e.get("topic")}, key=str.casefold)
+    return render_template("glossary.html", entries=entries, topics=topics)
 
 
 @app.get("/admin/messages")

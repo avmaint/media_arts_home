@@ -38,8 +38,9 @@ case "$1" in
     fi
     echo "Starting Media Arts home on port $PORT..."
     cd "$APP_DIR"
-    # Derive server hostname for cross-app links; override with AVL_ASSISTANT_URL env var if set
+    # Derive server hostname for cross-app links; override with env vars if set
     export AVL_ASSISTANT_URL="${AVL_ASSISTANT_URL:-http://cumu-g001.local:8080}"
+    export AVL_API_URL="${AVL_API_URL:-http://cumu-g001.local:9000}"
     "$VENV/bin/python3" app.py < /dev/null >> "$LOG_FILE" 2>&1 &
     echo $! > "$PID_FILE"
     disown $!

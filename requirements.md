@@ -36,6 +36,23 @@ NDI Transmitter and NDI Receiver shall be listed under Administration once their
 ## MA-07 — System Documentation Link
 A link to the HTML-generated technical documentation shall be available from the Reference section.
 
+## MA-08 — Glossary Browser
+The system shall provide a Glossary page accessible from the Reference section (tile icon 📖, URL `/glossary/`).
+
+The page fetches data from the AVL Tech Assistant backend API (`GET /glossary`) and renders a browsable, filterable table of AV terminology.
+
+**Controls:**
+- A dropdown selection box populated with all unique topics from the dataset, plus an "All Topics" option (default).
+- A free-text search field. All whitespace-separated words must be present (case-insensitive, in any order) somewhere within a row's topic, term, definition, or see-also text for that row to be displayed.
+
+**Display:**
+- A table with columns: Term, Topic, Definition, See Also.
+- A live count of visible rows vs. total rows.
+- If a row has a SeeAlso value, it is displayed as one or more clickable links (comma-separated values become individual links). Clicking a SeeAlso link resets the topic filter to "All Topics", sets the search field to the referenced term name, and re-applies the filter.
+
+**Configuration:**
+- The AVL API base URL is configurable via the `AVL_API_URL` environment variable (default: `http://cumu-g001.local:9000`). Set in `run.sh`.
+
 ---
 
 # Service Inventory
@@ -85,6 +102,7 @@ A link to the HTML-generated technical documentation shall be available from the
 | MXU Training | http://getmxu.com | AV skills training platform |
 | System Documentation | /docs/ | HTML-generated docs |
 | Equipment Manuals | /manuals/ | PDF index by asset tag |
+| Glossary | /glossary/ | AV terminology browser, data from AVL API |
 
 ---
 
