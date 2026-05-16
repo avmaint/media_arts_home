@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glossary — UAC Media Arts</title>
   <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     .glossary-toolbar {
       display: flex;
@@ -243,19 +244,47 @@
       topicSelect.addEventListener("change", applyFilter);
       searchInput.addEventListener("input",  applyFilter);
 
-      // SeeAlso links: set search to the referenced term and show all topics
-      document.querySelectorAll(".seealso-link").forEach(function (link) {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          topicSelect.value  = "";
-          searchInput.value  = link.dataset.term;
-          applyFilter();
-          // Scroll the first visible matching row into view
-          var first = rows.find(function (r) { return !r.hidden; });
-          if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Shared handler for all seealso-link clicks (called after both static and
+      // dynamically-rendered links are added to the DOM).
+      function attachSeeAlsoHandlers() {
+        document.querySelectorAll(".seealso-link").forEach(function (link) {
+          if (link._seeAlsoAttached) return;
+          link._seeAlsoAttached = true;
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            topicSelect.value  = "";
+            searchInput.value  = link.dataset.term;
+            applyFilter();
+            var first = rows.find(function (r) { return !r.hidden; });
+            if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+          });
         });
-      });
+      }
 
+      // Render definition cells with full markdown support.
+      // [[term]] syntax creates a cross-reference link to another glossary entry.
+      // External URLs (http/https) become links that open in a new tab.
+      if (typeof marked !== "undefined" && marked.parse) {
+        var renderer = new marked.Renderer();
+        var origLink = renderer.link.bind(renderer);
+        renderer.link = function (href, title, text) {
+          var html = origLink(href, title, text);
+          return html.replace(/^<a /, '<a target="_blank" rel="noopener noreferrer" ');
+        };
+
+        document.querySelectorAll(".glossary-def").forEach(function (cell) {
+          var raw = cell.textContent;
+          // Convert [[term]] to seealso-link spans before markdown parsing.
+          var processed = raw.replace(/\[\[([^\]]+)\]\]/g, function (_, term) {
+            var safeTerm    = term.replace(/"/g, "&quot;");
+            var safeDisplay = term.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return '<span class="seealso-link" data-term="' + safeTerm + '">' + safeDisplay + '</span>';
+          });
+          cell.innerHTML = marked.parse(processed, { renderer: renderer });
+        });
+      }
+
+      attachSeeAlsoHandlers();
       applyFilter();
     })();
   </script>
