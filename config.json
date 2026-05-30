@@ -208,14 +208,14 @@
         },
         {
           "name": "NDI Transmitter",
-          "url": null,
-          "description": "NDI video transmitter web interface — IP not yet configured",
+          "url": "http://192.168.204.32",
+          "description": "SDI-NDI video transmitter web interface",
           "icon": "📤"
         },
         {
           "name": "NDI Receiver",
-          "url": null,
-          "description": "NDI video receiver web interface — IP not yet configured",
+          "url": "http://192.168.204.31",
+          "description": "NDI-HDMI video receiver web interface",
           "icon": "📥"
         }
       ]
