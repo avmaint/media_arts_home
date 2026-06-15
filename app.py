@@ -209,6 +209,11 @@ def glossary_index():
     return render_template("glossary.html", entries=entries, topics=topics)
 
 
+@app.get("/help/")
+def help_page():
+    return render_template("help.html")
+
+
 @app.get("/admin/messages")
 def messages_admin():
     return render_template("messages.html")

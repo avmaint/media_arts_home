@@ -147,6 +147,12 @@
           "icon": "📢"
         },
         {
+          "name": "AVL Data",
+          "url": "http://cumu-g001.local:8001",
+          "description": "Asset records, glossary management, and structured AVL data (CRUD interface)",
+          "icon": "🗄️"
+        },
+        {
           "name": "CueCommander IDE",
           "url": "http://uacts-g001.local:1880",
           "description": "Node-RED flow editor for CueCommander",
@@ -248,6 +254,12 @@
           "url": "/glossary/",
           "description": "AV terminology and acronym reference, organised by topic.",
           "icon": "📖"
+        },
+        {
+          "name": "Help",
+          "url": "/help/",
+          "description": "Overview of the Media Arts digital tools — what each site does and when to use it.",
+          "icon": "❓"
         }
       ]
     }

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help — UAC Media Arts</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .help-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e8ecf0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 26px 24px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .help-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .help-card-icon {
+      font-size: 32px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .help-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0052cc;
+    }
+
+    .help-card-subtitle {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+      font-family: monospace;
+    }
+
+    .help-card-body {
+      font-size: 13.5px;
+      color: #444;
+      line-height: 1.65;
+    }
+
+    .help-card-body p + p {
+      margin-top: 10px;
+    }
+
+    .help-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .help-card-features li {
+      font-size: 13px;
+      color: #555;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .help-card-features li::before {
+      content: "›";
+      position: absolute;
+      left: 4px;
+      color: #0052cc;
+      font-weight: 700;
+    }
+
+    .help-card-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid #edf1f5;
+    }
+
+    .help-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #0052cc;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .help-card-link:hover {
+      text-decoration: underline;
+    }
+
+    .help-card-link-disabled {
+      color: #aaa;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    .help-intro {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e8ecf0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 22px 24px;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .help-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="/static/logo.jpeg" alt="UAC Logo" class="site-logo" />
+      <div class="header-text">
+        <span class="header-org">Unionville Alliance Church</span>
+        <span class="header-title">Media Arts <span class="header-subtitle">/ Help</span></span>
+      </div>
+      <a href="/" class="header-back">&#8592; Home</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Digital Tools Overview</h2>
+        <p class="section-description">A guide to the software systems used by the UAC Media Arts team</p>
+      </div>
+
+      <div class="help-intro">
+        The UAC Media Arts team uses several interconnected web-based tools. This page describes what each one does,
+        who uses it, and when. All tools are accessible from the <a href="/">Media Arts home page</a> and are
+        intended for internal use only.
+      </div>
+
+      <div class="help-grid">
+
+        <!-- Media Arts Home -->
+        <div class="help-card">
+          <div class="help-card-header">
+            <div class="help-card-icon">🏠</div>
+            <div>
+              <div class="help-card-title">Media Arts Home</div>
+              <div class="help-card-subtitle">port 80 &nbsp;·&nbsp; this site</div>
+            </div>
+          </div>
+          <div class="help-card-body">
+            <p>The central portal for the Media Arts team. It provides quick access to every tool, device,
+            and resource the team uses — organised into Operational, Administration, and Reference sections.</p>
+            <p>It also displays time-limited announcement banners for the team (configured under Administration → Message Admin).</p>
+          </div>
+          <ul class="help-card-features">
+            <li>Links to all operational tools, consoles, and device web interfaces</li>
+            <li>Links to system documentation and equipment manuals</li>
+            <li>AV glossary (pulled live from the AVL Data database)</li>
+            <li>Team announcement banners with priority levels</li>
+          </ul>
+          <div class="help-card-footer">
+            <a href="/" class="help-card-link">&#8592; You are here</a>
+          </div>
+        </div>
+
+        <!-- CueCommander -->
+        <div class="help-card">
+          <div class="help-card-header">
+            <div class="help-card-icon">🎛️</div>
+            <div>
+              <div class="help-card-title">CueCommander</div>
+              <div class="help-card-subtitle">cumu-g001.local:1880/dashboard</div>
+            </div>
+          </div>
+          <div class="help-card-body">
+            <p>The AV automation and cue control dashboard, built on Node-RED. Used primarily by the
+            technical director and audio operator during services and events.</p>
+            <p>The <strong>Assignments</strong> page is used before each service to set microphone names,
+            vocalist names, and IEM pack assignments — then push those names to all connected systems
+            (dLive console, Klang monitors, Shure Wireless Workbench, Reaper) in one step.</p>
+          </div>
+          <ul class="help-card-features">
+            <li>Mic and pack assignments — set once, push to all systems</li>
+            <li>Lighting cue control (ETC ColorSource)</li>
+            <li>PTZ camera preset recall</li>
+            <li>Projector on/off and input switching</li>
+            <li>Klang personal monitor mix management</li>
+          </ul>
+          <div class="help-card-footer">
+            <a href="http://cumu-g001.local:1880/dashboard" target="_blank" rel="noopener noreferrer" class="help-card-link">Open CueCommander ↗</a>
+          </div>
+        </div>
+
+        <!-- Companion -->
+        <div class="help-card">
+          <div class="help-card-header">
+            <div class="help-card-icon">🎮</div>
+            <div>
+              <div class="help-card-title">Companion</div>
+              <div class="help-card-subtitle">cumu-g001.local:8000</div>
+            </div>
+          </div>
+          <div class="help-card-body">
+            <p>Bitfocus Companion provides a grid of programmable buttons, accessible from any browser or
+            from a physical Stream Deck. Used during services for hands-on triggering of cues, macros,
+            and system actions.</p>
+            <p>The web emulator displays the button grid so operators without a physical controller can
+            still use it from a tablet or laptop.</p>
+          </div>
+          <ul class="help-card-features">
+            <li>One-tap triggering of CueCommander actions</li>
+            <li>ProPresenter slide control</li>
+            <li>Lighting and video routing shortcuts</li>
+            <li>Configurable button layouts per operator role</li>
+          </ul>
+          <div class="help-card-footer">
+            <a href="http://cumu-g001.local:8000/emulator/QILZbNAkPdKxFfqRmpvMs" target="_blank" rel="noopener noreferrer" class="help-card-link">Open Companion ↗</a>
+          </div>
+        </div>
+
+        <!-- AVL Tech Assistant -->
+        <div class="help-card">
+          <div class="help-card-header">
+            <div class="help-card-icon">🖥️</div>
+            <div>
+              <div class="help-card-title">AVL Tech Assistant</div>
+              <div class="help-card-subtitle">cumu-g001.local:8080</div>
+            </div>
+          </div>
+          <div class="help-card-body">
+            <p>An AI-assisted knowledge and asset tool for Media Arts technical staff. It lets you search
+            the equipment inventory, view device details and manuals, browse the AV knowledge base, and
+            look up glossary terms — all in one place.</p>
+            <p>Useful for troubleshooting, training, and researching unfamiliar equipment.</p>
+          </div>
+          <ul class="help-card-features">
+            <li>Full asset inventory with tags, locations, and specs</li>
+            <li>Links to equipment manuals (also browsable under Reference → Equipment Manuals)</li>
+            <li>Knowledge base articles for common issues and procedures</li>
+            <li>AV glossary (the source that feeds the Media Arts glossary page)</li>
+            <li>Network device status monitoring</li>
+          </ul>
+          <div class="help-card-footer">
+            <a href="http://cumu-g001.local:8080" target="_blank" rel="noopener noreferrer" class="help-card-link">Open AVL Tech Assistant ↗</a>
+          </div>
+        </div>
+
+        <!-- AVL Data -->
+        <div class="help-card">
+          <div class="help-card-header">
+            <div class="help-card-icon">🗄️</div>
+            <div>
+              <div class="help-card-title">AVL Data</div>
+              <div class="help-card-subtitle">cumu-g001.local:8001</div>
+            </div>
+          </div>
+          <div class="help-card-body">
+            <p>The administrative database interface for structured AVL data. This is where asset records,
+            glossary entries, and other reference data are created, edited, and maintained.</p>
+            <p>Most team members will interact with this data indirectly through the AVL Tech Assistant.
+            AVL Data is primarily used by administrators who need to add or correct records directly.</p>
+          </div>
+          <ul class="help-card-features">
+            <li>Create and edit asset records (equipment inventory)</li>
+            <li>Manage glossary terms and definitions</li>
+            <li>Direct table-level access to all structured AVL data</li>
+            <li>Changes here appear immediately in AVL Tech Assistant and the Glossary</li>
+          </ul>
+          <div class="help-card-footer">
+            <a href="http://cumu-g001.local:8001" target="_blank" rel="noopener noreferrer" class="help-card-link">Open AVL Data ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>UAC Media Arts &mdash; Internal Use Only</p>
+  </footer>
+
+</body>
+</html>
