@@ -108,12 +108,6 @@
               "icon": "📋"
             },
             {
-              "name": "AVL Assistant",
-              "url": "http://cumu-g001.local:8080",
-              "description": "Asset management, network monitoring, and knowledge base",
-              "icon": "🖥️"
-            },
-            {
               "name": "Kaleo AI",
               "url": "http://getkaleo.ai",
               "description": "Realtime AI-translation of service audio. Must use CHROME.",
@@ -140,6 +134,12 @@
       "title": "Administration",
       "description": "Infrastructure configuration and management",
       "services": [
+        {
+          "name": "AVL Assistant",
+          "url": "http://cumu-g001.local:8080",
+          "description": "Asset management, network monitoring, and knowledge base",
+          "icon": "🖥️"
+        },
         {
           "name": "Message Admin",
           "url": "/admin/messages",
