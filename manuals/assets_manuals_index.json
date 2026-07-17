@@ -29,13 +29,18 @@
     "building": "B1",
     "room": "115",
     "location": "Stage",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -49,13 +54,18 @@
     "building": "B1",
     "room": "115",
     "location": "Stage",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -69,13 +79,18 @@
     "building": "B1",
     "room": "115",
     "location": "Stage",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -89,13 +104,18 @@
     "building": "B1",
     "room": "115",
     "location": "Stage",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -109,7 +129,7 @@
     "building": "B1",
     "room": "204",
     "location": "Closet",
-    "in_service": "",
+    "in_service": "Y",
     "manual_count": 1,
     "manuals": [
       {
@@ -129,7 +149,7 @@
     "building": "B1",
     "room": "130",
     "location": "Door",
-    "in_service": "",
+    "in_service": "Y",
     "manual_count": 1,
     "manuals": [
       {
@@ -214,13 +234,18 @@
     "building": "",
     "room": "",
     "location": "",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -239,13 +264,13 @@
     "manuals": [
       {
         "name": "Videohub12GInstallation.pdf",
-        "path": "Videohub12GInstallation.pdf",
-        "url": "/manuals/files/Videohub12GInstallation.pdf"
+        "path": "Video_Recording/Videohub12GInstallation.pdf",
+        "url": "/manuals/files/Video_Recording/Videohub12GInstallation.pdf"
       },
       {
         "name": "VideohubEthernetProtocol.pdf",
-        "path": "VideohubEthernetProtocol.pdf",
-        "url": "/manuals/files/VideohubEthernetProtocol.pdf"
+        "path": "Video_Recording/VideohubEthernetProtocol.pdf",
+        "url": "/manuals/files/Video_Recording/VideohubEthernetProtocol.pdf"
       }
     ]
   },
@@ -264,8 +289,8 @@
     "manuals": [
       {
         "name": "ATEM_Constellation_Switchers_Manual.pdf",
-        "path": "ATEM_Constellation_Switchers_Manual.pdf",
-        "url": "/manuals/files/ATEM_Constellation_Switchers_Manual.pdf"
+        "path": "Video_Recording/ATEM_Constellation_Switchers_Manual.pdf",
+        "url": "/manuals/files/Video_Recording/ATEM_Constellation_Switchers_Manual.pdf"
       }
     ]
   },
@@ -279,13 +304,18 @@
     "building": "",
     "room": "",
     "location": "",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -299,13 +329,18 @@
     "building": "B1",
     "room": "?",
     "location": "",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -319,13 +354,18 @@
     "building": "B1",
     "room": "?",
     "location": "",
-    "in_service": "",
-    "manual_count": 1,
+    "in_service": "Y",
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -404,13 +444,13 @@
     "manuals": [
       {
         "name": "VPL-FHZ85_help.pdf",
-        "path": "VPL-FHZ85_help.pdf",
-        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+        "path": "Projection/VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_help.pdf"
       },
       {
         "name": "VPL-FHZ85_setup.pdf",
-        "path": "VPL-FHZ85_setup.pdf",
-        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
+        "path": "Projection/VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_setup.pdf"
       }
     ]
   },
@@ -429,13 +469,13 @@
     "manuals": [
       {
         "name": "VPL-FHZ85_help.pdf",
-        "path": "VPL-FHZ85_help.pdf",
-        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+        "path": "Projection/VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_help.pdf"
       },
       {
         "name": "VPL-FHZ85_setup.pdf",
-        "path": "VPL-FHZ85_setup.pdf",
-        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
+        "path": "Projection/VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_setup.pdf"
       }
     ]
   },
@@ -454,13 +494,528 @@
     "manuals": [
       {
         "name": "VPL-FHZ85_help.pdf",
-        "path": "VPL-FHZ85_help.pdf",
-        "url": "/manuals/files/VPL-FHZ85_help.pdf"
+        "path": "Projection/VPL-FHZ85_help.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_help.pdf"
       },
       {
         "name": "VPL-FHZ85_setup.pdf",
-        "path": "VPL-FHZ85_setup.pdf",
-        "url": "/manuals/files/VPL-FHZ85_setup.pdf"
+        "path": "Projection/VPL-FHZ85_setup.pdf",
+        "url": "/manuals/files/Projection/VPL-FHZ85_setup.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2607-2100",
+    "category": "Lighting",
+    "manufacturer": "Grandma",
+    "model": "onPC Wing XT",
+    "type": "Control",
+    "description": "Lighting Console",
+    "building": "B1",
+    "room": "202",
+    "location": "RearDesk",
+    "in_service": "Y",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf",
+        "path": "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf",
+        "url": "/manuals/files/lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0001",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0002",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0003",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0004",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0005",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0006",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0007",
+    "category": "Lighting",
+    "manufacturer": "Ayrton",
+    "model": "Diablo",
+    "type": "Fixture",
+    "description": "Profile Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Ceiling",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "Diablo_Web_EN_V231-2.pdf",
+        "path": "lighting/Diablo_Web_EN_V231-2.pdf",
+        "url": "/manuals/files/lighting/Diablo_Web_EN_V231-2.pdf"
+      },
+      {
+        "name": "Diablo-DMX-Chart_V231.pdf",
+        "path": "lighting/Diablo-DMX-Chart_V231.pdf",
+        "url": "/manuals/files/lighting/Diablo-DMX-Chart_V231.pdf"
+      },
+      {
+        "name": "grandMA3_Diablo_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0008",
+    "category": "Lighting",
+    "manufacturer": "Portland",
+    "model": "P2 EVO",
+    "type": "Fixture",
+    "description": "Feature Lighting",
+    "building": "B1",
+    "room": "",
+    "location": "Stage",
+    "in_service": "N",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "portman-p2-evo-dmx-chart.pdf",
+        "path": "lighting/portman-p2-evo-dmx-chart.pdf",
+        "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "portman-p2-user-manual.pdf",
+        "path": "lighting/portman-p2-user-manual.pdf",
+        "url": "/manuals/files/lighting/portman-p2-user-manual.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0009",
+    "category": "Lighting",
+    "manufacturer": "Portland",
+    "model": "P2 EVO",
+    "type": "Fixture",
+    "description": "Feature Lighting",
+    "building": "B1",
+    "room": "",
+    "location": "Stage",
+    "in_service": "N",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "portman-p2-evo-dmx-chart.pdf",
+        "path": "lighting/portman-p2-evo-dmx-chart.pdf",
+        "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "portman-p2-user-manual.pdf",
+        "path": "lighting/portman-p2-user-manual.pdf",
+        "url": "/manuals/files/lighting/portman-p2-user-manual.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0010",
+    "category": "Lighting",
+    "manufacturer": "Portland",
+    "model": "P2 EVO",
+    "type": "Fixture",
+    "description": "Feature Lighting",
+    "building": "B1",
+    "room": "",
+    "location": "Stage",
+    "in_service": "N",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "portman-p2-evo-dmx-chart.pdf",
+        "path": "lighting/portman-p2-evo-dmx-chart.pdf",
+        "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "portman-p2-user-manual.pdf",
+        "path": "lighting/portman-p2-user-manual.pdf",
+        "url": "/manuals/files/lighting/portman-p2-user-manual.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0011",
+    "category": "Lighting",
+    "manufacturer": "Acme",
+    "model": "Tornado",
+    "type": "Fixture",
+    "description": "Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Over Stage",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "TORNADO User Manual F Version.pdf",
+        "path": "lighting/TORNADO User Manual F Version.pdf",
+        "url": "/manuals/files/lighting/TORNADO User Manual F Version.pdf"
+      },
+      {
+        "name": "TORNADO DMX CHART.pdf",
+        "path": "lighting/TORNADO DMX CHART.pdf",
+        "url": "/manuals/files/lighting/TORNADO DMX CHART.pdf"
+      },
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0012",
+    "category": "Lighting",
+    "manufacturer": "Acme",
+    "model": "Tornado",
+    "type": "Fixture",
+    "description": "Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Over Stage",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "TORNADO User Manual F Version.pdf",
+        "path": "lighting/TORNADO User Manual F Version.pdf",
+        "url": "/manuals/files/lighting/TORNADO User Manual F Version.pdf"
+      },
+      {
+        "name": "TORNADO DMX CHART.pdf",
+        "path": "lighting/TORNADO DMX CHART.pdf",
+        "url": "/manuals/files/lighting/TORNADO DMX CHART.pdf"
+      },
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0013",
+    "category": "Lighting",
+    "manufacturer": "Acme",
+    "model": "Tornado",
+    "type": "Fixture",
+    "description": "Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Over Stage",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "TORNADO User Manual F Version.pdf",
+        "path": "lighting/TORNADO User Manual F Version.pdf",
+        "url": "/manuals/files/lighting/TORNADO User Manual F Version.pdf"
+      },
+      {
+        "name": "TORNADO DMX CHART.pdf",
+        "path": "lighting/TORNADO DMX CHART.pdf",
+        "url": "/manuals/files/lighting/TORNADO DMX CHART.pdf"
+      },
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0014",
+    "category": "Lighting",
+    "manufacturer": "Acme",
+    "model": "Tornado",
+    "type": "Fixture",
+    "description": "Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Over Stage",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "TORNADO User Manual F Version.pdf",
+        "path": "lighting/TORNADO User Manual F Version.pdf",
+        "url": "/manuals/files/lighting/TORNADO User Manual F Version.pdf"
+      },
+      {
+        "name": "TORNADO DMX CHART.pdf",
+        "path": "lighting/TORNADO DMX CHART.pdf",
+        "url": "/manuals/files/lighting/TORNADO DMX CHART.pdf"
+      },
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0015",
+    "category": "Lighting",
+    "manufacturer": "Acme",
+    "model": "Tornado",
+    "type": "Fixture",
+    "description": "Moving Fixture",
+    "building": "B1",
+    "room": "",
+    "location": "Over Stage",
+    "in_service": "N",
+    "manual_count": 3,
+    "manuals": [
+      {
+        "name": "TORNADO User Manual F Version.pdf",
+        "path": "lighting/TORNADO User Manual F Version.pdf",
+        "url": "/manuals/files/lighting/TORNADO User Manual F Version.pdf"
+      },
+      {
+        "name": "TORNADO DMX CHART.pdf",
+        "path": "lighting/TORNADO DMX CHART.pdf",
+        "url": "/manuals/files/lighting/TORNADO DMX CHART.pdf"
+      },
+      {
+        "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0016",
+    "category": "Lighting",
+    "manufacturer": "Elation",
+    "model": "KL CYC S",
+    "type": "Fixture",
+    "description": "Cyc Light",
+    "building": "B1",
+    "room": "",
+    "location": "Thrust",
+    "in_service": "N",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "elation_kl_cyc_s_-_user_manual_1.pdf",
+        "path": "lighting/elation_kl_cyc_s_-_user_manual_1.pdf",
+        "url": "/manuals/files/lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
+      },
+      {
+        "name": "elation_kl_cyc_s_-_dmx_traits.pdf",
+        "path": "lighting/elation_kl_cyc_s_-_dmx_traits.pdf",
+        "url": "/manuals/files/lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "2609-0017",
+    "category": "Lighting",
+    "manufacturer": "Elation",
+    "model": "KL CYC S",
+    "type": "Fixture",
+    "description": "Cyc Light",
+    "building": "B1",
+    "room": "",
+    "location": "Thrust",
+    "in_service": "N",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "elation_kl_cyc_s_-_user_manual_1.pdf",
+        "path": "lighting/elation_kl_cyc_s_-_user_manual_1.pdf",
+        "url": "/manuals/files/lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
+      },
+      {
+        "name": "elation_kl_cyc_s_-_dmx_traits.pdf",
+        "path": "lighting/elation_kl_cyc_s_-_dmx_traits.pdf",
+        "url": "/manuals/files/lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
       }
     ]
   },
@@ -1575,12 +2130,17 @@
     "room": "111",
     "location": "Ceiling",
     "in_service": "Y",
-    "manual_count": 1,
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -1595,12 +2155,42 @@
     "room": "130",
     "location": "Floor",
     "in_service": "Y",
-    "manual_count": 1,
+    "manual_count": 2,
     "manuals": [
       {
-        "name": "ADJ_UltraHexBar12UserManual.pdf",
-        "path": "lighting/ADJ_UltraHexBar12UserManual.pdf",
-        "url": "/manuals/files/lighting/ADJ_UltraHexBar12UserManual.pdf"
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      }
+    ]
+  },
+  {
+    "asset_tag": "ZLLU-B047-B050",
+    "category": "Lighting",
+    "manufacturer": "ADJ",
+    "model": "ultrahex bar 6",
+    "type": "Fixture",
+    "description": "DMX RGBAWUV Lightbar on bulkhead",
+    "building": "B1",
+    "room": "111",
+    "location": "Ceiling",
+    "in_service": "Y",
+    "manual_count": 2,
+    "manuals": [
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+      },
+      {
+        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
+        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
       }
     ]
   },
@@ -1825,7 +2415,7 @@
     "manufacturer": "Hitachi",
     "model": "CP-WU5505",
     "type": "Projector",
-    "description": "Stage Display (rear)",
+    "description": "WUXGA 1920 x 1200 resolution - 5000 ANSI lumens",
     "building": "B1",
     "room": "206",
     "location": "Ceiling",

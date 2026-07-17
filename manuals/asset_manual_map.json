@@ -1,9 +1,6 @@
 {
   "2308-0912": ["audio/QSC_amp_usa_legacyseries_specs.pdf"],
-  "2309-3001": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2309-3002": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2309-3003": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2309-3004": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
+
   "2310-0211": ["lighting/ADJ_dp-415r.pdf"],
   "2310-0213": ["lighting/ADJ_dp-415r.pdf"],
   "2310-0220": [
@@ -12,10 +9,7 @@
   ],
   "2404-1801": ["lighting/ETC_ColorSource_Spot_Datasheet_revH.pdf"],
   "2404-1802": ["lighting/ETC_ColorSource_Spot_Datasheet_revH.pdf"],
-  "2404-2400": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2602-1201": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2602-1202": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "2602-1203": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
+
   "2602-2509": ["audio/AKG_c418.pdf"],
   "2602-2510": ["audio/AKG_c418.pdf"],
   "2604-0105": ["audio/AKG_c418.pdf"],
@@ -155,8 +149,7 @@
     "lighting/ETC_ColorSource_PAR_InstallManual_revB.pdf"
   ],
   "ZLLU-B018-A024": ["lighting/ETC_ColorSource_Spot_Datasheet_revH.pdf"],
-  "ZLLU-B029-B042": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
-  "ZLLU-B043-B046": ["lighting/ADJ_UltraHexBar12UserManual.pdf"],
+
   "ZLLU-B053": ["lighting/ETC_ColorSource_Spot_Datasheet_revH.pdf"],
   "ZLLU-B054": ["lighting/ETC_ColorSource_Spot_Datasheet_revH.pdf"],
   "ZVCU-A001": [
@@ -194,9 +187,112 @@
     "Video_Recording/sony_z150 1237494480021.pdf"
   ],
   "notag402": ["audio/Yamaha_EMX5000E.pdf"],
-  "2604-2401": ["VPL-FHZ85_help.pdf", "VPL-FHZ85_setup.pdf"],
-  "2604-2402": ["VPL-FHZ85_help.pdf", "VPL-FHZ85_setup.pdf"],
-  "2604-2403": ["VPL-FHZ85_help.pdf", "VPL-FHZ85_setup.pdf"],
-  "2601-2800": ["ATEM_Constellation_Switchers_Manual.pdf"],
-  "2507-0700": ["Videohub12GInstallation.pdf", "VideohubEthernetProtocol.pdf"]
+  "2604-2401": ["Projection/VPL-FHZ85_help.pdf"
+    , "Projection/VPL-FHZ85_setup.pdf"],
+  "2604-2402": ["Projection/VPL-FHZ85_help.pdf"
+    , "Projection/VPL-FHZ85_setup.pdf"],
+  "2604-2403": ["Projection/VPL-FHZ85_help.pdf"
+    , "Projection/VPL-FHZ85_setup.pdf"],
+  "2601-2800": ["Video_Recording/ATEM_Constellation_Switchers_Manual.pdf"],
+  "2507-0700": [
+    "Video_Recording/Videohub12GInstallation.pdf"
+    , "Video_Recording/VideohubEthernetProtocol.pdf"]
+
+, "2609-0008": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  , "lighting/portman-p2-user-manual.pdf"]
+, "2609-0009": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  , "lighting/portman-p2-user-manual.pdf"]
+, "2609-0010": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  , "lighting/portman-p2-user-manual.pdf"]
+
+, "2609-0011": [
+    "lighting/TORNADO User Manual F Version.pdf"
+  , "lighting/TORNADO DMX CHART.pdf"
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+, "2609-0012": [
+    "lighting/TORNADO User Manual F Version.pdf"
+  , "lighting/TORNADO DMX CHART.pdf"
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+, "2609-0013": [
+    "lighting/TORNADO User Manual F Version.pdf"
+  , "lighting/TORNADO DMX CHART.pdf"
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+, "2609-0014": [
+    "lighting/TORNADO User Manual F Version.pdf"
+  , "lighting/TORNADO DMX CHART.pdf"
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+, "2609-0015": [
+    "lighting/TORNADO User Manual F Version.pdf"
+  , "lighting/TORNADO DMX CHART.pdf"
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+
+, "2609-0016": [
+    "lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
+  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"]
+, "2609-0017": [
+    "lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
+  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"]
+
+, "2609-0001": [
+    "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0002": [
+    "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0003": [
+    "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0004": [
+  "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0005": ["lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0006": [
+  "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+, "2609-0007": [
+  "lighting/Diablo_Web_EN_V231-2.pdf"
+  , "lighting/Diablo-DMX-Chart_V231.pdf"
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+
+, "ZLLU-B029-B042":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "ZLLU-B043-B046":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2602-1202":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2602-1201":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2404-2400":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2602-1203":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "ZLLU-B047-B050":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2309-3001":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2309-3002":[
+    "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2309-3003":[
+  "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "2309-3004":[
+  "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+
+, "2607-2100": ["lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+                "lighting/grandMA3_Diablo_Programmer_Reference.html",
+                "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf"
+                ]
+
+, "xxxx-xxxx": [
+  "lighting/Cylinder_One_Spectrum_-_Specs_-_July_2026.pdf"]
+
 }
