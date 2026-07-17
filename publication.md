@@ -45,6 +45,10 @@ Run on **vanadium-mbp**:
 
 Run on **cumu-g001**: nothing. The new manual is live as soon as the rsync in step 6 completes.
 
+### Supported manual file types
+
+`/manuals/files/<path>` (`serve_manual()` in `app.py`) only serves files whose extension is in an allowlist — currently `.pdf, .html, .css, .js, .png, .jpg, .svg`, matching what `/docs/` already trusts for self-authored Quarto output. Anything else 404s by design (defense-in-depth against path traversal and unexpected content types), so a manual in an unsupported format (e.g. `.docx`, `.zip`) needs converting before it'll be servable. Changing this list is a code change — see section D.
+
 ---
 
 ## B. Refreshing documentation (uactechdoc)

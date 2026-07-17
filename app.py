@@ -173,7 +173,9 @@ def serve_manual(filename):
     if safe.startswith("..") or os.path.isabs(safe):
         abort(404)
     requested = Path(safe)
-    if requested.name.startswith(".") or requested.suffix.lower() != ".pdf":
+    if requested.name.startswith("."):
+        abort(404)
+    if requested.suffix.lower() not in {".pdf", ".html", ".css", ".js", ".png", ".jpg", ".svg"}:
         abort(404)
     resolved = os.path.realpath(os.path.join(MANUALS_PATH, safe))
     if not resolved.startswith(os.path.realpath(MANUALS_PATH) + os.sep):
