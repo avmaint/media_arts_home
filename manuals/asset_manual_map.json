@@ -199,10 +199,13 @@
     , "Video_Recording/VideohubEthernetProtocol.pdf"]
 
 , "2609-0008": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
   , "lighting/portman-p2-user-manual.pdf"]
 , "2609-0009": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
   , "lighting/portman-p2-user-manual.pdf"]
 , "2609-0010": ["lighting/portman-p2-evo-dmx-chart.pdf"
+  ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
   , "lighting/portman-p2-user-manual.pdf"]
 
 , "2609-0011": [
@@ -289,6 +292,7 @@
 
 , "2607-2100": ["lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
                 "lighting/grandMA3_Diablo_Programmer_Reference.html",
+                "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
                 "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf"
                 ]
 
