@@ -505,17 +505,17 @@
     ]
   },
   {
-    "asset_tag": "2607-2100",
+    "asset_tag": "2607-2500",
     "category": "Lighting",
-    "manufacturer": "Grandma",
-    "model": "onPC Wing XT",
+    "manufacturer": "MA-Lighting",
+    "model": "grandMA3 onPC Wing XT",
     "type": "Control",
     "description": "Lighting Console",
     "building": "B1",
     "room": "202",
     "location": "RearDesk",
     "in_service": "Y",
-    "manual_count": 3,
+    "manual_count": 5,
     "manuals": [
       {
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
@@ -528,9 +528,19 @@
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
       },
       {
+        "name": "grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+      },
+      {
         "name": "2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf",
         "path": "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf",
         "url": "/manuals/files/lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -545,7 +555,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -561,6 +571,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -575,7 +590,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -591,6 +606,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -605,7 +625,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -621,6 +641,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -635,7 +660,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -651,6 +676,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -665,7 +695,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -681,6 +711,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -695,7 +730,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -711,6 +746,11 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -725,7 +765,7 @@
     "room": "",
     "location": "Ceiling",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "Diablo_Web_EN_V231-2.pdf",
@@ -741,13 +781,18 @@
         "name": "grandMA3_Diablo_Programmer_Reference.html",
         "path": "lighting/grandMA3_Diablo_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_Diablo_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
   {
     "asset_tag": "2609-0008",
     "category": "Lighting",
-    "manufacturer": "Portland",
+    "manufacturer": "Portman",
     "model": "P2 EVO",
     "type": "Fixture",
     "description": "Feature Lighting",
@@ -755,12 +800,22 @@
     "room": "",
     "location": "Stage",
     "in_service": "N",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "portman-p2-evo-dmx-chart.pdf",
         "path": "lighting/portman-p2-evo-dmx-chart.pdf",
         "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       },
       {
         "name": "portman-p2-user-manual.pdf",
@@ -772,7 +827,7 @@
   {
     "asset_tag": "2609-0009",
     "category": "Lighting",
-    "manufacturer": "Portland",
+    "manufacturer": "Portman",
     "model": "P2 EVO",
     "type": "Fixture",
     "description": "Feature Lighting",
@@ -780,12 +835,22 @@
     "room": "",
     "location": "Stage",
     "in_service": "N",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "portman-p2-evo-dmx-chart.pdf",
         "path": "lighting/portman-p2-evo-dmx-chart.pdf",
         "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       },
       {
         "name": "portman-p2-user-manual.pdf",
@@ -797,7 +862,7 @@
   {
     "asset_tag": "2609-0010",
     "category": "Lighting",
-    "manufacturer": "Portland",
+    "manufacturer": "Portman",
     "model": "P2 EVO",
     "type": "Fixture",
     "description": "Feature Lighting",
@@ -805,12 +870,22 @@
     "room": "",
     "location": "Stage",
     "in_service": "N",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "portman-p2-evo-dmx-chart.pdf",
         "path": "lighting/portman-p2-evo-dmx-chart.pdf",
         "url": "/manuals/files/lighting/portman-p2-evo-dmx-chart.pdf"
+      },
+      {
+        "name": "grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       },
       {
         "name": "portman-p2-user-manual.pdf",
@@ -830,7 +905,7 @@
     "room": "",
     "location": "Over Stage",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "TORNADO User Manual F Version.pdf",
@@ -846,6 +921,11 @@
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
         "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -860,7 +940,7 @@
     "room": "",
     "location": "Over Stage",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "TORNADO User Manual F Version.pdf",
@@ -876,6 +956,11 @@
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
         "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -890,7 +975,7 @@
     "room": "",
     "location": "Over Stage",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "TORNADO User Manual F Version.pdf",
@@ -906,6 +991,11 @@
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
         "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -920,7 +1010,7 @@
     "room": "",
     "location": "Over Stage",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "TORNADO User Manual F Version.pdf",
@@ -936,6 +1026,11 @@
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
         "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -950,7 +1045,7 @@
     "room": "",
     "location": "Over Stage",
     "in_service": "N",
-    "manual_count": 3,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "TORNADO User Manual F Version.pdf",
@@ -966,6 +1061,11 @@
         "name": "grandMA3_ACME_Tornado_Programmer_Reference.html",
         "path": "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
         "url": "/manuals/files/lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -1779,7 +1879,7 @@
     "building": "B1",
     "room": "206",
     "location": "RearDesk",
-    "in_service": "Y",
+    "in_service": "N",
     "manual_count": 2,
     "manuals": [
       {

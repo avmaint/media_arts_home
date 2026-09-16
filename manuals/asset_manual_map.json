@@ -200,34 +200,42 @@
 
 , "2609-0008": ["lighting/portman-p2-evo-dmx-chart.pdf"
   ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
   , "lighting/portman-p2-user-manual.pdf"]
 , "2609-0009": ["lighting/portman-p2-evo-dmx-chart.pdf"
   ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
   , "lighting/portman-p2-user-manual.pdf"]
 , "2609-0010": ["lighting/portman-p2-evo-dmx-chart.pdf"
   ,"lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
   , "lighting/portman-p2-user-manual.pdf"]
 
 , "2609-0011": [
     "lighting/TORNADO User Manual F Version.pdf"
   , "lighting/TORNADO DMX CHART.pdf"
-  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0012": [
     "lighting/TORNADO User Manual F Version.pdf"
   , "lighting/TORNADO DMX CHART.pdf"
-  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0013": [
     "lighting/TORNADO User Manual F Version.pdf"
   , "lighting/TORNADO DMX CHART.pdf"
-  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0014": [
     "lighting/TORNADO User Manual F Version.pdf"
   , "lighting/TORNADO DMX CHART.pdf"
-  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0015": [
     "lighting/TORNADO User Manual F Version.pdf"
   , "lighting/TORNADO DMX CHART.pdf"
-  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"]
+  , "lighting/grandMA3_ACME_Tornado_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 
 , "2609-0016": [
     "lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
@@ -239,30 +247,37 @@
 , "2609-0001": [
     "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0002": [
     "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0003": [
     "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0004": [
   "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0005": ["lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0006": [
   "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2609-0007": [
   "lighting/Diablo_Web_EN_V231-2.pdf"
   , "lighting/Diablo-DMX-Chart_V231.pdf"
-  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"]
+  ,"lighting/grandMA3_Diablo_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 
 , "ZLLU-B029-B042":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
   , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
@@ -290,10 +305,11 @@
   "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
   , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
 
-, "2607-2100": ["lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
+, "2607-2500": ["lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
                 "lighting/grandMA3_Diablo_Programmer_Reference.html",
                 "lighting/grandMA3_Portman_P2_EVO_Programmer_Reference.html",
-                "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf"
+                "lighting/2026-05-22_grandMA3_User_Manual_PDF_v2.4.2.2-1.pdf",
+                "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
                 ]
 
 , "xxxx-xxxx": [

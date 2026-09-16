@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import json
+import posixpath
 import re
+import sys
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
@@ -13,6 +15,33 @@ MANUAL_MAP_PATH = MANUALS_ROOT / "asset_manual_map.json"
 OUTPUT_PATH = MANUALS_ROOT / "assets_manuals_index.json"
 
 NS = {"a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+
+# The workbook's sheet order has changed before, so find the sheet by name.
+ASSET_SHEET_NAME = "assets"
+
+
+def worksheet_path(zf: zipfile.ZipFile, sheet_name: str) -> str:
+    """Resolve a sheet name to its path inside the xlsx, via the workbook rels."""
+    workbook = ET.fromstring(zf.read("xl/workbook.xml"))
+    rels = ET.fromstring(zf.read("xl/_rels/workbook.xml.rels"))
+    targets = {rel.attrib["Id"]: rel.attrib["Target"] for rel in rels}
+
+    wanted = sheet_name.casefold()
+    names = []
+    for sheet in workbook.iterfind(".//a:sheets/a:sheet", NS):
+        name = sheet.attrib.get("name", "")
+        names.append(name)
+        if name.casefold() != wanted:
+            continue
+        target = targets[sheet.attrib[f"{{{REL_NS}}}id"]]
+        if target.startswith("/"):
+            return target.lstrip("/")
+        return posixpath.normpath(posixpath.join("xl", target))
+
+    raise SystemExit(
+        f"No sheet named {sheet_name!r} in {ASSET_XLSX} (found: {', '.join(names)})"
+    )
 
 
 def load_asset_rows() -> list[dict]:
@@ -33,7 +62,7 @@ def load_asset_rows() -> list[dict]:
                 return shared_strings[int(value)]
             return value
 
-        sheet = ET.fromstring(zf.read("xl/worksheets/sheet2.xml"))
+        sheet = ET.fromstring(zf.read(worksheet_path(zf, ASSET_SHEET_NAME)))
         rows = sheet.findall(".//a:sheetData/a:row", NS)
         if not rows:
             return []
@@ -76,6 +105,16 @@ def build_index() -> list[dict]:
         manual_map = json.load(f)
 
     rows = load_asset_rows()
+    asset_tags = {row.get("AssetTag", "").strip() for row in rows}
+    orphans = sorted(tag for tag in manual_map if tag not in asset_tags)
+    if orphans:
+        # Usually means an asset tag was renumbered in the spreadsheet; those
+        # manuals silently vanish from the index otherwise.
+        print(
+            f"Warning: {len(orphans)} manual-map key(s) match no asset row: {', '.join(orphans)}",
+            file=sys.stderr,
+        )
+
     index = []
     for row in rows:
         asset_tag = row.get("AssetTag", "").strip()
@@ -105,6 +144,14 @@ def build_index() -> list[dict]:
 
 def main() -> None:
     index = build_index()
+    if not index:
+        # Never overwrite a good index with an empty one — that's a parse failure,
+        # not an empty inventory.
+        print(
+            f"No asset records matched {MANUAL_MAP_PATH.name}; leaving {OUTPUT_PATH.name} untouched.",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
     with OUTPUT_PATH.open("w") as f:
         json.dump(index, f, indent=2)
         f.write("\n")
