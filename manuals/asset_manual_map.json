@@ -239,10 +239,16 @@
 
 , "2609-0016": [
     "lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
-  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"]
+  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
+  , "lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2609-0017": [
     "lighting/elation_kl_cyc_s_-_user_manual_1.pdf"
-  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"]
+  , "lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
+  , "lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 
 , "2609-0001": [
     "lighting/Diablo_Web_EN_V231-2.pdf"
@@ -280,30 +286,60 @@
   , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 
 , "ZLLU-B029-B042":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "ZLLU-B043-B046":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2602-1202":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2602-1201":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2404-2400":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2602-1203":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "ZLLU-B047-B050":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
   , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
 , "2309-3001":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2309-3002":[
     "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2309-3003":[
   "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 , "2309-3004":[
   "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  ]
 
 , "2607-2500": ["lighting/grandMA3_ACME_Tornado_Programmer_Reference.html",
                 "lighting/grandMA3_Diablo_Programmer_Reference.html",
@@ -313,6 +349,10 @@
                 ]
 
 , "xxxx-xxxx": [
-  "lighting/Cylinder_One_Spectrum_-_Specs_-_July_2026.pdf"]
+  "lighting/Cylinder_One_Spectrum_-_Specs_-_July_2026.pdf"
+  , "lighting/grandMA3_Acclaim_Cylinder_One_Spectrum_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
+  , "lighting/Cylinder_One_Spectrum_guide_v3-0b_86ed0d1a-a434-4de1-9ed1-32495ab39454.pdf"
+  ]
 
 }

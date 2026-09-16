@@ -30,7 +30,7 @@
     "room": "115",
     "location": "Stage",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -41,6 +41,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -55,7 +65,7 @@
     "room": "115",
     "location": "Stage",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -66,6 +76,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -80,7 +100,7 @@
     "room": "115",
     "location": "Stage",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -91,6 +111,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -105,7 +135,7 @@
     "room": "115",
     "location": "Stage",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -116,6 +146,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -235,7 +275,7 @@
     "room": "",
     "location": "",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -246,6 +286,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -305,7 +355,7 @@
     "room": "",
     "location": "",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -316,6 +366,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -330,7 +390,7 @@
     "room": "?",
     "location": "",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -341,6 +401,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -355,7 +425,7 @@
     "room": "?",
     "location": "",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -366,6 +436,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -1080,7 +1160,7 @@
     "room": "",
     "location": "Thrust",
     "in_service": "N",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "elation_kl_cyc_s_-_user_manual_1.pdf",
@@ -1091,6 +1171,16 @@
         "name": "elation_kl_cyc_s_-_dmx_traits.pdf",
         "path": "lighting/elation_kl_cyc_s_-_dmx_traits.pdf",
         "url": "/manuals/files/lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
+      },
+      {
+        "name": "grandMA3_Elation_KL_CYC_S_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -1105,7 +1195,7 @@
     "room": "",
     "location": "Thrust",
     "in_service": "N",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "elation_kl_cyc_s_-_user_manual_1.pdf",
@@ -1116,6 +1206,16 @@
         "name": "elation_kl_cyc_s_-_dmx_traits.pdf",
         "path": "lighting/elation_kl_cyc_s_-_dmx_traits.pdf",
         "url": "/manuals/files/lighting/elation_kl_cyc_s_-_dmx_traits.pdf"
+      },
+      {
+        "name": "grandMA3_Elation_KL_CYC_S_Programmer_Reference.html",
+        "path": "lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_Elation_KL_CYC_S_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -2230,7 +2330,7 @@
     "room": "111",
     "location": "Ceiling",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -2241,6 +2341,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
@@ -2255,7 +2365,7 @@
     "room": "130",
     "location": "Floor",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
         "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
@@ -2266,6 +2376,16 @@
         "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
         "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
