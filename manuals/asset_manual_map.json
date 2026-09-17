@@ -315,8 +315,11 @@
   , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"
   , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"
   ]
-, "ZLLU-B047-B050":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
-  , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"]
+, "ZLLU-B047-B050":[
+    "lighting/adj_ultra_hex_bar_6_lo.pdf"
+  , "lighting/adj_ultra_hex_bar_6_dmx_traits.pdf"
+  , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html"
+  , "lighting/grandMA3_Reading_the_Fixture_Sheet.html"]
 , "2309-3001":["lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
   , "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
   , "lighting/grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html"

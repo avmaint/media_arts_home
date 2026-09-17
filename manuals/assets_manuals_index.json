@@ -2400,17 +2400,27 @@
     "room": "111",
     "location": "Ceiling",
     "in_service": "Y",
-    "manual_count": 2,
+    "manual_count": 4,
     "manuals": [
       {
-        "name": "ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
-        "path": "lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf",
-        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_User_Manual.pdf"
+        "name": "adj_ultra_hex_bar_6_lo.pdf",
+        "path": "lighting/adj_ultra_hex_bar_6_lo.pdf",
+        "url": "/manuals/files/lighting/adj_ultra_hex_bar_6_lo.pdf"
       },
       {
-        "name": "ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
-        "path": "lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf",
-        "url": "/manuals/files/lighting/ADJ_Ultra_Hex_Bar_12_DMX_Traits.pdf"
+        "name": "adj_ultra_hex_bar_6_dmx_traits.pdf",
+        "path": "lighting/adj_ultra_hex_bar_6_dmx_traits.pdf",
+        "url": "/manuals/files/lighting/adj_ultra_hex_bar_6_dmx_traits.pdf"
+      },
+      {
+        "name": "grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html",
+        "path": "lighting/grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html",
+        "url": "/manuals/files/lighting/grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html"
+      },
+      {
+        "name": "grandMA3_Reading_the_Fixture_Sheet.html",
+        "path": "lighting/grandMA3_Reading_the_Fixture_Sheet.html",
+        "url": "/manuals/files/lighting/grandMA3_Reading_the_Fixture_Sheet.html"
       }
     ]
   },
