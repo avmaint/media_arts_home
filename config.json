@@ -26,15 +26,10 @@
               "description": "ProPresenter remote control interface(CUMU-G002)",
               "icon": "📽️"
             },
-            {
-              "name": "ETC Lighting Console",
-              "url": "http://192.168.0.197:8080",
-              "description": "ETC ColorSource lighting console web interface (ZLKU-C001)",
-              "icon": "💡"
-            },
+
             {
               "name": "GrandMA Lighting Console",
-              "url": "http://192.168.0.81:8080",
+              "url": "http://192.168.205.10:8080",
               "description": "GrandaMA3 Lighting Console Web Remote (2507-2500)",
               "icon": "💡"
             },
@@ -49,6 +44,11 @@
               "url": "https://studio.resi.io",
               "description": "Live streaming and broadcast control",
               "icon": "📡"
+            },            {
+              "name": "(Inactive) ETC Lighting Console",
+              "url": "http://192.168.0.197:8080",
+              "description": "ETC ColorSource lighting console web interface (ZLKU-C001)",
+              "icon": "💡"
             }
           ]
         },
