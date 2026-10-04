@@ -240,33 +240,56 @@
 <!-- ============ SECTION 2 ============ -->
 <section id="groups">
   <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
-  <p class="sec-sub">In 170-ch mode the weight sits in Colour (beam + 40 pixels), Position (5 heads), and Focus (5 zooms). Dimmer and strobe are single global controls, and there's no Gobo or Shapers at all.</p>
+  <p class="sec-sub">In 170-ch mode the weight sits in Colour (beam + 40 pixels), Position (5 heads), and Focus (5 zooms). Dimmer is two masters (beam / ring) over per-cell trim; strobe is two shutters (beam / ring); no Gobo or Shapers. Each card names the group to grab for the scope you want.</p>
+
+  <div class="subcard">
+    <h6>Which group affects what</h6>
+    <table class="maptable">
+      <thead><tr><th>To affect…</th><th>One head</th><th>One bar</th><th>All bars</th></tr></thead>
+      <tbody>
+        <tr><td class="fn">Head — pan · tilt · zoom</td><td><code>Fixture 301.2.H</code></td><td><code>Group "301 Heads"</code></td><td><code>Group "Heads ALL"</code></td></tr>
+        <tr><td class="fn">Beam — colour + level</td><td><code>Fixture 301.2.H.9</code></td><td><code>Group "301 Beams"</code></td><td><code>Group "Beams ALL"</code></td></tr>
+        <tr><td class="fn">Ring — colour + level</td><td><code>Fixture 301.2.H.1 Thru 8</code></td><td><code>Group "301 Rings"</code></td><td><code>Group "Rings ALL"</code></td></tr>
+        <tr><td class="fn">Whole fixture</td><td><code>Fixture 301.2.H</code></td><td><code>Group "Tornado 301"</code></td><td><code>Group "Tornado ALL"</code></td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:12.5px;margin-top:8px"><b>H = 1–5</b> (head); swap <b>301</b> for the bar (301–305). <b>There is no standing group for a single head</b> — address it directly as above, or select the bar group and press <code>Next</code> to step head-to-head. Chases use the ring grids (<code>301 Grid</code>, <code>Rings Grid 8x25</code>, <code>Rings Grid 40x5</code>) and the movement grid (<code>Heads ALL</code>, 5×5).</p>
+  </div>
 
   <!-- Dimmer -->
   <div class="fg" style="--fgc:#c9c9c9">
     <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1</span></div>
-    <p class="fg-lead">Two independent masters — one for the beams, one for the rings — plus a virtual intensity on every sub-cell.</p>
-    <h5>Three layers of intensity</h5>
+    <p class="fg-lead">Two masters (beam / ring) over per-cell trim — and <b>nothing lights until the shutter is open</b> (see Beam).</p>
+    <h5>Groups → scope</h5>
     <ul>
-      <li><span class="encpill">Beam master</span> (ch166) dims all five beams together; <span class="encpill">Ring master</span> (ch168) dims all 40 ring pixels together. Independent, so you can hold the rings up while the beams fade, or the reverse.</li>
-      <li><b>Per-cell virtual dimmer</b> — the GDTF gives every beam and every ring pixel its own Dimmer attribute (no DMX channel; grandMA3 scales the RGB for you). So each subfixture has a real intensity encoder: <code>At 50</code>, <code>Full</code>, <code>Off</code> work on a single pixel or a selection.</li>
+      <li><b>All bars:</b> <code>Group "Tornado ALL"</code> · <b>one bar:</b> <code>Group "Tornado 301"</code> · <b>beams-only / rings-only:</b> the <code>Beams</code> / <code>Rings</code> groups · <b>one head:</b> <code>Fixture 301.2.H</code>.</li>
     </ul>
-    <div class="diablo"><b>TORNADO · CH 166 (beam) · CH 168 (ring)</b> The two masters are 8-bit. Per-head and per-pixel intensity is built in — no need to add a virtual dimmer in patch. Reach the two masters by selecting the whole fixture; reach a cell's intensity by selecting that subfixture.</div>
+    <h5>How the level stacks</h5>
+    <ul>
+      <li><span class="encpill">Beam master</span> (ch166) and <span class="encpill">Ring master</span> (ch168) are the overall levels, and both <b>default to 0</b> — these are what you bring up for light. Independent: hold rings up while beams fade, or the reverse.</li>
+      <li><b>Per-cell dimmers</b> (every beam + ring pixel) <b>default to full</b> — they're pixel-level trim and chases, scaling each cell under its master.</li>
+      <li>Output = shutter × master × per-cell × colour. Any one at zero = black.</li>
+    </ul>
+    <div class="note">
+      <span class="tag">Why it's dark at full</span>
+      <p>A fresh patch shows nothing even at full dimmer, because the <b>shutters default Closed</b> and the <b>masters default 0</b>. To light it: select the fixture, <b>open the shutter</b> (Beam), and bring up the <b>master</b>.</p>
+    </div>
+    <div class="diablo"><b>TORNADO · CH 166 (beam master) · CH 168 (ring master)</b> Masters 8-bit; per-cell dimmers virtual 16-bit (default full). To raise overall level select a whole-fixture (<code>Tornado</code>) group; to trim one cell select that pixel subfixture.</div>
   </div>
 
   <!-- Position -->
   <div class="fg" style="--fgc:#4a86c9">
     <div class="fg-top"><span class="fg-dot"></span><h3>Position</h3><span class="fg-ptype">Preset Type 2</span></div>
-    <p class="fg-lead">Five independent pan/tilts — the reason this fixture is a moving bar and not a static batten.</p>
-    <div class="cmdblock">
-      <span class="row"><span class="k">Attribute</span> "Pan" <span class="k">At</span> 0 <span class="c">— on the selected head(s)</span></span>
-      <span class="row"><span class="k">Attribute</span> "Tilt" <span class="k">At</span> 50</span>
-    </div>
-    <h5>Fanning the five heads</h5>
+    <p class="fg-lead">Five independent pan/tilts — the reason this is a moving bar, not a batten.</p>
+    <h5>Groups → scope</h5>
     <ul>
-      <li>Select all five as subfixtures, then use <b>MAtricks</b> to fan tilt into a splay, a wave, or a chase across the bar.</li>
+      <li><b>All heads, every bar:</b> <code>Group "Heads ALL"</code> · <b>one bar's 5 heads:</b> <code>Group "301 Heads"</code> · <b>one head:</b> <code>Fixture 301.2.H</code> (or a Heads group + <code>Next</code>).</li>
     </ul>
-    <div class="diablo"><b>TORNADO · per head</b> Pan 0–59° (a narrow swing, since it's a bar), Tilt 0–221°, both 16-bit. Each head's Pan/Tilt lives at the top of its channel block — see §05.</div>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Group</span> "301 Heads" ; <span class="k">Attribute</span> "Tilt" <span class="k">At</span> 50 <span class="c">— uniform</span></span>
+      <span class="row"><span class="k">Group</span> "301 Heads" ; <span class="k">Attribute</span> "Tilt" <span class="k">At</span> 30 <span class="k">Thru</span> 70 <span class="c">— fan across the bar</span></span>
+    </div>
+    <div class="diablo"><b>TORNADO · per head · CH +1–4 of each head block</b> Pan 0–59° (a narrow swing, it's a bar), Tilt 0–221°, both 16-bit. Fan/Align examples in §01; the map is §05.</div>
   </div>
 
   <!-- Color -->
@@ -279,6 +302,7 @@
       <ul>
         <li><span class="encpill">Red</span> <span class="encpill">Green</span> <span class="encpill">Blue</span> <span class="encpill">Lime</span> mix the main beam of each head. Use the <b>Colour Picker</b> — with a lime emitter present, picking by hue/swatch beats dialling four raw faders.</li>
         <li>Lime is a real fourth primary: it extends the gamut toward yellow-green and adds punch. In the picker it's handled for you; on the encoders it's its own attribute.</li>
+        <li><b>Groups:</b> all beams <code>Group "Beams ALL"</code> · one bar <code>Group "301 Beams"</code> · one head's beam <code>Fixture 301.2.H.9</code>.</li>
       </ul>
     </div>
 
@@ -287,6 +311,7 @@
       <ul>
         <li>Each head's ring is 8 addressable RGB blocks (40 across the fixture). Select the ring pixels as subfixtures and drive them with <b>MAtricks + colour phasers</b> for chases, rainbows, and comet trails around each head.</li>
         <li>Ring pixels are RGB only — no lime — so their gamut is slightly narrower than the beam's.</li>
+        <li><b>Groups:</b> all rings <code>Group "Rings ALL"</code> · one bar <code>Group "301 Rings"</code> · one head's ring <code>Fixture 301.2.H.1 Thru 8</code>; chases use the grids <code>301 Grid</code> / <code>Rings Grid 8x25</code> / <code>Rings Grid 40x5</code>.</li>
       </ul>
     </div>
 
@@ -296,23 +321,32 @@
   <!-- Beam -->
   <div class="fg" style="--fgc:#e0913a">
     <div class="fg-top"><span class="fg-dot"></span><h3>Beam</h3><span class="fg-ptype">Preset Type 5</span></div>
-    <p class="fg-lead">Two independent strobes — one for the beams, one for the rings. No prism, gobo, frost, or iris exist on this fixture.</p>
+    <p class="fg-lead">Two independent strobes — beam and ring — and the shutter that gates all output. No prism, gobo, frost, or iris on this fixture.</p>
+    <h5>Groups → scope</h5>
     <ul>
-      <li><span class="encpill">Beam Shutter</span> (ch167, <code>Shutter1</code>) — strobes all five beams: open, strobe slow→fast, pulse, random. Push for the named ranges.</li>
-      <li><span class="encpill">Ring Shutter</span> (ch169, <code>Shutter2</code>) — the same, on the 40 ring pixels only.</li>
+      <li>Strobe follows its colour layer: <b>beams</b> via the <code>Beams</code> groups, <b>rings</b> via the <code>Rings</code> groups, both at once via the <code>Tornado</code> groups. Head / bar / all-bars as in the matrix above.</li>
+      <li><span class="encpill">Beam Shutter</span> (ch167, <code>Shutter1</code>) and <span class="encpill">Ring Shutter</span> (ch169, <code>Shutter2</code>) — Closed, Open, strobe slow→fast, pulse (open/close), random. Push for the named ranges.</li>
     </ul>
-    <div class="diablo"><b>TORNADO · CH 167 (beam) · CH 169 (ring)</b> Because beam and ring strobe separately, you can flash the rings while the beams hold steady, or the reverse — a signature Tornado look. Both are global across their respective cells; there's no per-head strobe in this mode.</div>
+    <div class="note">
+      <span class="tag">Shutter ↔ Dimmer</span>
+      <p>The shutter gates the dimmer: <b>Closed = black regardless of dimmer level</b>, Open passes the dimmed level, and strobe/pulse chop it on and off. Both shutters <b>default Closed</b>, so a fresh patch is dark until you open them — the usual "dimmer's up but nothing shows." Because beam and ring strobe separately, you can flash the rings while the beams hold steady, or the reverse.</p>
+    </div>
+    <div class="diablo"><b>TORNADO · CH 167 (beam) · CH 169 (ring)</b> Global across their layer; no per-head strobe in this mode.</div>
   </div>
 
   <!-- Focus -->
   <div class="fg" style="--fgc:#3faa5c">
     <div class="fg-top"><span class="fg-dot"></span><h3>Focus</h3><span class="fg-ptype">Preset Type 6</span></div>
-    <p class="fg-lead">Five independent zooms — beam angle per head.</p>
+    <p class="fg-lead">Five independent zooms — beam angle per head. Zoom lives on the head, so it uses the same selections as Position.</p>
+    <h5>Groups → scope</h5>
+    <ul>
+      <li><b>All:</b> <code>Group "Heads ALL"</code> · <b>one bar:</b> <code>Group "301 Heads"</code> · <b>one head:</b> <code>Fixture 301.2.H</code>. Fan with <code>At x Thru y</code> for a spread-to-tight sweep.</li>
+    </ul>
     <div class="cmdblock">
-      <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 0 <span class="c">— wide (on the selected head)</span></span>
+      <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 0 <span class="c">— wide</span></span>
       <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 100 <span class="c">— narrow / beam</span></span>
     </div>
-    <div class="diablo"><b>TORNADO · per head</b> Zoom runs Wide→Narrow (3–30° beam, 4–35° field). Fan zoom across the five heads with MAtricks for a spread-to-tight sweep. There's no separate focus attribute — it's a beam bar, not a spot.</div>
+    <div class="diablo"><b>TORNADO · per head · CH +9 of each head block</b> Wide→Narrow (3–30° beam, 4–35° field). No separate focus attribute — it's a beam bar, not a spot.</div>
   </div>
 
   <!-- Control -->
