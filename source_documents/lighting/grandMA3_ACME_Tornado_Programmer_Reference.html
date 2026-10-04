@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 Programmer — ACME Tornado 170-ch Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;--panel:#1c1e22;--panel-2:#232529;--cell:#45484e;--cell-dark:#34363b;
+    --line:#2c2f34;--ink:#d9dce1;--ink-dim:#8b9098;--ink-faint:#61656c;
+    --accent:#e8c020;--accent-soft:#7a6a1e;
+    --ma-red:#b7222a;--ma-red-txt:#e2494c;--ma-cyan:#22b8cc;--ma-cyan-br:#1fd0e6;--ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;--ma-magenta:#cf5bd0;--ma-white:#eef0f3;--ma-yellow:#e6c020;--ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;--ma-orange:#d78a2b;--ma-purple:#8a5cd0;--ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;--ma-seagreen:#31a07f;--ma-cuefade:#24306b;--ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;--ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  header.mast{border-bottom:1px solid var(--line);padding:56px 24px 30px;max-width:900px;margin:0 auto}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;letter-spacing:-.015em;color:#fff}
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:62ch;margin:0}
+  /* RGBL signature stripe — this fixture's identity */
+  .spectrum{height:4px;border-radius:3px;margin:22px 0 0;background:linear-gradient(90deg,#e2494c 0%,#3faa5c 33%,#3b6fd0 66%,#b6e04a 100%)}
+  .meta{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  .meta b{color:var(--ink-dim);font-weight:500}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  nav.toc a{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s}
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);font-weight:500;padding-top:6px}
+  h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em}
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+  h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;color:#fff;margin:30px 0 4px}
+  p{margin:0 0 14px}.muted{color:var(--ink-dim)}
+  code{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);padding:1px 6px;border-radius:4px;white-space:nowrap}
+  .cmdblock{background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto}
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}
+  .cmdblock .row .k{color:#7fc7ff}
+
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  .fg{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;position:relative;overflow:hidden}
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  .note{background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0}
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+  .flagnote{background:linear-gradient(180deg,rgba(224,145,58,.07),rgba(224,145,58,0));border:1px solid #7a521e;border-radius:8px;padding:13px 15px;margin:14px 0}
+  .flagnote .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e0913a;display:block;margin-bottom:5px}
+  .flagnote p{margin:0;font-size:13px;color:var(--ink)}
+
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+  .cell{flex:none;width:64px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;background:var(--cell);color:var(--ma-white);border:1px solid rgba(0,0,0,.35)}
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}.chipcell i.left{left:6px;width:14px}.chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  .subcard{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin:12px 0}
+  .subcard h6{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#fff;margin:0 0 8px;font-weight:600}
+  .subcard h6 .pg{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:12px;padding:2px 8px;margin-right:8px;vertical-align:middle}
+  .subcard ul{margin:0;padding-left:17px}
+  .subcard li{margin:4px 0;font-size:13px;line-height:1.5}
+  .encpill{font-family:"JetBrains Mono",monospace;font-size:11px;background:#101114;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#e9d98a;white-space:nowrap}
+
+  .maptable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13px}
+  .maptable th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;padding:0 12px 8px;border-bottom:1px solid var(--line)}
+  .maptable td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .maptable tr:hover td{background:var(--panel)}
+  .maptable .ch{font-family:"JetBrains Mono",monospace;color:var(--ink-dim);white-space:nowrap;width:70px}
+  .maptable .fn{color:var(--ink)}
+  .maptable .fn small{color:var(--ink-faint);font-family:"JetBrains Mono",monospace;font-size:10.5px;margin-left:6px}
+  .maptable .grp{font-family:"JetBrains Mono",monospace;font-size:11px;white-space:nowrap;width:96px}
+  .g-dim{color:#c9c9c9}.g-pos{color:#5a92cf}.g-col{color:#d46fd5}.g-bea{color:#e0913a}.g-foc{color:#4bb56a}.g-ctl{color:#8b9098}
+
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;font-size:12px;color:var(--ink-faint)}
+  footer p{margin:4px 0;font-size:12px}
+
+  .pagepill{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#16222e;border:1px solid #2f4d69;border-radius:4px;padding:1px 5px;color:#7fc7ff;white-space:nowrap;margin-left:5px;vertical-align:1px}
+  @media print{body{background:#fff;color:#111}.fg,.step,.note,.flagnote,.swatch,.chiprow,.cmdblock,.subcard{break-inside:avoid}nav.toc{display:none}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Programmer Reference</p>
+  <h1>Driving the ACME&nbsp;Tornado <span class="thin">— five heads, forty pixels</span></h1>
+  <p class="lede">A working reference for the Tornado in full 170-channel mode: how each feature group behaves when the fixture is a moving bar of five RGBL beam heads wrapped in pixel-mapped rings.</p>
+  <div class="spectrum"></div>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Fixture:</b> ACME Tornado (TB_5_IP · IP)</span>
+    <span><b>Mode:</b> 170-ch (Mode 5)</span>
+    <span><b>Profile:</b> ACME@TORNADO_(TB_5_IP)@V1.50.gdtf</span>
+    <span><b>Sources:</b> GDTF V1.50 · manual Rev B</span>
+  </div>
+  <nav class="toc">
+    <a href="#fixture">The fixture</a>
+    <a href="#flow">The loop</a>
+    <a href="#groups">Feature groups</a>
+    <a href="#housekeeping">Housekeeping</a>
+    <a href="#sheet">Reading the sheet</a>
+    <a href="#map">170-ch map</a>
+    <a href="#groups-def">Selections &amp; groups</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 0 ============ -->
+<section id="fixture">
+  <div class="sec-head"><span class="sec-num">00</span><h2>What you're actually patching</h2></div>
+  <p class="sec-sub">The Tornado isn't one head — it's five, on a bar, each ringed by pixels. Understanding that structure is the whole job; the feature groups fall out of it.</p>
+
+  <div class="subcard">
+    <h6>Five independent heads</h6>
+    <ul>
+      <li>Each head has its own <b>pan &amp; tilt</b> (16-bit; pan swings 0–59°, tilt 0–221°), its own <b>RGBL beam</b> emitter, and its own motorised <b>zoom</b>. So the five heads aim, colour, and zoom separately.</li>
+      <li>RGBL = Red / Green / Blue / <b>Lime</b>. The lime emitter is a fourth mixing primary — it lifts yellow-greens and apparent brightness that RGB alone can't reach. In this GDTF it's the attribute <code>ColorAdd_GY</code> (green-yellow), alongside <code>ColorAdd_R/G/B</code>.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Five pixel rings</h6>
+    <ul>
+      <li>Each head is circled by a 24-LED ring. In <b>170-ch mode only</b>, that ring is exposed as <b>8 RGB blocks</b> (pixels) — so 5 heads × 8 blocks = <b>40 ring pixels</b>, 120 channels of colour.</li>
+      <li>Smaller modes (71/75/85) collapse each ring to a single RGB + a macro-effect channel. You gave that up for per-pixel control by choosing 170.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>How it lands in grandMA3</h6>
+    <ul>
+      <li>This GDTF (V1.50) resolves to <b>5 beam subfixtures + 40 ring-LED pixels</b> (8 per head) on top of the base and yoke geometry — the 45 pixel/beam instances that make the Tornado explode into rows the moment you patch it.</li>
+      <li>That means <b>subfixture selection</b> and <b>MAtricks</b> are your primary tools, not the encoder alone. Colour phasers across the ring pixels are the fixture's signature look.</li>
+    </ul>
+  </div>
+
+  <div class="flagnote">
+    <span class="tag">Profile this is written for · verified against the GDTF</span>
+    <p>This reference targets the patched GDTF <code>ACME@TORNADO_(TB_5_IP)@V1.50.gdtf</code> — the IP-rated five-head variant, library revision V1.50 — and the attribute names, pixel counts and channel layout below are read from that file. Beam colour is <code>ColorAdd_R/G/B/GY</code>; ring pixels are <code>ColorAdd_R/G/B</code>; each beam and each ring pixel also carries a <b>virtual Dimmer</b> (no DMX channel of its own), so grandMA3 gives you a real intensity encoder per sub-cell. Where this GDTF and the printed manual (Rev B) disagree — the global tail, §05 — the GDTF is what the console actually patches, so this document follows it. On a different library revision these specifics can shift; re-confirm in the sheet.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="flow">
+  <div class="sec-head"><span class="sec-num">01</span><h2>The loop every parameter follows</h2></div>
+  <p class="sec-sub">Same four beats as any grandMA3 fixture — the only twist is that "select" often means drilling into a head or a ring pixel, not just picking the fixture.</p>
+
+  <div class="spine">
+    <div class="step"><span class="n">01</span><h4>Select</h4><p>Pick the fixture — or a subfixture (a head, a ring pixel). Yellow ID text = selected.</p></div>
+    <div class="step"><span class="n">02</span><h4>Choose a group</h4><p>Tap a feature group on the encoder bar. Encoders remap to that group's attributes.</p></div>
+    <div class="step"><span class="n">03</span><h4>Set the value</h4><p>Turn an encoder, push it for the <b>Edit</b> overlay (Channel Sets + typed values), or type on the command line.</p></div>
+    <div class="step"><span class="n">04</span><h4>Keep or drop</h4><p>Active values (white-on-red) store. <code>Clear</code> steps them out. Store to a preset to reuse.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Where a control actually lives</span>
+    <p>The encoder bar shows <b>up to five dual encoders at a time</b>. A feature group with more than that spreads across several <b>encoder pages</b>, one per feature — the Encoder Page button to the left of the encoders names the current feature and shows how many pages the group has. Tap it to cycle, or tap and swipe for the list. Wherever a control on this fixture is not on the first page of its group, this document flags it <span class="pagepill">later page</span>.</p>
+  </div>
+
+  <h3>Selecting &amp; shaping the heads</h3>
+  <p class="muted">Examples use fixture <b>301</b>. A head is <code>301.2.H</code> (yoke pan/tilt); its beam is <code>.9</code>, its ring pixels <code>.1–.8</code>. Heads are contiguous, so <code>301.2.1 Thru 5</code> is all five at once.</p>
+
+  <div class="subcard">
+    <h6>Uniform — every head aligned</h6>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Group</span> "Tornado ALL" <span class="c">— or Fixture 301 Thru 305</span></span>
+      <span class="row"><span class="k">Attribute</span> "Pan" <span class="k">At</span> 0 ; <span class="k">Attribute</span> "Tilt" <span class="k">At</span> 50</span>
+    </div>
+    <p class="muted" style="margin:6px 0 0">One value lands on every head identically.</p>
+  </div>
+
+  <div class="subcard">
+    <h6>Fan the heads (static splay)</h6>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Group</span> "301 Heads" <span class="c">— one bar's 5 heads · = Fixture 301.2.1 Thru 5</span></span>
+      <span class="row"><span class="k">Attribute</span> "Tilt" <span class="k">At</span> 30 <span class="k">Thru</span> 70 <span class="c">— spreads head 1→5 across 30→70</span></span>
+      <span class="row"><span class="k">Group</span> "Heads ALL" ; <span class="k">Attribute</span> "Tilt" <span class="k">At</span> 20 <span class="k">Thru</span> 80 <span class="c">— fan all 25 heads</span></span>
+    </div>
+    <p class="muted" style="margin:6px 0 0">The <code>At x Thru y</code> value-fan spreads across the selection in order. Reverse the numbers to tip it the other way; narrow the range for a gentler splay.</p>
+  </div>
+
+  <div class="subcard">
+    <h6>Shaped fans — set an Align mode, then adjust on the encoder</h6>
+    <ul>
+      <li><code>Align &lt;&gt;</code> — peak at the centre (heads splay symmetrically out)</li>
+      <li><code>Align &gt;&lt;</code> — trough at the centre (heads pinch in)</li>
+      <li><code>Align &lt;</code> / <code>Align &gt;</code> — pivot on the first / last head</li>
+      <li><code>Align Off</code> — back to uniform</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="tag">Fanning vs. phasers vs. MAtricks</span>
+    <p>One idea, three levels: <b>Align</b> fans values <em>once</em> (a static spread); a <b>phaser</b> is a fan that <em>moves</em> (the effect engine runs the attribute between values over time); <b>MAtricks</b> decides <em>how</em> either spreads across the selection — the X / Y / Z phase, plus Wings (mirror from centre) and Blocks. On the Tornado: a tilt phaser on <code>Heads ALL</code> with X-phase is a wave running head-to-head, Y-phase rolls it bar-to-bar; a colour phaser on a ring-grid group (49–53) with X-phase chases <em>around</em> each ring, Y-phase steps head-to-head. The grid stored in each group is what MAtricks reads to tell "around the ring" from "along the rig." See the feature-group detail in §02, and the full command blocks in <code>grandma3_utilities/snippets/movement_examples.md</code>.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="groups">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
+  <p class="sec-sub">In 170-ch mode the weight sits in Colour (beam + 40 pixels), Position (5 heads), and Focus (5 zooms). Dimmer and strobe are single global controls, and there's no Gobo or Shapers at all.</p>
+
+  <!-- Dimmer -->
+  <div class="fg" style="--fgc:#c9c9c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1</span></div>
+    <p class="fg-lead">Two independent masters — one for the beams, one for the rings — plus a virtual intensity on every sub-cell.</p>
+    <h5>Three layers of intensity</h5>
+    <ul>
+      <li><span class="encpill">Beam master</span> (ch166) dims all five beams together; <span class="encpill">Ring master</span> (ch168) dims all 40 ring pixels together. Independent, so you can hold the rings up while the beams fade, or the reverse.</li>
+      <li><b>Per-cell virtual dimmer</b> — the GDTF gives every beam and every ring pixel its own Dimmer attribute (no DMX channel; grandMA3 scales the RGB for you). So each subfixture has a real intensity encoder: <code>At 50</code>, <code>Full</code>, <code>Off</code> work on a single pixel or a selection.</li>
+    </ul>
+    <div class="diablo"><b>TORNADO · CH 166 (beam) · CH 168 (ring)</b> The two masters are 8-bit. Per-head and per-pixel intensity is built in — no need to add a virtual dimmer in patch. Reach the two masters by selecting the whole fixture; reach a cell's intensity by selecting that subfixture.</div>
+  </div>
+
+  <!-- Position -->
+  <div class="fg" style="--fgc:#4a86c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Position</h3><span class="fg-ptype">Preset Type 2</span></div>
+    <p class="fg-lead">Five independent pan/tilts — the reason this fixture is a moving bar and not a static batten.</p>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Pan" <span class="k">At</span> 0 <span class="c">— on the selected head(s)</span></span>
+      <span class="row"><span class="k">Attribute</span> "Tilt" <span class="k">At</span> 50</span>
+    </div>
+    <h5>Fanning the five heads</h5>
+    <ul>
+      <li>Select all five as subfixtures, then use <b>MAtricks</b> to fan tilt into a splay, a wave, or a chase across the bar.</li>
+    </ul>
+    <div class="diablo"><b>TORNADO · per head</b> Pan 0–59° (a narrow swing, since it's a bar), Tilt 0–221°, both 16-bit. Each head's Pan/Tilt lives at the top of its channel block — see §05.</div>
+  </div>
+
+  <!-- Color -->
+  <div class="fg" style="--fgc:#cf5bd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Color</h3><span class="fg-ptype">Preset Type 4</span></div>
+    <p class="fg-lead">The heart of the fixture — two colour layers per head: the <b>beam</b> and the <b>ring</b>. This is where 128 of the 170 channels live.</p>
+
+    <div class="subcard">
+      <h6>The beam — RGBL, per head</h6>
+      <ul>
+        <li><span class="encpill">Red</span> <span class="encpill">Green</span> <span class="encpill">Blue</span> <span class="encpill">Lime</span> mix the main beam of each head. Use the <b>Colour Picker</b> — with a lime emitter present, picking by hue/swatch beats dialling four raw faders.</li>
+        <li>Lime is a real fourth primary: it extends the gamut toward yellow-green and adds punch. In the picker it's handled for you; on the encoders it's its own attribute.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>The ring — 8 RGB pixels per head</h6>
+      <ul>
+        <li>Each head's ring is 8 addressable RGB blocks (40 across the fixture). Select the ring pixels as subfixtures and drive them with <b>MAtricks + colour phasers</b> for chases, rainbows, and comet trails around each head.</li>
+        <li>Ring pixels are RGB only — no lime — so their gamut is slightly narrower than the beam's.</li>
+      </ul>
+    </div>
+
+    <div class="diablo"><b>TORNADO · beam ch5–8 · ring ch10–33 (per head)</b> Beam is <code>ColorAdd_R/G/B/GY</code> (ch5–8); the eight ring blocks are <code>ColorAdd_R/G/B</code> each (ch10–33), no GY. No CMY, no colour wheel, no CTO — it's an additive LED fixture, so colour is the emitters alone.</div>
+  </div>
+
+  <!-- Beam -->
+  <div class="fg" style="--fgc:#e0913a">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Beam</h3><span class="fg-ptype">Preset Type 5</span></div>
+    <p class="fg-lead">Two independent strobes — one for the beams, one for the rings. No prism, gobo, frost, or iris exist on this fixture.</p>
+    <ul>
+      <li><span class="encpill">Beam Shutter</span> (ch167, <code>Shutter1</code>) — strobes all five beams: open, strobe slow→fast, pulse, random. Push for the named ranges.</li>
+      <li><span class="encpill">Ring Shutter</span> (ch169, <code>Shutter2</code>) — the same, on the 40 ring pixels only.</li>
+    </ul>
+    <div class="diablo"><b>TORNADO · CH 167 (beam) · CH 169 (ring)</b> Because beam and ring strobe separately, you can flash the rings while the beams hold steady, or the reverse — a signature Tornado look. Both are global across their respective cells; there's no per-head strobe in this mode.</div>
+  </div>
+
+  <!-- Focus -->
+  <div class="fg" style="--fgc:#3faa5c">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Focus</h3><span class="fg-ptype">Preset Type 6</span></div>
+    <p class="fg-lead">Five independent zooms — beam angle per head.</p>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 0 <span class="c">— wide (on the selected head)</span></span>
+      <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 100 <span class="c">— narrow / beam</span></span>
+    </div>
+    <div class="diablo"><b>TORNADO · per head</b> Zoom runs Wide→Narrow (3–30° beam, 4–35° field). Fan zoom across the five heads with MAtricks for a spread-to-tight sweep. There's no separate focus attribute — it's a beam bar, not a spot.</div>
+  </div>
+
+  <!-- Control -->
+  <div class="fg" style="--fgc:#8b9098">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Control</h3><span class="fg-ptype">Preset Type 7</span></div>
+    <p class="fg-lead">A single set-and-forget configuration channel. (This GDTF has <em>no</em> Pan/Tilt Speed channel — the printed manual lists one at 169, but V1.50 uses 169 for the ring strobe instead.)</p>
+    <ul>
+      <li><span class="encpill">Function</span> (ch170) <span class="pagepill">later page</span> — a config channel: dimmer curves, fan mode, LED frequency, resets (pan/tilt, effect, all), head invert, dimmer speed, dimming start (high/low), <b>Invert Pixel Order</b>, and pan invert.</li>
+    </ul>
+    <div class="diablo"><b>TORNADO · CH 170</b> The Function channel only acts when a value is <b>held for a few seconds</b> — it's for setup, not busking; keep it out of playback cues so a crossfade can't trigger a reset. <b>Invert Pixel Order</b> is the one worth knowing: it flips the ring-pixel numbering, which lets a single ring chase run the other way without re-patching.</div>
+  </div>
+
+  <!-- Not present -->
+  <div class="fg" style="--fgc:#3a3d42">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Gobo &amp; Shapers</h3><span class="fg-ptype">not on this fixture</span></div>
+    <p class="fg-lead" style="margin-bottom:0">Both feature groups are empty for the Tornado — no wheels, no framing. If you tab to them on the encoder bar you'll find nothing to control. All the "effect" character comes from Colour (ring phasers) and Position (head movement) instead.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="housekeeping">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Programmer housekeeping</h2></div>
+  <p class="sec-sub">Two mechanics that save you from mystery states while building looks — identical to any grandMA3 fixture.</p>
+
+  <h3>Activate vs. deactivate</h3>
+  <p>Only <b>active</b> values store by default. A value can sit in the programmer <em>inactive</em> — present, affecting output, but skipped by Store/Update. <code>Please Please</code> activates everything for the selection; <code>Off</code> then a tap on a value knocks that one out; <code>Off</code> + a feature-group bank button releases the whole group.</p>
+
+  <h3>The three states of Clear</h3>
+  <div class="cmdblock">
+    <span class="row">Clear ×1 <span class="c">— deselect fixtures (values stay, still active)</span></span>
+    <span class="row">Clear ×2 <span class="c">— values stay but go deactivated (a store now = empty)</span></span>
+    <span class="row">Clear ×3 <span class="c">— programmer emptied, values released</span></span>
+  </div>
+  <p class="muted">Hold <code>Clear</code> for a second to jump straight to a full release.</p>
+
+  <div class="note">
+    <span class="tag">Pixel work tip</span>
+    <p>With 40 ring pixels per fixture, it's easy to leave half a ring active and half not. Before storing a ring look, re-select the whole ring and <code>Please Please</code> so every pixel goes in together.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .xref{
+    display:block;text-decoration:none;background:var(--panel);
+    border:1px solid var(--accent-soft);border-left:2px solid var(--accent);
+    border-radius:8px;padding:16px 18px;margin:14px 0;transition:border-color .15s;
+  }
+  .xref:hover,.xref:focus{border-color:var(--accent);outline:none}
+  .xref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .xref h4{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#fff;margin:0 0 6px;font-weight:600}
+  .xref p{font-size:13px;color:var(--ink-dim);margin:0}
+</style>
+<section id="sheet">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Reading the sheet</h2></div>
+  <p class="sec-sub">Cell colours, layer colours and the little indicator rectangles are the console talking, not the fixture — so they live in one shared document rather than being repeated here.</p>
+
+  <a class="xref" href="grandMA3_Reading_the_Fixture_Sheet.html">
+    <span class="k">Shared legend</span>
+    <h4>grandMA3 — Reading the fixture sheet →</h4>
+    <p>Every text / background combination in the value cells, the layer colours (relative, individual fade and delay, phaser, GridPos), and what each indicator chip means.</p>
+  </a>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from. On the Tornado, watch the shamrock GridPos layer in particular — it's doing the work on the ring pixels.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section id="map">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The 170-channel map</h2></div>
+  <p class="sec-sub">170 channels, but only <b>two</b> patterns: a 33-channel block that repeats once per head, then five global channels at the end. Learn the block and you know the whole footprint.</p>
+
+  <h3>The per-head block <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(33 ch, ×5)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Offset</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">+1–2</td><td class="fn">Pan <small>16-bit · 0–59°</small></td><td class="grp g-pos">Position</td></tr>
+      <tr><td class="ch">+3–4</td><td class="fn">Tilt <small>16-bit · 0–221°</small></td><td class="grp g-pos">Position</td></tr>
+      <tr><td class="ch">+5</td><td class="fn">Beam Red <small>ColorAdd_R</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+6</td><td class="fn">Beam Green <small>ColorAdd_G</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+7</td><td class="fn">Beam Blue <small>ColorAdd_B</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+8</td><td class="fn">Beam Lime <small>ColorAdd_GY</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+9</td><td class="fn">Zoom <small>Wide→Narrow</small></td><td class="grp g-foc">Focus</td></tr>
+      <tr><td class="ch">+10–12</td><td class="fn">Ring Block 1 <small>R / G / B</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+13–33</td><td class="fn">Ring Blocks 2–8 <small>R / G / B each, in order</small></td><td class="grp g-col">Color</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Where each head's block starts</h3>
+  <table class="maptable">
+    <thead><tr><th>Head</th><th>Start channel</th><th>Spans</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">Head 1</td><td class="fn">ch 1</td><td class="grp">1–33</td></tr>
+      <tr><td class="ch">Head 2</td><td class="fn">ch 34</td><td class="grp">34–66</td></tr>
+      <tr><td class="ch">Head 3</td><td class="fn">ch 67</td><td class="grp">67–99</td></tr>
+      <tr><td class="ch">Head 4</td><td class="fn">ch 100</td><td class="grp">100–132</td></tr>
+      <tr><td class="ch">Head 5</td><td class="fn">ch 133</td><td class="grp">133–165</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Global tail <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(ch 166–170)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">166</td><td class="fn">Beam master Dimmer <small>all 5 beams</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">167</td><td class="fn">Beam Strobe <small>Shutter1 · strobe / pulse / random</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">168</td><td class="fn">Ring master Dimmer <small>all 40 pixels</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">169</td><td class="fn">Ring Strobe <small>Shutter2 · strobe / pulse / random</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">170</td><td class="fn">Function <small>curves, resets, invert pixel order — hold</small></td><td class="grp g-ctl">Control</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">5 heads × 33 = 165, plus 5 global = 170. Per head: Pan/Tilt (Position), beam RGB+GY (Color), Zoom (Focus), 8 ring pixels × RGB (Color). The tail splits cleanly into a beam pair (dimmer + strobe), a ring pair (dimmer + strobe), and Function. <b>Note:</b> the printed manual (Rev B) shows this tail as a 16-bit master dimmer + single strobe + Pan/Tilt Speed — the V1.50 GDTF above is what grandMA3 patches, so it governs on the console.</p>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section id="groups-def">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Selections &amp; groups</h2></div>
+  <p class="sec-sub">How to reach the sub-cells by hand, and the standing group layout (30–64) built by the <code>build_tornado_groups</code> macro in the <code>grandma3_utilities</code> repo.</p>
+
+  <div class="subcard">
+    <h6>Sub-cell addressing (per fixture <code>30X</code>, X = 1–5 → 301–305)</h6>
+    <ul>
+      <li><code>30X.2.H</code> — head H itself: <b>yoke pan/tilt</b> (H = 1–5). <code>30X.2.1 Thru 5</code> = all five heads.</li>
+      <li><code>30X.2.H.9</code> — the <b>beam</b> of head H.</li>
+      <li><code>30X.2.H.1 Thru 8</code> — that head's <b>eight ring pixels</b>.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Three syntax rules that bite</h6>
+    <ul>
+      <li><b>Repeat the keyword in a union:</b> <code>Fixture A + Fixture B</code>, never <code>Fixture A + B</code> — a bare <code>+ B</code> on a deep subfixture path throws <em>illegal object</em>.</li>
+      <li><b><code>Thru 8</code> is shorthand</b> for the current level: <code>Fixture 301.2.1.1 Thru 8</code> = ring pixels 1–8 of head 1.</li>
+      <li><b>Grid cells first, then select:</b> <code>Grid 1 Thru 8 / n</code> sets the destination row; the next selection fills it in order, and each step accumulates into the grid. This is how a 2-D pixel grid is built — a plain union is only ever one row.</li>
+    </ul>
+  </div>
+
+  <h3>Standing groups — 30 to 70</h3>
+  <p class="muted">The macro deletes 30–70 and rebuilds, so it is safe to re-run. Grid groups keep their arrangement, so a MAtricks phaser recalled through them runs along the intended axis.</p>
+  <table class="maptable">
+    <thead><tr><th>Grp</th><th>Name</th><th>Contents</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">30</td><td class="fn">Tornado ALL</td><td class="grp g-dim">all 5, everything</td></tr>
+      <tr><td class="ch">31–35</td><td class="fn">Tornado 301–305</td><td class="grp g-dim">each whole fixture</td></tr>
+      <tr><td class="ch">36</td><td class="fn">Beams ALL <small>5×5 grid</small></td><td class="grp g-col">25 beams · X=head, Y=fixture</td></tr>
+      <tr><td class="ch">37–41</td><td class="fn">301–305 Beams</td><td class="grp g-col">the 5 beams of each fixture</td></tr>
+      <tr><td class="ch">42</td><td class="fn">Rings ALL</td><td class="grp g-col">all 200 ring pixels (flat)</td></tr>
+      <tr><td class="ch">43–47</td><td class="fn">301–305 Rings</td><td class="grp g-col">the 40 ring pixels of each fixture</td></tr>
+      <tr><td class="ch">48</td><td class="fn">Rings Grid 8×25</td><td class="grp g-col">all rings · X=ring pos, Y=head across rig</td></tr>
+      <tr><td class="ch">49–53</td><td class="fn">301–305 Grid <small>8×5</small></td><td class="grp g-col">each fixture's rings as a grid</td></tr>
+      <tr><td class="ch">54–58</td><td class="fn">Head1–5 Beams</td><td class="grp g-col">one head's beam across all 5 bars</td></tr>
+      <tr><td class="ch">59–63</td><td class="fn">Head1–5 ALL</td><td class="grp g-col">one head's beam + ring, all 5 bars</td></tr>
+      <tr><td class="ch">64</td><td class="fn">Rings Grid 40×5</td><td class="grp g-col">each bar a 40-px strip · Y=fixture</td></tr>
+      <tr><td class="ch">65</td><td class="fn">Heads ALL <small>5×5 grid</small></td><td class="grp g-pos">25 heads (pan/tilt) · X=head, Y=fixture</td></tr>
+      <tr><td class="ch">66–70</td><td class="fn">301–305 Heads</td><td class="grp g-pos">each bar's 5 heads, for pan/tilt fans</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">Source macro and full command listing: <code>grandma3_utilities/macros/build_tornado_groups.xml</code>; movement/colour command blocks in <code>grandma3_utilities/snippets/movement_examples.md</code>. Head = <code>.2.H</code> (pan/tilt); beam = <code>.9</code>; ring pixels = <code>.1–.8</code>.</p>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> the attribute names, pixel counts and channel layout here are read directly from the patched GDTF <code>ACME@TORNADO_(TB_5_IP)@V1.50.gdtf</code> (IP-rated five-head variant, library revision V1.50): 5 beam subfixtures + 40 ring-LED pixels, beam <code>ColorAdd_R/G/B/GY</code>, ring <code>ColorAdd_R/G/B</code>, per-cell virtual dimmers, and the beam/ring dimmer+strobe tail. The printed manual (Rev B) differs on the global tail (166–170) — it lists a combined 16-bit dimmer, one strobe and a Pan/Tilt Speed channel; the GDTF is what the console patches, so this document follows it. On a different library revision, re-confirm by expanding the fixture in the sheet.</p>
+  <p>Companion to the Ayrton Diablo reference. Sheet colours, layers and indicator chips are documented once in <a href="grandMA3_Reading_the_Fixture_Sheet.html">Reading the fixture sheet</a>, because they describe the console, not the fixture.</p>
+</footer>
+
+</div>
+</body>
+</html>

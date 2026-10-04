@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 Programmer — Elation KL CYC S (32-ch) Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;--panel:#1c1e22;--panel-2:#232529;--cell:#45484e;--cell-dark:#34363b;
+    --line:#2c2f34;--ink:#d9dce1;--ink-dim:#8b9098;--ink-faint:#61656c;
+    --accent:#e8c020;--accent-soft:#7a6a1e;
+    --ma-red:#b7222a;--ma-red-txt:#e2494c;--ma-cyan:#22b8cc;--ma-cyan-br:#1fd0e6;--ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;--ma-magenta:#cf5bd0;--ma-white:#eef0f3;--ma-yellow:#e6c020;--ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;--ma-orange:#d78a2b;--ma-purple:#8a5cd0;--ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;--ma-seagreen:#31a07f;--ma-cuefade:#24306b;--ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;--ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  header.mast{border-bottom:1px solid var(--line);padding:56px 24px 30px;max-width:900px;margin:0 auto}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;letter-spacing:-.015em;color:#fff}
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:62ch;margin:0}
+  /* dim-to-warm + RGBW glow signature stripe */
+  .spectrum{height:4px;border-radius:3px;margin:22px 0 0;background:linear-gradient(90deg,#e2494c 0%,#3faa5c 20%,#3b6fd0 40%,#5fd6b4 62%,#e0913a 82%,#ffe3b0 100%)}
+  .meta{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  .meta b{color:var(--ink-dim);font-weight:500}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  nav.toc a{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s}
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);font-weight:500;padding-top:6px}
+  h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em}
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+  h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;color:#fff;margin:30px 0 4px}
+  p{margin:0 0 14px}.muted{color:var(--ink-dim)}
+  code{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);padding:1px 6px;border-radius:4px;white-space:nowrap}
+  .cmdblock{background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto}
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}
+  .cmdblock .row .k{color:#7fc7ff}
+
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  .fg{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;position:relative;overflow:hidden}
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  .note{background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0}
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+  .flagnote{background:linear-gradient(180deg,rgba(224,145,58,.07),rgba(224,145,58,0));border:1px solid #7a521e;border-radius:8px;padding:13px 15px;margin:14px 0}
+  .flagnote .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e0913a;display:block;margin-bottom:5px}
+  .flagnote p{margin:0;font-size:13px;color:var(--ink)}
+
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+  .cell{flex:none;width:64px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;background:var(--cell);color:var(--ma-white);border:1px solid rgba(0,0,0,.35)}
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}.chipcell i.left{left:6px;width:14px}.chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  .subcard{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin:12px 0}
+  .subcard h6{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#fff;margin:0 0 8px;font-weight:600}
+  .subcard ul{margin:0;padding-left:17px}
+  .subcard li{margin:4px 0;font-size:13px;line-height:1.5}
+  .encpill{font-family:"JetBrains Mono",monospace;font-size:11px;background:#101114;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#e9d98a;white-space:nowrap}
+
+  .maptable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13px}
+  .maptable th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;padding:0 12px 8px;border-bottom:1px solid var(--line)}
+  .maptable td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .maptable tr:hover td{background:var(--panel)}
+  .maptable .ch{font-family:"JetBrains Mono",monospace;color:var(--ink-dim);white-space:nowrap;width:74px}
+  .maptable .fn{color:var(--ink)}
+  .maptable .fn small{color:var(--ink-faint);font-family:"JetBrains Mono",monospace;font-size:10.5px;margin-left:6px}
+  .maptable .grp{font-family:"JetBrains Mono",monospace;font-size:11px;white-space:nowrap;width:96px}
+  .g-dim{color:#c9c9c9}.g-col{color:#d46fd5}.g-bea{color:#e0913a}.g-ctl{color:#8b9098}
+
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;font-size:12px;color:var(--ink-faint)}
+  footer p{margin:4px 0;font-size:12px}
+
+  .pagepill{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#16222e;border:1px solid #2f4d69;border-radius:4px;padding:1px 5px;color:#7fc7ff;white-space:nowrap;margin-left:5px;vertical-align:1px}
+  @media print{body{background:#fff;color:#111}.fg,.step,.note,.flagnote,.swatch,.chiprow,.cmdblock,.subcard{break-inside:avoid}nav.toc{display:none}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Programmer Reference</p>
+  <h1>Driving the Elation&nbsp;KL&nbsp;CYC&nbsp;S <span class="thin">— two segments, five emitters, one dimmer</span></h1>
+  <p class="lede">A working reference for the KL CYC S in 32-channel Extended 2 Zone mode: the fullest personality the fixture offers — two independent RGBMA colour segments at 16-bit, a variable CCT engine per segment, green/magenta shift per segment, a gel swatch book, and the EdgeLight safety glow. One shared dimmer sits over all of it.</p>
+  <div class="spectrum"></div>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Fixture:</b> Elation KL CYC S</span>
+    <span><b>Mode:</b> Extended 2 Zone (32 ch)</span>
+    <span><b>Chart:</b> KL CYC S DMX Traits</span>
+  </div>
+  <nav class="toc">
+    <a href="#fixture">The fixture</a>
+    <a href="#flow">The loop</a>
+    <a href="#groups">Feature groups</a>
+    <a href="#housekeeping">Housekeeping</a>
+    <a href="#sheet">Reading the sheet</a>
+    <a href="#map">32-ch map</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 0 ============ -->
+<section id="fixture">
+  <div class="sec-head"><span class="sec-num">00</span><h2>What you're actually patching</h2></div>
+  <p class="sec-sub">A 90 W asymmetric cyc light with a five-colour array, split into two control segments in this mode. It doesn't move; the programming is colour, level, and a handful of engines that shape white.</p>
+
+  <div class="subcard">
+    <h6>RGBMA — five emitters, not four</h6>
+    <ul>
+      <li><b>Red · Green · Blue · Mint · Amber.</b> Mint is the unusual one: it fills the cyan-green gap that makes RGB whites look thin, and it's why this fixture reads CRI 96.5 / TLCI 88 rather than the usual LED numbers.</li>
+      <li>Every emitter is a coarse/fine pair in this mode — 16-bit across the board, including the dimmer.</li>
+      <li>5,645 lumens, asymmetric optics: 25° × 75° bare, 40° × 90° with the included frost. Built to wash a cyc from close range, or to sit on the deck as a footlight.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Two segments — the "2 Zone" part</h6>
+    <ul>
+      <li>The array splits into <b>two control segments</b>, numbered 1 and 2 in Elation's pixel-grouping diagram. Each gets its own five emitters, its own variable CCT, and its own green shift.</li>
+      <li>What they do <em>not</em> get is their own intensity. The dimmer on channels 1–2 is global — see the callout in the Dimmer group.</li>
+      <li>Confirm which half of the fixture is segment 1 by bumping one segment up on a bench unit. The diagram is in the manual, but it's quicker to look.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>How it lands in grandMA3</h6>
+    <ul>
+      <li>Expect two subfixtures, one per segment, each with five colour attributes plus CCT and green shift; the dimmer, strobe, swatch book, EdgeLight and the two config channels sit on the main fixture.</li>
+      <li>The Colour Picker will reach R/G/B. <b>Mint and Amber are additive attributes you set on encoders</b> or bake into colour presets — a picker-only workflow leaves two-fifths of the array at zero.</li>
+      <li>Attribute spellings vary by GDTF: Mint may appear as <code>Mint</code>, <code>ColorAdd_M</code> or similar, and the CCT engine as <code>CTC</code> or a named colour-control attribute. Push an encoder to read the live name before scripting.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="tag">EdgeLight glows when you're at zero</span>
+    <p>EdgeLight is a safety feature: with the main output at 0%, the fixture can hold a dim red or blue glow to mark the edge of the deck. That is exactly the behaviour you don't want in a theatrical blackout if nobody told you about it. It's driven by channel 30 in this mode, but the fixture's menu can also set it to <b>Always On</b>, in which case channel 30 stops having any say and the colour and level come from the menu defaults. If a "dark" cyc isn't dark, this is why.</p>
+  </div>
+
+  <div class="flagnote">
+    <span class="tag">Verify on your profile</span>
+    <p>Whether the two segments import as subfixtures or as flat attributes depends on the GDTF/library revision. Patch one, expand it in the fixture sheet, and read the structure before scripting. The fixture also speaks sACN/Art-Net over its RJ45 ports and supports RDM — worth knowing which path a given unit is actually listening on.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="flow">
+  <div class="sec-head"><span class="sec-num">01</span><h2>The loop every parameter follows</h2></div>
+  <p class="sec-sub">Same four beats as any grandMA3 fixture. Here "select" often means picking one of the two segments.</p>
+
+  <div class="spine">
+    <div class="step"><span class="n">01</span><h4>Select</h4><p>Pick the fixture, or one of its two segments. Yellow ID text = selected.</p></div>
+    <div class="step"><span class="n">02</span><h4>Choose a group</h4><p>Dimmer, Colour, Beam and Control all have something here.</p></div>
+    <div class="step"><span class="n">03</span><h4>Set the value</h4><p>Picker for RGB, encoders for Mint / Amber / CCT / shift.</p></div>
+    <div class="step"><span class="n">04</span><h4>Keep or drop</h4><p>Active values (white-on-red) store. <code>Clear</code> steps them out.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Where a control actually lives</span>
+    <p>The encoder bar shows <b>up to five dual encoders at a time</b>. A feature group with more than that spreads across several <b>encoder pages</b>, one per feature — the Encoder Page button to the left of the encoders names the current feature and shows how many pages the group has. Tap it to cycle, or tap and swipe for the list. Wherever a control on this fixture is not on the first page of its group, this document flags it <span class="pagepill">later page</span>.</p>
+  </div>
+
+  <h3>Selecting segments</h3>
+  <div class="cmdblock">
+    <span class="row"><span class="k">Fixture</span> 70 <span class="c">— the whole unit (both segments)</span></span>
+    <span class="row"><span class="k">Fixture</span> 70.1 <span class="k">Thru</span> 70.2 <span class="c">— the two segments, as subfixtures</span></span>
+    <span class="row"><span class="k">At</span> 50 <span class="c">— the shared dimmer, whichever segment you selected</span></span>
+  </div>
+  <p class="muted">Two cells is not much of a pixel map, but it's enough for a warm/cool split across a cyc, or a colour break between the top and bottom of a wash. MAtricks works, it just has two cells to play with.</p>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="groups">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
+  <p class="sec-sub">Four groups carry this fixture: Dimmer, Colour, Beam and Control. Position, Gobo, Focus and Shapers are empty — there are no optics to move.</p>
+
+  <!-- Dimmer -->
+  <div class="fg" style="--fgc:#c9c9c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1</span></div>
+    <p class="fg-lead">One 16-bit intensity for the whole fixture, plus the curve and delay behaviour.</p>
+    <ul>
+      <li><span class="encpill">Dimmer</span> (ch 1–2) — coarse and fine. <code>At 50</code>, <code>Full</code>, <code>Off</code> as usual.</li>
+      <li><span class="encpill">Dim Modes</span> (ch 31) <span class="pagepill">later page</span> — Standard, Stage, TV, Architectural, Theatre, Stage 2, then a bank of fixed dimmer delay times from 0 s to 10 s. A <b>snap</b> channel.</li>
+      <li><span class="encpill">Control</span> (ch 32) also carries the dimmer <em>curves</em> — Linear, Square, Inverse Square, S-Curve — up at values 201–240.</li>
+    </ul>
+    <div class="note" style="margin:16px 0 0">
+      <span class="tag">The dimmer is global, the colour isn't</span>
+      <p>Both segments share channels 1–2. There is no per-segment intensity anywhere in this mode, so a level difference between the two halves has to come from their emitter values — you dim segment 2 by scaling its RGBMA, not by dimming it. Console-side that means executor faders and intensity masters move the whole fixture together, and any segment balance you build lives inside your colour values. Store it in colour presets and it'll travel; expect it to fight you if you try to fade one segment out under a master.</p>
+    </div>
+    <div class="diablo"><b>KL CYC S · CH 1–2 · 31 · 32</b> 16-bit dimming with selectable curves is the reason to run an extended personality on a cyc wash — the bottom 5% is where a cyc lives, and Linear vs. S-Curve visibly changes how a slow fade lands there.</div>
+  </div>
+
+  <!-- Color -->
+  <div class="fg" style="--fgc:#cf5bd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Color</h3><span class="fg-ptype">Preset Type 4</span></div>
+    <p class="fg-lead">Two segments of RGBMA at 16-bit, two CCT engines, two green shifts, and a swatch book over the top.</p>
+
+    <div class="subcard">
+      <h6>Per-segment mixing — <span class="encpill">Red</span> <span class="encpill">Green</span> <span class="encpill">Blue</span> <span class="encpill">Mint</span> <span class="encpill">Amber</span></h6>
+      <ul>
+        <li>Five emitters fill one encoder page exactly, so a segment's whole mix is on the first page. Segment 1 on channels 4–13, segment 2 on 14–23, each emitter a coarse/fine pair in R·G·B·Mint·Amber order.</li>
+        <li>Mint and Amber do the work in tints and near-whites. A saturated blue barely needs them; a warm straw or a clean skin wash will look wrong without them.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>White — <span class="encpill">Variable CCT</span> (ch 24) and <span class="encpill">Variable CCT 2</span> (ch 25) <span class="pagepill">later page</span></h6>
+      <ul>
+        <li><code>0–23</code> = Open (the CCT engine stands down), <code>24–85</code> sweeps <b>2400 K to 8500 K</b>, <code>86–255</code> holds 8500 K. One per segment, so you can run a warm bottom and a cool top.</li>
+        <li><span class="encpill">CCT Cross Fade</span> (ch 26) picks which engine you hear: <code>0</code> = CCT, <code>255</code> = Color Mix. The published chart lists <code>1–254</code> as "no function," so treat it as a two-position switch rather than a fade, and verify on a bench unit if you were hoping to crossfade between a mixed colour and a calibrated white.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>Shaping and shortcuts</h6>
+      <ul>
+        <li><span class="encpill">Green Shift</span> (ch 28) and <span class="encpill">Green Shift 2</span> (ch 29) <span class="pagepill">later page</span> — <code>0</code> idle, <code>1–127</code> full minus-green through neutral, <code>128</code> neutral white, <code>129–255</code> neutral through full plus-green. Per segment. This is your plus/minus green correction for camera or for matching a neighbouring fixture.</li>
+        <li><span class="encpill">Color</span> (ch 27) <span class="pagepill">later page</span> — a virtual gel swatch book at <code>1–179</code>, then scroll modes: clockwise <code>180–201</code>, stop <code>202–207</code>, counter-clockwise <code>208–229</code>, random slots <code>235–249</code>. <code>0</code> leaves it open so your own mix shows through.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <span class="tag">Three ways to make a colour</span>
+      <p>Emitter mix, CCT engine and swatch book all drive the same LEDs, and a value left behind in any of them will argue with the other two. The habit that keeps this fixture predictable: pick one system per look, and store an explicit <b>zero</b> in the other two — CCT Open, Colour open — so nothing arrives by tracking from an earlier cue. If a mix won't take, check channels 24–27 before you check your maths.</p>
+    </div>
+
+    <div class="diablo"><b>KL CYC S · CH 4–23 · 24–27 · 28–29</b> Build two families of colour presets — mixes and whites — and keep them apart, exactly as you would on the Cylinder One Spectrum. Both fixtures punish a half-stored colour in the same way.</div>
+  </div>
+
+  <!-- Beam -->
+  <div class="fg" style="--fgc:#e0913a">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Beam</h3><span class="fg-ptype">Preset Type 5</span></div>
+    <p class="fg-lead">One shutter/strobe channel, covering the whole fixture.</p>
+    <ul>
+      <li><span class="encpill">Shutter / Strobe</span> (ch 3) — <code>0–31</code> closed, <code>64–95</code> strobe slow to fast, <code>128–159</code> pulse sequences, <code>192–223</code> random strobe. The gaps between those bands (<code>32–63</code>, <code>96–127</code>, <code>160–191</code>, <code>224–255</code>) are all "shutter open."</li>
+      <li>The default value is <b>50</b> — inside an open band — so an unprogrammed fixture sits open rather than dark.</li>
+    </ul>
+    <div class="diablo"><b>KL CYC S · CH 3</b> Strobe is global: both segments flash together. There's no prism, gobo, frost or iris — the frost is a physical filter that ships in the box, not a channel.</div>
+  </div>
+
+  <!-- Control -->
+  <div class="fg" style="--fgc:#8b9098">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Control</h3><span class="fg-ptype">Preset Type 7</span></div>
+    <p class="fg-lead">EdgeLight, dimmer behaviour, refresh rate — the settings channels.</p>
+    <ul>
+      <li><span class="encpill">EdgeLight Level</span> (ch 30) <span class="pagepill">later page</span> — <code>0–10</code> off, <code>11–20</code> default, <code>21–255</code> minimum to maximum intensity for the edge glow.</li>
+      <li><span class="encpill">Control</span> (ch 32) <span class="pagepill">later page</span> — EdgeLight behaviour (disabled / always on / DMX / red / blue) at <code>70–99</code>, LED refresh rate from 900 Hz to 25 kHz at <code>100–168</code>, and the dimmer curves at <code>201–240</code>. A <b>snap</b> channel.</li>
+      <li><span class="encpill">Dim Modes</span> (ch 31) — listed under Dimmer above; also a snap channel.</li>
+    </ul>
+    <div class="note" style="margin:16px 0 0">
+      <span class="tag">Keep 31 and 32 out of playback</span>
+      <p>Both are snap channels carrying configuration, not looks. A cue that fades through them will park on intermediate values on the way past — and those values mean "change the refresh rate" or "switch the dimmer curve." Set them once, park them, or store them deliberately in a single preset-state cue; don't let them ride along in a crossfading sequence.</p>
+    </div>
+    <div class="diablo"><b>KL CYC S · CH 30–32</b> Refresh rate matters if these ever appear on camera: the high settings (10 kHz and up) are there for exactly that. It's a fixture-level decision, so make it once on the unit or in a single dedicated cue rather than per-look.</div>
+  </div>
+
+  <!-- Not present -->
+  <div class="fg" style="--fgc:#3a3d42">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Position · Gobo · Focus · Shapers</h3><span class="fg-ptype">not on this fixture</span></div>
+    <p class="fg-lead" style="margin-bottom:0">All four are empty. The KL CYC S is a fixed asymmetric wash — its only optical variable is which physical filter you slide into the frame, and the barndoor you point with your hands.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="housekeeping">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Programmer housekeeping</h2></div>
+  <p class="sec-sub">Two mechanics that save you from mystery states while building looks — identical to any grandMA3 fixture.</p>
+
+  <h3>Activate vs. deactivate</h3>
+  <p>Only <b>active</b> values store by default. A value can sit in the programmer <em>inactive</em> — present, affecting output, but skipped by Store/Update. <code>Please Please</code> activates everything for the selection; <code>Off</code> then a tap on a value knocks that one out; <code>Off</code> + a feature-group bank button releases the whole group.</p>
+
+  <h3>The three states of Clear</h3>
+  <div class="cmdblock">
+    <span class="row">Clear ×1 <span class="c">— deselect fixtures (values stay, still active)</span></span>
+    <span class="row">Clear ×2 <span class="c">— values stay but go deactivated (a store now = empty)</span></span>
+    <span class="row">Clear ×3 <span class="c">— programmer emptied, values released</span></span>
+  </div>
+  <p class="muted">Hold <code>Clear</code> for a second to jump straight to a full release.</p>
+
+  <div class="note">
+    <span class="tag">Store both segments</span>
+    <p>It's easy to build a look on segment 1 and leave segment 2 tracking from an earlier cue. Re-select the whole fixture and <code>Please Please</code> before storing, so both halves — and the CCT, shift and swatch channels that go with them — land in the cue together.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .xref{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--accent-soft);border-left:2px solid var(--accent);border-radius:8px;padding:16px 18px;margin:14px 0;transition:border-color .15s}
+  .xref:hover,.xref:focus{border-color:var(--accent);outline:none}
+  .xref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .xref h4{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#fff;margin:0 0 6px;font-weight:600}
+  .xref p{font-size:13px;color:var(--ink-dim);margin:0}
+</style>
+<section id="sheet">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Reading the sheet</h2></div>
+  <p class="sec-sub">Cell colours, layer colours and the little indicator rectangles are the console talking, not the fixture — so they live in one shared document rather than being repeated here.</p>
+
+  <a class="xref" href="grandMA3_Reading_the_Fixture_Sheet.html">
+    <span class="k">Shared legend</span>
+    <h4>grandMA3 — Reading the fixture sheet →</h4>
+    <p>Every text / background combination in the value cells, the layer colours (relative, individual fade and delay, phaser, GridPos), and what each indicator chip means.</p>
+  </a>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from. On this fixture, a colour that won't take usually means a tracked value in CCT (24–25) or the swatch book (27) — look there before you look at your mix.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section id="map">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The 32-channel map</h2></div>
+  <p class="sec-sub">Dimmer and strobe first, then ten channels of colour per segment, then the engines that shape them, then two settings channels. Channel numbers are offsets from the fixture's DMX start address.</p>
+
+  <h3>Global <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(ch 1–3)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">1–2</td><td class="fn">Dimmer <small>coarse · fine</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">3</td><td class="fn">Shutter / Strobe <small>strobe · pulse · random</small></td><td class="grp g-bea">Beam</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Colour, per segment <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(10 ch, ×2)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Segment 1</th><th>Segment 2</th><th>Attribute</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">4–5</td><td class="ch">14–15</td><td class="fn">Red <small>coarse · fine</small></td></tr>
+      <tr><td class="ch">6–7</td><td class="ch">16–17</td><td class="fn">Green <small>coarse · fine</small></td></tr>
+      <tr><td class="ch">8–9</td><td class="ch">18–19</td><td class="fn">Blue <small>coarse · fine</small></td></tr>
+      <tr><td class="ch">10–11</td><td class="ch">20–21</td><td class="fn">Mint <small>coarse · fine</small></td></tr>
+      <tr><td class="ch">12–13</td><td class="ch">22–23</td><td class="fn">Amber <small>coarse · fine</small></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Colour engines and settings <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(ch 24–32)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">24</td><td class="fn">Variable CCT <small>segment 1 · 0–23 open, 24–85 = 2400–8500 K</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">25</td><td class="fn">Variable CCT 2 <small>segment 2</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">26</td><td class="fn">CCT Cross Fade <small>0 = CCT · 255 = Color Mix</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">27</td><td class="fn">Color <small>swatch book 1–179 · scroll · random slots</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">28</td><td class="fn">Green Shift <small>segment 1 · minus → 128 neutral → plus</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">29</td><td class="fn">Green Shift 2 <small>segment 2</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">30</td><td class="fn">EdgeLight Level <small>0–10 off · 11–20 default · 21–255 min→max</small></td><td class="grp g-ctl">Control</td></tr>
+      <tr><td class="ch">31</td><td class="fn">Dim Modes / Dimmer Delay <small>snap</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">32</td><td class="fn">Control <small>EdgeLight · refresh rate · dim curves — snap</small></td><td class="grp g-ctl">Control</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">3 global + (2 segments × 10 colour) + 9 engine and settings channels = 32. Sixteen fixtures fit in a universe.</p>
+
+  <h3>Values worth knowing</h3>
+  <table class="maptable">
+    <thead><tr><th>Channel</th><th>Value</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">3</td><td class="ch">0–31</td><td class="fn">Shutter closed</td></tr>
+      <tr><td class="ch">3</td><td class="ch">64–95 · 128–159 · 192–223</td><td class="fn">Strobe · pulse · random, each slow to fast</td></tr>
+      <tr><td class="ch">24 / 25</td><td class="ch">0–23</td><td class="fn">CCT open — the emitter mix has the fixture</td></tr>
+      <tr><td class="ch">24 / 25</td><td class="ch">24–85</td><td class="fn">2400 K → 8500 K</td></tr>
+      <tr><td class="ch">26</td><td class="ch">0 / 255</td><td class="fn">CCT engine / colour mix (1–254 listed as no function)</td></tr>
+      <tr><td class="ch">27</td><td class="ch">0</td><td class="fn">Open — no swatch, no scroll</td></tr>
+      <tr><td class="ch">28 / 29</td><td class="ch">128</td><td class="fn">Neutral white — the no-shift position</td></tr>
+      <tr><td class="ch">30</td><td class="ch">0–10</td><td class="fn">EdgeLight off</td></tr>
+      <tr><td class="ch">31</td><td class="ch">0–20 … 101–120</td><td class="fn">Dim modes: Standard, Stage, TV, Architectural, Theatre, Stage 2</td></tr>
+      <tr><td class="ch">31</td><td class="ch">121–141</td><td class="fn">Fixed dimmer delay, 0 s through 10 s</td></tr>
+      <tr><td class="ch">32</td><td class="ch">70–99</td><td class="fn">EdgeLight: disabled · always on · DMX · red · blue</td></tr>
+      <tr><td class="ch">32</td><td class="ch">100–168</td><td class="fn">LED refresh rate, 900 Hz → 25 kHz</td></tr>
+      <tr><td class="ch">32</td><td class="ch">201–240</td><td class="fn">Dimmer curve: Linear · Square · Inverse Square · S-Curve</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">The full swatch-book table and the complete refresh-rate list are in the KL CYC S DMX Traits chart. A good GDTF exposes both as named Channel Sets — push the encoder and read them rather than typing raw DMX values.</p>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> channel functions are from the Elation KL CYC S DMX Traits chart and user manual (Extended 2 Zone, 32-channel personality). grandMA3 subfixture structure and attribute <em>spellings</em> — whether the segments import as subfixtures, and how Mint and the CCT engine are named — depend on the GDTF/library revision. Expand the fixture in the sheet to read the live structure before scripting.</p>
+  <p>Sheet colours, layers and indicator chips are documented once in <a href="grandMA3_Reading_the_Fixture_Sheet.html">Reading the fixture sheet</a>, because they describe the console, not the fixture.</p>
+</footer>
+
+</div>
+</body>
+</html>

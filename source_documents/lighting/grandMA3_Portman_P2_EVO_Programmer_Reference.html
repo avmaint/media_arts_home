@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 Programmer — Portman P2 EVO (Standard Fine) Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;--panel:#1c1e22;--panel-2:#232529;--cell:#45484e;--cell-dark:#34363b;
+    --line:#2c2f34;--ink:#d9dce1;--ink-dim:#8b9098;--ink-faint:#61656c;
+    --accent:#e8c020;--accent-soft:#7a6a1e;
+    --ma-red:#b7222a;--ma-red-txt:#e2494c;--ma-cyan:#22b8cc;--ma-cyan-br:#1fd0e6;--ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;--ma-magenta:#cf5bd0;--ma-white:#eef0f3;--ma-yellow:#e6c020;--ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;--ma-orange:#d78a2b;--ma-purple:#8a5cd0;--ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;--ma-seagreen:#31a07f;--ma-cuefade:#24306b;--ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;--ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  header.mast{border-bottom:1px solid var(--line);padding:56px 24px 30px;max-width:900px;margin:0 auto}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;letter-spacing:-.015em;color:#fff}
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:62ch;margin:0}
+  /* dim-to-warm + RGBW glow signature stripe */
+  .spectrum{height:4px;border-radius:3px;margin:22px 0 0;background:linear-gradient(90deg,#7a1e00 0%,#c9611f 18%,#ffb066 34%,#ffe3b0 46%,#e2494c 62%,#3faa5c 78%,#3b6fd0 100%)}
+  .meta{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  .meta b{color:var(--ink-dim);font-weight:500}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  nav.toc a{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s}
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);font-weight:500;padding-top:6px}
+  h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em}
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+  h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;color:#fff;margin:30px 0 4px}
+  p{margin:0 0 14px}.muted{color:var(--ink-dim)}
+  code{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);padding:1px 6px;border-radius:4px;white-space:nowrap}
+  .cmdblock{background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto}
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}
+  .cmdblock .row .k{color:#7fc7ff}
+
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  .fg{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;position:relative;overflow:hidden}
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  .note{background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0}
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+  .flagnote{background:linear-gradient(180deg,rgba(224,145,58,.07),rgba(224,145,58,0));border:1px solid #7a521e;border-radius:8px;padding:13px 15px;margin:14px 0}
+  .flagnote .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e0913a;display:block;margin-bottom:5px}
+  .flagnote p{margin:0;font-size:13px;color:var(--ink)}
+
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+  .cell{flex:none;width:64px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;background:var(--cell);color:var(--ma-white);border:1px solid rgba(0,0,0,.35)}
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}.chipcell i.left{left:6px;width:14px}.chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  .subcard{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin:12px 0}
+  .subcard h6{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#fff;margin:0 0 8px;font-weight:600}
+  .subcard ul{margin:0;padding-left:17px}
+  .subcard li{margin:4px 0;font-size:13px;line-height:1.5}
+  .encpill{font-family:"JetBrains Mono",monospace;font-size:11px;background:#101114;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#e9d98a;white-space:nowrap}
+
+  .maptable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13px}
+  .maptable th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;padding:0 12px 8px;border-bottom:1px solid var(--line)}
+  .maptable td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .maptable tr:hover td{background:var(--panel)}
+  .maptable .ch{font-family:"JetBrains Mono",monospace;color:var(--ink-dim);white-space:nowrap;width:74px}
+  .maptable .fn{color:var(--ink)}
+  .maptable .fn small{color:var(--ink-faint);font-family:"JetBrains Mono",monospace;font-size:10.5px;margin-left:6px}
+  .maptable .grp{font-family:"JetBrains Mono",monospace;font-size:11px;white-space:nowrap;width:96px}
+  .g-dim{color:#c9c9c9}.g-col{color:#d46fd5}.g-bea{color:#e0913a}.g-ctl{color:#8b9098}
+
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;font-size:12px;color:var(--ink-faint)}
+  footer p{margin:4px 0;font-size:12px}
+
+  .pagepill{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#16222e;border:1px solid #2f4d69;border-radius:4px;padding:1px 5px;color:#7fc7ff;white-space:nowrap;margin-left:5px;vertical-align:1px}
+  @media print{body{background:#fff;color:#111}.fg,.step,.note,.flagnote,.swatch,.chiprow,.cmdblock,.subcard{break-inside:avoid}nav.toc{display:none}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Programmer Reference</p>
+  <h1>Driving the Portman&nbsp;P2&nbsp;EVO <span class="thin">— filament and glow, six times over</span></h1>
+  <p class="lede">A working reference for the P2 EVO in Mode IV "Standard Fine," 69 channels — the fine mode that keeps a real intensity for the glow layer. A fixture with no pan, no optics: just six pixels, each pairing a dim-to-warm tungsten source with an RGBW glow, plus a dual strobe and a bank of built-in macros.</p>
+  <div class="spectrum"></div>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Fixture:</b> Portman P2 EVO</span>
+    <span><b>Mode:</b> IV · Standard Fine (69 ch)</span>
+    <span><b>Chart:</b> Portman DMX Chart</span>
+  </div>
+  <nav class="toc">
+    <a href="#fixture">The fixture</a>
+    <a href="#flow">The loop</a>
+    <a href="#groups">Feature groups</a>
+    <a href="#housekeeping">Housekeeping</a>
+    <a href="#sheet">Reading the sheet</a>
+    <a href="#map">69-ch map</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 0 ============ -->
+<section id="fixture">
+  <div class="sec-head"><span class="sec-num">00</span><h2>What you're actually patching</h2></div>
+  <p class="sec-sub">The P2 EVO is a decorative bar of six pixels. It doesn't move and has no gobos or zoom — its whole vocabulary is two light sources per pixel and how they behave when you dim them.</p>
+
+  <div class="subcard">
+    <h6>Two sources in every pixel</h6>
+    <ul>
+      <li><b>Main Source (HaloLED)</b> — a warm tungsten-emulation filament, the visible "bulb." One intensity per pixel; there are six.</li>
+      <li><b>Glow (RGBW)</b> — a saturated colour wash sitting behind each filament. Red / Green / Blue / White per pixel, six of them.</li>
+      <li>They're independent: a warm filament in front, any colour glow behind. Layering the two is the entire aesthetic of the fixture.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Dim-to-warm is automatic</h6>
+    <ul>
+      <li>The Main Source emulates halogen: as you <b>dim it, it warms</b> — sliding down toward ~1600 K like a real tungsten lamp cooling, up to ~3200 K at full.</li>
+      <li>You don't set colour temperature on a channel — you set intensity, and the fixture's <b>dimming curve</b> (chosen on the Control channel) decides how warm it gets. That's why there's no CCT channel in the map.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>How it lands in grandMA3</h6>
+    <ul>
+      <li>Six pixels, each carrying a <b>Dimmer</b> (the warm source) plus <b>RGBW</b> (the glow), patch as subfixtures. In Standard Fine, every one of those is <b>16-bit</b>.</li>
+      <li>Standard Fine adds one attribute the pixel modes don't have: a 16-bit <b>glow master dimmer</b> (ch 13–14) sitting above all six RGBW cells. It's the reason to be in this mode — see the Dimmer group below.</li>
+      <li>Colour and intensity chases run through <b>subfixture selection + MAtricks</b> across the six pixels — the same pixel workflow as the Tornado's rings, just six cells instead of forty.</li>
+    </ul>
+  </div>
+
+  <div class="flagnote">
+    <span class="tag">Verify on your profile</span>
+    <p>Whether the warm source and the glow import as one subfixture per pixel or two, and the exact attribute spellings, depend on the GDTF/library revision. Patch one, expand it in the fixture sheet, and read the subfixture list before scripting.</p>
+  </div>
+
+  <div class="note">
+    <span class="tag">Coming from Pixel Fine</span>
+    <p>The glow master is a <em>new attribute</em>, not a renamed one. Cues recorded while the fixture was in a pixel mode have nothing stored for it, so they'll play back with the glow at its default — quite possibly dark — until you set and store a level. Check one cue on a bench unit before changing the mode on the whole rig. The fixture end is <code>MY PERSONAL SETTINGS → DMX MODE → STANDARD FINE</code>, or over RDM from the console; then repatch the mode in MA3 and re-address (69 ch apiece).</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="flow">
+  <div class="sec-head"><span class="sec-num">01</span><h2>The loop every parameter follows</h2></div>
+  <p class="sec-sub">Same four beats as any grandMA3 fixture. Here "select" usually means picking one of the six pixels, or all six for a spread.</p>
+
+  <div class="spine">
+    <div class="step"><span class="n">01</span><h4>Select</h4><p>Pick the fixture, or a pixel subfixture. Yellow ID text = selected.</p></div>
+    <div class="step"><span class="n">02</span><h4>Choose a group</h4><p>Tap a feature group on the encoder bar. Encoders remap to its attributes.</p></div>
+    <div class="step"><span class="n">03</span><h4>Set the value</h4><p>Turn an encoder, push it for the <b>Edit</b> overlay (Channel Sets + typed values), or type on the command line.</p></div>
+    <div class="step"><span class="n">04</span><h4>Keep or drop</h4><p>Active values (white-on-red) store. <code>Clear</code> steps them out. Store to a preset to reuse.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Where a control actually lives</span>
+    <p>The encoder bar shows <b>up to five dual encoders at a time</b>. A feature group with more than that spreads across several <b>encoder pages</b>, one per feature — the Encoder Page button to the left of the encoders names the current feature and shows how many pages the group has. Tap it to cycle, or tap and swipe for the list. Wherever a control on this fixture is not on the first page of its group, this document flags it <span class="pagepill">later page</span>.</p>
+  </div>
+
+  <h3>Selecting pixels</h3>
+  <div class="cmdblock">
+    <span class="row"><span class="k">Fixture</span> 40 <span class="c">— the whole bar (all six pixels)</span></span>
+    <span class="row"><span class="k">Fixture</span> 40.1 <span class="k">Thru</span> 40.6 <span class="c">— the six pixels, as subfixtures</span></span>
+    <span class="row"><span class="k">At</span> 50 <span class="c">— dims the warm Main Source of the selection</span></span>
+  </div>
+  <p class="muted">Confirm the sub-ID scheme by expanding the fixture in the sheet. Once selected, <b>MAtricks</b> fans intensity or glow colour across the six for a wave, chase, or random sparkle.</p>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="groups">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
+  <p class="sec-sub">In Standard Fine the fixture only really uses four groups: Dimmer (six warm sources plus the glow master), Colour (six RGBW glows + a virtual wheel), Beam (two strobes), and Control (the macro engine plus two fixture settings). No Position, Gobo, Focus, or Shapers exist.</p>
+
+  <!-- Dimmer -->
+  <div class="fg" style="--fgc:#c9c9c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1</span></div>
+    <p class="fg-lead">The heart of this fixture — six warm Main-Source filaments, the glow master, and the macro master.</p>
+    <h5>What's here</h5>
+    <ul>
+      <li><span class="encpill">Dimmer</span> per pixel (ch 1–12) — the HaloLED warm source, 16-bit. <code>At 50</code>, <code>Full</code>, <code>Off</code> as usual. Dimming it triggers the dim-to-warm shift; the curve is set on Control (§ below).</li>
+      <li><span class="encpill">Intensity Glow RGBW</span> (ch 13–14) <span class="pagepill">later page</span> — one 16-bit master over all six glow cells. <b>Colour lives in the Colour group; level lives here.</b></li>
+      <li><span class="encpill">Intensity Macro</span> (ch 66) <span class="pagepill">later page</span> — master level for the built-in macro engine's output.</li>
+    </ul>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Fixture</span> 40.1 <span class="k">Thru</span> 40.6 <span class="k">At</span> 20 <span class="c">— low = deep candle-warm across the bar</span></span>
+    </div>
+    <div class="note" style="margin:16px 0 0">
+      <span class="tag">Why the glow master matters</span>
+      <p>grandMA3's intensity machinery — executor faders set to Master, intensity group masters, the grand master — scales the <b>Dimmer</b> attribute and nothing else. In a pixel mode the glow has no dimmer, so pulling a fader takes the filaments down and leaves the RGBW glow sitting at full. Here it dims with everything else. It also means a glow colour preset can stay a pure colour and be recalled at any level, instead of you scaling RGBW values and walking the hue on the way down.</p>
+    </div>
+    <div class="diablo"><b>P2 EVO · CH 1–12 · 13–14</b> There's no colour-temperature channel for the warm source — warmth is purely a function of dim level and the chosen curve. To hold a colour temperature you hold a dim level. The glow master is <em>one</em> master for all six cells, not one per pixel: per-pixel glow chases still come from the RGBW values themselves.</div>
+  </div>
+
+  <!-- Color -->
+  <div class="fg" style="--fgc:#cf5bd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Color</h3><span class="fg-ptype">Preset Type 4</span></div>
+    <p class="fg-lead">The glow layer — six RGBW cells behind the filaments, plus a quick virtual colour wheel.</p>
+
+    <div class="subcard">
+      <h6>Per-pixel RGBW glow</h6>
+      <ul>
+        <li><span class="encpill">Red</span> <span class="encpill">Green</span> <span class="encpill">Blue</span> <span class="encpill">White</span> per pixel (ch 15–62), 16-bit each. Use the Colour Picker per pixel; the dedicated <b>White</b> emitter is there for pastels and tints the RGB can't reach cleanly.</li>
+        <li>Mix at full and let the glow master carry the level — you'll get cleaner colour presets and cleaner fades than scaling the emitters.</li>
+        <li>Select all six and drive them with <b>MAtricks + colour phasers</b> for chases and rainbows along the bar.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>Virtual colour wheel — <span class="encpill">Colour Wheel All Glow</span> (ch 65) <span class="pagepill">later page</span></h6>
+      <ul>
+        <li>A slotted attribute that sweeps <em>all</em> glow pixels through one hue ramp: open, then white, then a linear R→G→B→R walk, and a spinning mode up top. The fast way to colour the whole glow without mixing RGBW by hand.</li>
+      </ul>
+    </div>
+
+    <div class="diablo"><b>P2 EVO · glow ch 15–62 · wheel ch 65</b> The glow is additive RGBW — no CMY, no gel wheel. In Standard Fine the glow is laid out pixel by pixel after the master: pixel 1 at 15–22, pixel 2 at 23–30, and so on in eights. The virtual wheel is global (all six glows together); for per-pixel colour, mix RGBW on each pixel instead.</div>
+  </div>
+
+  <!-- Beam -->
+  <div class="fg" style="--fgc:#e0913a">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Beam</h3><span class="fg-ptype">Preset Type 5</span></div>
+    <p class="fg-lead">Two independent strobes — one for the filaments, one for the glow.</p>
+    <ul>
+      <li><span class="encpill">Strobe Main Source</span> (ch 63) — strobes the warm filaments: open, closed, ramp 0.5–30 Hz, and random. Push for the named ranges.</li>
+      <li><span class="encpill">Strobe Glow</span> (ch 64) — the same, but on the RGBW glow only.</li>
+    </ul>
+    <div class="diablo"><b>P2 EVO · CH 63–64</b> Because the two strobes are separate, you can flash the glow while the filaments hold steady (or the reverse) — a signature effect. Both are global (all six pixels). No prism, gobo, frost, or iris exist on this fixture.</div>
+  </div>
+
+  <!-- Control -->
+  <div class="fg" style="--fgc:#8b9098">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Control</h3><span class="fg-ptype">Preset Type 7</span></div>
+    <p class="fg-lead">The built-in macro engine, plus two settings that live on the Control channel.</p>
+    <ul>
+      <li><span class="encpill">Macro</span> (ch 67) — selects a built-in macro: <code>0</code> off, then <code>1–3</code> Macro 1, <code>4–7</code> Macro 2, and on in fours. <span class="encpill">Macro Speed</span> (ch 68) <span class="pagepill">page 2</span> paces it; <span class="encpill">Intensity Macro</span> (ch 66) masters its level.</li>
+      <li><span class="encpill">Control</span> (ch 69) <span class="pagepill">later page</span> — fixture <em>settings</em>, not looks: <code>0–30</code> no function, <code>31–40 / 41–50 / 51–60</code> flicker mode 1 / 2 / 3, <code>61–70</code> dimming curve linear, <code>71–80</code> logarithmic, <code>246–255</code> default all values. <b>Hold the value ≥5 seconds</b> to apply.</li>
+    </ul>
+    <div class="note" style="margin:16px 0 0">
+      <span class="tag">"Flicker mode" is not a flicker effect</span>
+      <p>Portman's flicker modes 1/2/3 set the <b>LED driving frequency</b> — 2.4 kHz, 5.1 kHz and 12 kHz — to keep the fixture from beating against a camera shutter. Nothing about them is visible to the eye, so setting one and watching for a candle will show you exactly nothing. For a visible flicker, use a <b>macro</b> (ch 67, with Intensity Macro on ch 66 above zero) or build a dimmer phaser on the console.</p>
+    </div>
+    <div class="diablo"><b>P2 EVO · CH 66–69</b> Keep the Control channel out of playback cues: it only acts after a value is held for five seconds, so a slow crossfade parked on 61–80 can change your dimming curve mid-show. Set it once, then park it.</div>
+  </div>
+
+  <!-- Not present -->
+  <div class="fg" style="--fgc:#3a3d42">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Position · Gobo · Focus · Shapers</h3><span class="fg-ptype">not on this fixture</span></div>
+    <p class="fg-lead" style="margin-bottom:0">All four are empty for the P2 EVO — it's a static decorative source with no movement or optics. Its "movement" is entirely dimmer phasers, macros, and glow-colour chases. Tabbing to these banks on the encoder bar will show nothing to control.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="housekeeping">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Programmer housekeeping</h2></div>
+  <p class="sec-sub">Two mechanics that save you from mystery states while building looks — identical to any grandMA3 fixture.</p>
+
+  <h3>Activate vs. deactivate</h3>
+  <p>Only <b>active</b> values store by default. A value can sit in the programmer <em>inactive</em> — present, affecting output, but skipped by Store/Update. <code>Please Please</code> activates everything for the selection; <code>Off</code> then a tap on a value knocks that one out; <code>Off</code> + a feature-group bank button releases the whole group.</p>
+
+  <h3>The three states of Clear</h3>
+  <div class="cmdblock">
+    <span class="row">Clear ×1 <span class="c">— deselect fixtures (values stay, still active)</span></span>
+    <span class="row">Clear ×2 <span class="c">— values stay but go deactivated (a store now = empty)</span></span>
+    <span class="row">Clear ×3 <span class="c">— programmer emptied, values released</span></span>
+  </div>
+  <p class="muted">Hold <code>Clear</code> for a second to jump straight to a full release.</p>
+
+  <div class="note">
+    <span class="tag">Warm vs. glow storing</span>
+    <p>It's easy to build a look with the warm sources active but the glow deactivated (or vice-versa). Before storing, re-select the fixture and <code>Please Please</code> so the Dimmer, the glow master and the RGBW layers all go into the cue together — a glow colour with no master level stored is a cue that plays back dark.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .xref{
+    display:block;text-decoration:none;background:var(--panel);
+    border:1px solid var(--accent-soft);border-left:2px solid var(--accent);
+    border-radius:8px;padding:16px 18px;margin:14px 0;transition:border-color .15s;
+  }
+  .xref:hover,.xref:focus{border-color:var(--accent);outline:none}
+  .xref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .xref h4{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#fff;margin:0 0 6px;font-weight:600}
+  .xref p{font-size:13px;color:var(--ink-dim);margin:0}
+</style>
+<section id="sheet">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Reading the sheet</h2></div>
+  <p class="sec-sub">Cell colours, layer colours and the little indicator rectangles are the console talking, not the fixture — so they live in one shared document rather than being repeated here.</p>
+
+  <a class="xref" href="grandMA3_Reading_the_Fixture_Sheet.html">
+    <span class="k">Shared legend</span>
+    <h4>grandMA3 — Reading the fixture sheet →</h4>
+    <p>Every text / background combination in the value cells, the layer colours (relative, individual fade and delay, phaser, GridPos), and what each indicator chip means.</p>
+  </a>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from. On the P2 EVO, the purple phaser layer is where your glow chases live.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section id="map">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The 69-channel map</h2></div>
+  <p class="sec-sub">Standard Fine groups by function rather than by pixel: every main source first, then the glow master, then the glow cells pixel by pixel, then the global tail. Everything is 16-bit up to channel 62.</p>
+
+  <h3>Main sources <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(ch 1–12)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">1–2</td><td class="fn">Pixel 1 Main Source (HaloLED) <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">3–4</td><td class="fn">Pixel 2 Main Source <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">5–6</td><td class="fn">Pixel 3 Main Source <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">7–8</td><td class="fn">Pixel 4 Main Source <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">9–10</td><td class="fn">Pixel 5 Main Source <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">11–12</td><td class="fn">Pixel 6 Main Source <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">13–14</td><td class="fn">Intensity Glow RGBW <small>16-bit · master over all six glows</small></td><td class="grp g-dim">Dimmer</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">Channels 13–14 are what Standard Fine buys you over the pixel modes: a dimmer for the glow layer that the console's intensity masters can actually reach.</p>
+
+  <h3>The per-pixel glow block <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(8 ch, ×6)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Offset</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">+1–2</td><td class="fn">Glow Red <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+3–4</td><td class="fn">Glow Green <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+5–6</td><td class="fn">Glow Blue <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+7–8</td><td class="fn">Glow White <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Where each pixel's glow block starts</h3>
+  <table class="maptable">
+    <thead><tr><th>Pixel</th><th>Start channel</th><th>Spans</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">Pixel 1</td><td class="fn">ch 15</td><td class="grp">15–22</td></tr>
+      <tr><td class="ch">Pixel 2</td><td class="fn">ch 23</td><td class="grp">23–30</td></tr>
+      <tr><td class="ch">Pixel 3</td><td class="fn">ch 31</td><td class="grp">31–38</td></tr>
+      <tr><td class="ch">Pixel 4</td><td class="fn">ch 39</td><td class="grp">39–46</td></tr>
+      <tr><td class="ch">Pixel 5</td><td class="fn">ch 47</td><td class="grp">47–54</td></tr>
+      <tr><td class="ch">Pixel 6</td><td class="fn">ch 55</td><td class="grp">55–62</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Global tail <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(ch 63–69)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">63</td><td class="fn">Strobe Main Source <small>filaments</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">64</td><td class="fn">Strobe Glow <small>RGBW</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">65</td><td class="fn">Colour Wheel — All Glow <small>virtual, slotted</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">66</td><td class="fn">Intensity Macro <small>macro master</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">67</td><td class="fn">Macro <small>select · 0 = off, then in fours</small></td><td class="grp g-ctl">Control</td></tr>
+      <tr><td class="ch">68</td><td class="fn">Macro Speed</td><td class="grp g-ctl">Control</td></tr>
+      <tr><td class="ch">69</td><td class="fn">Control <small>LED drive frequency, dim curve — hold 5 s</small></td><td class="grp g-ctl">Control</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">12 main + 2 glow master + (6 pixels × 8 glow) = 62, plus 7 global = 69. Everything is Dimmer (warm sources, glow master) or Colour (glow cells), except the two strobes (Beam) and the macro/control tail (Control). Three units addressed back to back land at 1 / 70 / 139 — still seven fixtures to a universe.</p>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> channel functions are from the Portman P2 EVO DMX chart (Mode IV, Standard Fine). grandMA3 subfixture structure and attribute <em>spellings</em> (whether warm source and glow are one subfixture or two; how the virtual wheel and macros are named) depend on the GDTF/library revision — expand the fixture in the sheet to read the live structure before scripting.</p>
+  <p>Third in the series, after the Ayrton Diablo and ACME Tornado references. Sheet colours, layers and indicator chips are documented once in <a href="grandMA3_Reading_the_Fixture_Sheet.html">Reading the fixture sheet</a>, because they describe the console, not the fixture.</p>
+</footer>
+
+</div>
+</body>
+</html>

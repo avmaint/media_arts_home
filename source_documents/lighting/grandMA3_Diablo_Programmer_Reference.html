@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 Programmer — Ayrton Diablo Control Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;
+    --panel:#1c1e22;
+    --panel-2:#232529;
+    --cell:#45484e;            /* MA medium-gray value cell */
+    --cell-dark:#34363b;
+    --line:#2c2f34;
+    --ink:#d9dce1;
+    --ink-dim:#8b9098;
+    --ink-faint:#61656c;
+    --accent:#e8c020;          /* MA "selected fixture" yellow */
+    --accent-soft:#7a6a1e;
+    /* MA value colors (default theme approximations) */
+    --ma-red:#b7222a;
+    --ma-red-txt:#e2494c;
+    --ma-cyan:#22b8cc;
+    --ma-cyan-br:#1fd0e6;
+    --ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;
+    --ma-magenta:#cf5bd0;
+    --ma-white:#eef0f3;
+    --ma-yellow:#e6c020;
+    --ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;
+    --ma-orange:#d78a2b;
+    --ma-purple:#8a5cd0;
+    --ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;
+    --ma-seagreen:#31a07f;
+    --ma-cuefade:#24306b;
+    --ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;
+    --ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  /* ---- Masthead ---- */
+  header.mast{
+    border-bottom:1px solid var(--line);
+    padding:56px 24px 30px;max-width:900px;margin:0 auto;
+  }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;
+    font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;
+    letter-spacing:-.015em;color:#fff;
+  }
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:60ch;margin:0}
+  .meta{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);
+    margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 20px;
+  }
+  .meta b{color:var(--ink-dim);font-weight:500}
+
+  /* ---- Section scaffolding ---- */
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{
+    font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);
+    font-weight:500;padding-top:6px;
+  }
+  h2{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;
+    font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em;
+  }
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+
+  h3{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;
+    color:#fff;margin:30px 0 4px;
+  }
+  p{margin:0 0 14px}
+  .muted{color:var(--ink-dim)}
+
+  /* ---- Command chips ---- */
+  code,.cmd{
+    font-family:"JetBrains Mono",monospace;font-size:13px;
+  }
+  code{
+    background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);
+    padding:1px 6px;border-radius:4px;white-space:nowrap;
+  }
+  .cmdblock{
+    background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);
+    border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto;
+  }
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;
+    line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}   /* comment */
+  .cmdblock .row .k{color:#7fc7ff}            /* keyword tint */
+
+  /* ---- Workflow spine ---- */
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  /* ---- Feature group cards ---- */
+  .fg{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;margin:16px 0;position:relative;overflow:hidden;
+  }
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);
+    border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  /* ---- Callout ---- */
+  .note{
+    background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));
+    border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0;
+  }
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+
+  /* ---- Color legend ---- */
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{
+    display:flex;gap:13px;align-items:flex-start;
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px;
+  }
+  /* the sample cell mimics an MA fixture-sheet value cell */
+  .cell{
+    flex:none;width:64px;height:40px;border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;
+    background:var(--cell);color:var(--ma-white);
+    border:1px solid rgba(0,0,0,.35);
+  }
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  /* chip legend (the little rectangles) */
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);
+    border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;
+    position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}
+  .chipcell i.left{left:6px;width:14px}
+  .chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  /* ---- Footer ---- */
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;
+    font-size:12px;color:var(--ink-faint)}
+  footer a{color:var(--ink-dim)}
+  footer p{margin:4px 0;font-size:12px}
+
+  /* nav */
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  nav.toc a{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;
+    color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);
+    border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s;
+  }
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  .pagepill{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#16222e;border:1px solid #2f4d69;border-radius:4px;padding:1px 5px;color:#7fc7ff;white-space:nowrap;margin-left:5px;vertical-align:1px}
+  @media print{
+    body{background:#fff;color:#111}
+    .fg,.step,.note,.swatch,.chiprow,.cmdblock{break-inside:avoid}
+    nav.toc{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Programmer Reference</p>
+  <h1>Driving the Ayrton&nbsp;Diablo <span class="thin">— every layer, by hand</span></h1>
+  <p class="lede">A working reference for controlling the Diablo one feature group at a time from the programmer, with the channel map behind it. The colour legend for the fixture sheet lives in the shared <a href="grandMA3_Reading_the_Fixture_Sheet.html" style="color:var(--accent)">Reading the fixture sheet</a> reference.</p>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Fixture:</b> Ayrton Diablo</span>
+    <span><b>Mode:</b> 56-ch Extended (Mode 3)</span>
+    <span><b>Chart:</b> Diablo DMX V203</span>
+  </div>
+  <nav class="toc">
+    <a href="#flow">The loop</a>
+    <a href="#groups">Feature groups</a>
+    <a href="#housekeeping">Housekeeping</a>
+    <a href="#sheet">Reading the sheet</a>
+    <a href="#map">56-ch map</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 1 ============ -->
+<section id="flow">
+  <div class="sec-head"><span class="sec-num">01</span><h2>The loop every parameter follows</h2></div>
+  <p class="sec-sub">Whatever you're changing — dimmer or a framing blade — the motion is the same four beats. Learn it once and every feature group below is just a variation on it.</p>
+
+  <div class="spine">
+    <div class="step"><span class="n">01</span><h4>Select</h4><p>Pick the fixtures. Yellow ID text = selected. Nothing happens to anything you haven't selected.</p></div>
+    <div class="step"><span class="n">02</span><h4>Choose a group</h4><p>Tap a feature group on the encoder bar. The four encoders remap to that group's attributes.</p></div>
+    <div class="step"><span class="n">03</span><h4>Set the value</h4><p>Turn an encoder, or push it to open the <b>Edit</b> overlay (named Channel Sets + typed values), or type it on the command line.</p></div>
+    <div class="step"><span class="n">04</span><h4>Keep or drop</h4><p>Active values (white-on-red) get stored. <code>Clear</code> steps them back out. Store to a preset to reuse.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Where a control actually lives</span>
+    <p>The encoder bar shows <b>up to five dual encoders at a time</b>. A feature group with more than that spreads across several <b>encoder pages</b>, one per feature — the Encoder Page button to the left of the encoders names the current feature and shows how many pages the group has. Tap it to cycle, or tap and swipe for the list. Wherever a control on this fixture is not on the first page of its group, this document flags it <span class="pagepill">later page</span>.</p>
+  </div>
+
+  <h3>Selecting the Diablo(s)</h3>
+  <div class="cmdblock">
+    <span class="row"><span class="k">Fixture</span> 21 <span class="k">Thru</span> 24 <span class="c">— range of Diablos by Fixture ID</span></span>
+    <span class="row"><span class="k">Group</span> 10 <span class="c">— if you've stored them as a group</span></span>
+    <span class="row">Please Please <span class="c">— pushes all current values into the programmer & activates them</span></span>
+  </div>
+  <p class="muted">On the command line, <code>Fixture</code> is the default keyword, so a bare number selects by Fixture ID. Every value you set below lands in the programmer for the current selection only.</p>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="groups">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
+  <p class="sec-sub">Each card is one bank on the encoder bar. Tapping the group name pages the encoders onto its attributes; tap again / use the feature buttons to reach the second and third page when a group has more than four. Attribute names in the examples come from the fixture library — push an encoder or open the DMX sheet to confirm the exact spelling on your Diablo profile.</p>
+
+  <style>
+    .subcard{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin:12px 0}
+    .subcard h6{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#fff;margin:0 0 8px;font-weight:600}
+    .subcard h6 .pg{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:12px;padding:2px 8px;margin-right:8px;vertical-align:middle}
+    .subcard ul{margin:0;padding-left:17px}
+    .subcard li{margin:4px 0;font-size:13px;line-height:1.5}
+    .cfn{font-family:"JetBrains Mono",monospace;color:#7fc7ff;font-size:12px;white-space:nowrap}
+    .encpill{font-family:"JetBrains Mono",monospace;font-size:11px;background:#101114;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#e9d98a;white-space:nowrap}
+    .flagnote{background:linear-gradient(180deg,rgba(224,145,58,.07),rgba(224,145,58,0));border:1px solid #7a521e;border-radius:8px;padding:13px 15px;margin:14px 0}
+    .flagnote .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e0913a;display:block;margin-bottom:5px}
+    .flagnote p{margin:0;font-size:13px;color:var(--ink)}
+  </style>
+
+  <!-- Dimmer -->
+  <div class="fg" style="--fgc:#c9c9c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1</span></div>
+    <p class="fg-lead">Intensity. The one group with dedicated hardkeys, so you rarely need the encoder here.</p>
+    <h5>Fast paths</h5>
+    <ul>
+      <li><code>At 50</code> → 50%&nbsp;&nbsp;·&nbsp;&nbsp;<code>Full</code> → 100%&nbsp;&nbsp;·&nbsp;&nbsp;<code>Off</code> → knock intensity out</li>
+      <li><code>At At</code> → the "Normal" default level&nbsp;&nbsp;·&nbsp;&nbsp;level wheel for a live grab</li>
+    </ul>
+    <div class="diablo"><b>DIABLO · CH 7–8</b> Single 16-bit intensity attribute (<code>Dimmer</code>, coarse ch7 / fine ch8). Descending dimmer values show green text when they come from a cue — see §04.</div>
+  </div>
+
+  <!-- Position -->
+  <div class="fg" style="--fgc:#4a86c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Position</h3><span class="fg-ptype">Preset Type 2</span></div>
+    <p class="fg-lead">Pan and tilt. Encoders 1&nbsp;&amp;&nbsp;2 once the group is selected.</p>
+    <h5>Command line</h5>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Pan" <span class="k">At</span> 0</span>
+      <span class="row"><span class="k">Attribute</span> "Tilt" <span class="k">At</span> 45</span>
+      <span class="row"><span class="k">At</span> <span class="k">Preset</span> 2.3 <span class="c">— recall stored Position preset 3</span></span>
+    </div>
+    <h5>Spreading across the rig</h5>
+    <ul>
+      <li>Select several, then use <b>MAtricks</b> / fan mode to spread pan &amp; tilt into a line, fan, or circle instead of one flat value.</li>
+    </ul>
+    <div class="diablo"><b>DIABLO · CH 1–5</b> 16-bit <code>Pan</code> (ch1/2) and <code>Tilt</code> (ch3/4). Ch5 is a Pan/Tilt <b>movement-speed</b> attribute (<code>PanTiltSpeed</code> / <code>PositionMSpeed</code>) — leave it at default unless you want the head itself to govern crossfade speed. A green fixture name = MAtricks-inverted control; light-green = an "edge" fixture holding symmetry.</div>
+  </div>
+
+  <!-- Gobo -->
+  <div class="fg" style="--fgc:#8b7fd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Gobo</h3><span class="fg-ptype">Preset Type 3</span></div>
+    <p class="fg-lead">Wheel slot selection, gobo rotation, and the animation wheel. This group spreads across two encoder tiles — the gobo wheel (2 knobs) and the animation wheel (<span class="encpill">Anim1</span>).</p>
+
+    <div class="subcard">
+      <h6>Pushing an encoder = the Edit overlay</h6>
+      <ul>
+        <li>Push a gobo encoder and you get the <b>Edit '<span class="cfn">Gobo1</span>'</b> window — that <em>is</em> the calculator, just titled by attribute. It opens on the <b>Specials</b> tab (Release / Off / Full / Highlight), which is why you see a keypad, not gobo names.</li>
+        <li>Tap <b>Channel Sets</b> in the middle column to flip the panel to the named slots: Dot Line 11, Starfield, Nested Triangle, Tourbillon, Vortex, B&amp;W Target, Nested Rings Yellow. Tap one, then <b>Please</b>.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>The two gobo-wheel encoders</h6>
+      <ul>
+        <li><b>Encoder 1</b> — <span class="encpill">G1</span> selects a static gobo (steps through the channel sets); <span class="encpill">Wheel</span> spins the <em>whole wheel</em> so every gobo cycles past the beam. These are the two channel functions shown as tabs <span class="cfn">Gobo1 1</span> and <span class="cfn">Gobo1WheelSpin 2</span> in the overlay.</li>
+        <li><b>Encoder 2</b> — <span class="encpill">G1 &lt;&gt;</span> indexes the selected gobo to a fixed angle; <span class="encpill">Rotat</span> spins that one gobo on its own axis (<code>Gobo1Pos</code>, ch29/30, 16-bit).</li>
+        <li>The trap: <b>Wheel</b> cycles all gobos through the gate; <b>Rotat</b> spins a single gobo in place. Two different looks that both read as "spinning." <b>All Channel Sets</b> (top-right of the overlay) lists both functions at once.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>Reading the <code>[0.0000 .. 8.0000]</code> value</h6>
+      <ul>
+        <li>That range is the attribute's own logical value — <em>not</em> DMX 0–255 and not a gobo number. Each named channel set sits at a point in it, spaced roughly <b>0.5 apart</b>, so the encoder detents slot-to-slot.</li>
+        <li>Order matches the Ayrton ch28 layout: the seven solid gobos first, then the <b>same seven as shakes</b> (which is why the patterns repeat from ~3.5 with a shake added), then whole-wheel spin at the top.</li>
+        <li><b>Correction to typed entry:</b> <code>1 Please</code> sets the value to <em>1.0</em>, landing on whatever channel set sits there — not "gobo 1," and it can land between slots. Use the named <b>Channel Sets</b> for a predictable hit, or spin to the gobo and reuse the value it settles on.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6>Animation wheel — <span class="encpill">Anim1</span> (ch31)</h6>
+      <ul>
+        <li>One encoder, but <b>four channel functions</b>, because Ayrton rides the whole effect on a single DMX channel: <span class="cfn">AnimationWheelSelect 1</span> = open / out of beam · <span class="cfn">AnimationWheel1PosRotate 2</span> = forward spin (value = speed) · <span class="cfn">AnimationWheelSelect 3</span> = inserted, no rotation · <span class="cfn">AnimationWheel1PosRotate 4</span> = backward spin.</li>
+        <li>They're mutually exclusive — you're only ever in one. Sweeping the encoder runs open → spin-fwd → stop → spin-back. Use a <b>PosRotate</b> for movement, <b>Select 3</b> for a static texture, <b>Select 1</b> to pull it out.</li>
+      </ul>
+    </div>
+
+    <div class="diablo"><b>DIABLO · CH 28–31</b> One rotating gobo wheel (ch28 select / ch29–30 rotate) plus the animation wheel (ch31). No separate static gobo wheel in this mode.</div>
+  </div>
+
+  <!-- Color -->
+  <div class="fg" style="--fgc:#cf5bd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Color</h3><span class="fg-ptype">Preset Type 4</span></div>
+    <p class="fg-lead">The richest group on this fixture. The encoder bank runs <b>three pages</b> — CMY, then wheel + warm-shift, then the LED-engine effects.</p>
+
+    <div class="subcard">
+      <h6><span class="pg">Page 1</span>CMY mix</h6>
+      <ul>
+        <li><span class="encpill">Cyan</span> <span class="encpill">Magenta</span> <span class="encpill">Yellow</span> — continuous 16-bit subtractive mix (ch20–25; GDTF names <code>ColorSub_C/M/Y</code>). The <b>Colour Picker</b> and swatch/gel pools drive these too, and are cleaner for mixing.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6><span class="pg">Page 2</span>Wheel &amp; warm-shift</h6>
+      <ul>
+        <li><span class="encpill">C1</span> = <code>Color1</code>, the fixed <b>colour wheel</b> (ch18/19): Open, CTB ¼, Magenta, Congo Blue, Green, Orange, Blue, Red, plus colour-indexing and bidirectional rainbow. Push → Channel Sets for the names. It stacks <em>in front of</em> the CMY mix.</li>
+        <li><span class="encpill">CTO</span> <span class="pagepill">later page</span> = continuous colour-temperature-orange (ch26/27). A smooth warm-shift fader — 0 untouched, full = max warm. The clean way to warm white or CMY without touching the mix.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6><span class="pg">Page 3</span>LED engine effects</h6>
+      <ul>
+        <li>A linked trio driving colour macros <em>inside the fixture's LED engine</em> — the head generates the look; the console just picks and paces it.</li>
+        <li><span class="encpill">LEDEngineEffects</span> = the selector (slotted; Off/None, then each built-in engine macro). Nothing else acts until this is on an effect.</li>
+        <li><span class="encpill">LEDEngineEffectRate</span> = overall speed of the selected effect.</li>
+        <li><span class="encpill">LEDEngineEffectStepTime</span> = the per-step transition — snap vs. crossfade between steps. Rate = how often it steps; StepTime = how each step looks.</li>
+      </ul>
+    </div>
+
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Cyan" <span class="k">At</span> 100 <span class="c">— full cyan (ch20/21, 16-bit)</span></span>
+      <span class="row"><span class="k">Attribute</span> "CTO" <span class="k">At</span> 50 <span class="c">— warm the beam (ch26/27)</span></span>
+    </div>
+
+    <div class="flagnote">
+      <span class="tag">Verify on your profile</span>
+      <p>The three <b>LED-engine</b> attributes are <em>not</em> on the V203 DMX chart — its only engine is the generic Internal Programs range on control ch56. So they're either a newer library revision exposing that engine under Colour, or virtual attributes. Push each one: a real named Channel Set list = live in 56-ch mode; a bare/greyed list = present but inert here.</p>
+    </div>
+
+    <div class="diablo"><b>DIABLO · CH 18–27</b> Colour wheel (ch18/19) + CMY (ch20–25) + CTO (ch26/27), all continuous 16-bit except the slotted wheel.</div>
+  </div>
+
+  <!-- Beam -->
+  <div class="fg" style="--fgc:#e0913a">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Beam</h3><span class="fg-ptype">Preset Type 5</span></div>
+    <p class="fg-lead">Everything that shapes the quality of the beam short of size and edge: shutter/strobe, prism, frost, iris. Runs <b>two encoder pages</b> — the attributes, then an effect selector.</p>
+
+    <div class="subcard">
+      <h6><span class="pg">Page 1</span>The Diablo's beam attributes</h6>
+      <ul>
+        <li><span class="encpill">Shutter1</span> (ch6) — closed, open, strobe (slow→fast), pulse sequences, random strobe, all on one attribute. Push for the named ranges.</li>
+        <li><span class="encpill">Prism1</span> (ch34) — single 5-facet circular prism (open below 128); <span class="encpill">Prism1Pos</span> (ch35/36, 16-bit) indexes or spins it.</li>
+        <li><span class="encpill">Frost1</span> (ch37) — linear 0–100% frost.</li>
+        <li><span class="encpill">Iris</span> (ch32/33, 16-bit) — max→min diameter, plus pulse-open / pulse-close ranges up top.</li>
+      </ul>
+    </div>
+
+    <div class="subcard">
+      <h6><span class="pg">Page 2</span>Effect selector</h6>
+      <ul>
+        <li><span class="encpill">Effect</span> = the Beam group's macro selector (slotted; Off/None, then each fixture-internal beam macro). Same family as Colour's <code>LEDEngineEffects</code>, scoped to Beam — it fires packaged prism/shutter engine looks rather than you dialling each attribute by hand.</li>
+        <li>Push it and read the Channel Sets. If a live effect exposes its own pacing, expect a paired <code>EffectRate</code> / <code>EffectStepTime</code> on the same or an adjacent page.</li>
+      </ul>
+    </div>
+
+    <div class="flagnote">
+      <span class="tag">Verify on your profile</span>
+      <p>The generic <b>Effect</b> selector is <em>not</em> on the V203 chart — its only built-in engine is Internal Programs on control ch56. Treat this like the LED-engine trio: a real named Channel Set list = live in 56-ch mode; a bare/greyed list = present in the profile but inert here.</p>
+    </div>
+
+    <div class="diablo"><b>DIABLO · CH 6, 32–37</b> One prism, one frost, one iris. Iris usually sits in Beam here, but if your encoders show it under Focus that's just library grouping — same attribute. The animation wheel is <em>not</em> here; it's a Gobo feature (ch31).</div>
+  </div>
+
+  <!-- Focus -->
+  <div class="fg" style="--fgc:#3faa5c">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Focus</h3><span class="fg-ptype">Preset Type 6</span></div>
+    <p class="fg-lead">Zoom, focus, and the Diablo's distance-based autofocus.</p>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Zoom" <span class="k">At</span> 20 <span class="c">— narrow (ch12/13, 16-bit)</span></span>
+      <span class="row"><span class="k">Attribute</span> "Focus" <span class="k">At</span> 55 <span class="c">— crisp the gobo edge (ch14/15)</span></span>
+    </div>
+    <div class="diablo"><b>DIABLO · CH 12–17</b> 16-bit <code>Zoom</code> and <code>Focus</code>, both continuous. Ch16/17 is <b>Auto Focus</b> — a stepped distance attribute (Off, 5 m, 7.5 m, 10 m, 15 m). It appears as its own attribute (often <code>AutoFocus</code> / a Focus-distance control); set it to a throw band and the head holds sharpness for you. Store a Focus preset per throw distance so re-sharpening a gobo is one recall.</div>
+  </div>
+
+  <!-- Shapers -->
+  <div class="fg" style="--fgc:#c9a94a">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Shapers</h3><span class="fg-ptype">Preset Type 8</span></div>
+    <p class="fg-lead">The miniaturised 4-blade framing system — each blade drives from two ends, so it can insert <em>and</em> tilt. Plus rotation of the whole module.</p>
+    <h5>Exact attribute layout (16-bit each)</h5>
+    <ul>
+      <li>Four blades, two ends apiece: <code>Blade1A</code>/<code>Blade1B</code> … <code>Blade4A</code>/<code>Blade4B</code> (ch38–53). Each end runs open→close; driving A and B differently angles that blade.</li>
+      <li><code>ShaperRot</code> / All-Blade Rotation (ch54/55) spins the entire frame module ±45°.</li>
+      <li>Eight blade attributes + rotation = well past four encoders, so expect to page the Shapers bank two or three times.</li>
+    </ul>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Attribute</span> "Blade1A" <span class="k">At</span> 40 <span class="c">— insert one end of blade 1</span></span>
+      <span class="row"><span class="k">Attribute</span> "Blade1B" <span class="k">At</span> 15 <span class="c">— less on the other end = an angled cut</span></span>
+      <span class="row"><span class="k">Attribute</span> "ShaperRot" <span class="k">At</span> 50 <span class="c">— rotate the whole frame (±45°)</span></span>
+    </div>
+    <div class="diablo"><b>DIABLO · CH 38–55</b> Confirm the exact attribute spelling (some libraries use <code>Blade1A</code>/<code>Blade1B</code>, others <code>Frame</code>-prefixed) by pushing the encoder — the calculator title shows the live attribute name.</div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="housekeeping">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Programmer housekeeping</h2></div>
+  <p class="sec-sub">Two mechanics that save you from mystery states while building looks.</p>
+
+  <h3>Activate vs. deactivate</h3>
+  <p>Only <b>active</b> values store by default. A value can sit in the programmer <em>inactive</em> — present, affecting output, but skipped by Store/Update. <code>Please Please</code> activates everything for the selection; <code>Off</code> then a tap on a value knocks that one out; <code>Off</code> + a feature-group bank button releases the whole group.</p>
+
+  <h3>The three states of Clear</h3>
+  <div class="cmdblock">
+    <span class="row">Clear ×1 <span class="c">— deselect fixtures (values stay, still active)</span></span>
+    <span class="row">Clear ×2 <span class="c">— values stay but go deactivated (a store now = empty)</span></span>
+    <span class="row">Clear ×3 <span class="c">— programmer emptied, values released</span></span>
+  </div>
+  <p class="muted">Hold <code>Clear</code> for a second to jump straight to a full release.</p>
+
+  <div class="note">
+    <span class="tag">Why a value won't store</span>
+    <p>If a change refuses to end up in your cue, it's almost always deactivated (red text on grey, not white-on-red). Re-select and press <code>Please Please</code>, then store.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .xref{
+    display:block;text-decoration:none;background:var(--panel);
+    border:1px solid var(--accent-soft);border-left:2px solid var(--accent);
+    border-radius:8px;padding:16px 18px;margin:14px 0;transition:border-color .15s;
+  }
+  .xref:hover,.xref:focus{border-color:var(--accent);outline:none}
+  .xref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .xref h4{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#fff;margin:0 0 6px;font-weight:600}
+  .xref p{font-size:13px;color:var(--ink-dim);margin:0}
+</style>
+<section id="sheet">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Reading the sheet</h2></div>
+  <p class="sec-sub">Cell colours, layer colours and the little indicator rectangles are the console talking, not the fixture — so they live in one shared document rather than being repeated here.</p>
+
+  <a class="xref" href="grandMA3_Reading_the_Fixture_Sheet.html">
+    <span class="k">Shared legend</span>
+    <h4>grandMA3 — Reading the fixture sheet →</h4>
+    <p>Every text / background combination in the value cells, the layer colours (relative, individual fade and delay, phaser, GridPos), and what each indicator chip means.</p>
+  </a>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from. A black cell means the attribute doesn't exist on this fixture — the Diablo has no white emitter, for instance.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<style>
+  .maptable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13px}
+  .maptable th{
+    text-align:left;font-family:"JetBrains Mono",monospace;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+    font-weight:500;padding:0 12px 8px;border-bottom:1px solid var(--line);
+  }
+  .maptable td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .maptable tr:hover td{background:var(--panel)}
+  .maptable .ch{font-family:"JetBrains Mono",monospace;color:var(--ink-dim);white-space:nowrap;width:64px}
+  .maptable .fn{color:var(--ink)}
+  .maptable .fn small{color:var(--ink-faint);font-family:"JetBrains Mono",monospace;font-size:10.5px;margin-left:6px}
+  .maptable .grp{font-family:"JetBrains Mono",monospace;font-size:11px;white-space:nowrap;width:96px}
+  .g-dim{color:#c9c9c9}.g-pos{color:#5a92cf}.g-gob{color:#9a8fdb}.g-col{color:#d46fd5}
+  .g-bea{color:#e0913a}.g-foc{color:#4bb56a}.g-sha{color:#d4b24f}.g-ctl{color:#8b9098}.g-non{color:var(--ink-faint)}
+</style>
+<section id="map">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The 56-channel map</h2></div>
+  <p class="sec-sub">Every channel in Extended mode (Diablo DMX chart V203), folded to one row per attribute with its 16-bit fine channel noted and the grandMA3 feature group it lands in. Channel numbers are offsets from the fixture's DMX start address.</p>
+
+  <table class="maptable">
+    <thead><tr><th>Ch</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">1–2</td><td class="fn">Pan <small>16-bit</small></td><td class="grp g-pos">Position</td></tr>
+      <tr><td class="ch">3–4</td><td class="fn">Tilt <small>16-bit</small></td><td class="grp g-pos">Position</td></tr>
+      <tr><td class="ch">5</td><td class="fn">Pan/Tilt movement speed</td><td class="grp g-ctl">Control</td></tr>
+      <tr><td class="ch">6</td><td class="fn">Shutter / Strobe / pulse / random</td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">7–8</td><td class="fn">Dimmer <small>16-bit</small></td><td class="grp g-dim">Dimmer</td></tr>
+      <tr><td class="ch">9–11</td><td class="fn">Reserved</td><td class="grp g-non">—</td></tr>
+      <tr><td class="ch">12–13</td><td class="fn">Zoom <small>16-bit</small></td><td class="grp g-foc">Focus</td></tr>
+      <tr><td class="ch">14–15</td><td class="fn">Focus <small>16-bit</small></td><td class="grp g-foc">Focus</td></tr>
+      <tr><td class="ch">16–17</td><td class="fn">Auto Focus <small>16-bit · stepped distance</small></td><td class="grp g-foc">Focus</td></tr>
+      <tr><td class="ch">18–19</td><td class="fn">Colour Wheel <small>16-bit · 7 colours + rainbow</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">20–21</td><td class="fn">Cyan <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">22–23</td><td class="fn">Magenta <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">24–25</td><td class="fn">Yellow <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">26–27</td><td class="fn">CTO <small>16-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">28</td><td class="fn">Rotating Gobo Wheel <small>7 gobos + shake + spin</small></td><td class="grp g-gob">Gobo</td></tr>
+      <tr><td class="ch">29–30</td><td class="fn">Gobo Index / Rotation <small>16-bit</small></td><td class="grp g-gob">Gobo</td></tr>
+      <tr><td class="ch">31</td><td class="fn">Animation Wheel</td><td class="grp g-gob">Gobo</td></tr>
+      <tr><td class="ch">32–33</td><td class="fn">Iris <small>16-bit · + pulse</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">34</td><td class="fn">Prism <small>5-facet circular</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">35–36</td><td class="fn">Prism Index / Rotation <small>16-bit</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">37</td><td class="fn">Frost <small>0–100% linear</small></td><td class="grp g-bea">Beam</td></tr>
+      <tr><td class="ch">38–39</td><td class="fn">Blade 1A <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">40–41</td><td class="fn">Blade 1B <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">42–43</td><td class="fn">Blade 2A <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">44–45</td><td class="fn">Blade 2B <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">46–47</td><td class="fn">Blade 3A <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">48–49</td><td class="fn">Blade 3B <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">50–51</td><td class="fn">Blade 4A <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">52–53</td><td class="fn">Blade 4B <small>16-bit</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">54–55</td><td class="fn">All Blade Rotation <small>16-bit · ±45°</small></td><td class="grp g-sha">Shapers</td></tr>
+      <tr><td class="ch">56</td><td class="fn">Control / Reset / Internal Programs</td><td class="grp g-ctl">Control</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">Total 56 channels. The reserved trio (9–11) and the control channel (56) don't need programming for normal cueing — leave them at default. Everything else is reachable from the feature groups in §02.</p>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> channel functions are from Ayrton's Diablo DMX chart (V203, Extended mode). grandMA3 attribute <em>spellings</em> (<code>Cyan</code> vs <code>ColorSub_C</code>, <code>Blade1A</code> vs a <code>Frame</code> variant) depend on the library revision you patched — push an encoder to read the live attribute name, or open the DMX sheet, before scripting commands.</p>
+  <p>Sheet colours, layers and indicator chips are documented once in <a href="grandMA3_Reading_the_Fixture_Sheet.html">Reading the fixture sheet</a>. Reference only — verify against your show file and library revision.</p>
+</footer>
+
+</div>
+</body>
+</html>

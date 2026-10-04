@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 Programmer — ADJ Ultra Hex Bar 12 (36-ch) Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;--panel:#1c1e22;--panel-2:#232529;--cell:#45484e;--cell-dark:#34363b;
+    --line:#2c2f34;--ink:#d9dce1;--ink-dim:#8b9098;--ink-faint:#61656c;
+    --accent:#e8c020;--accent-soft:#7a6a1e;
+    --ma-red:#b7222a;--ma-red-txt:#e2494c;--ma-cyan:#22b8cc;--ma-cyan-br:#1fd0e6;--ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;--ma-magenta:#cf5bd0;--ma-white:#eef0f3;--ma-yellow:#e6c020;--ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;--ma-orange:#d78a2b;--ma-purple:#8a5cd0;--ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;--ma-seagreen:#31a07f;--ma-cuefade:#24306b;--ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;--ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  header.mast{border-bottom:1px solid var(--line);padding:56px 24px 30px;max-width:900px;margin:0 auto}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;letter-spacing:-.015em;color:#fff}
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:62ch;margin:0}
+  /* dim-to-warm + RGBW glow signature stripe */
+  .spectrum{height:4px;border-radius:3px;margin:22px 0 0;background:linear-gradient(90deg,#e2494c 0%,#3faa5c 18%,#3b6fd0 36%,#eef0f3 54%,#e0913a 72%,#8a5cd0 100%)}
+  .meta{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 20px}
+  .meta b{color:var(--ink-dim);font-weight:500}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  nav.toc a{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s}
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);font-weight:500;padding-top:6px}
+  h2{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em}
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+  h3{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;color:#fff;margin:30px 0 4px}
+  p{margin:0 0 14px}.muted{color:var(--ink-dim)}
+  code{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);padding:1px 6px;border-radius:4px;white-space:nowrap}
+  .cmdblock{background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto}
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}
+  .cmdblock .row .k{color:#7fc7ff}
+
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  .fg{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;position:relative;overflow:hidden}
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  .note{background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0}
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+  .flagnote{background:linear-gradient(180deg,rgba(224,145,58,.07),rgba(224,145,58,0));border:1px solid #7a521e;border-radius:8px;padding:13px 15px;margin:14px 0}
+  .flagnote .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e0913a;display:block;margin-bottom:5px}
+  .flagnote p{margin:0;font-size:13px;color:var(--ink)}
+
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+  .cell{flex:none;width:64px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;background:var(--cell);color:var(--ma-white);border:1px solid rgba(0,0,0,.35)}
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}.chipcell i.left{left:6px;width:14px}.chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  .subcard{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:12px 15px;margin:12px 0}
+  .subcard h6{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#fff;margin:0 0 8px;font-weight:600}
+  .subcard ul{margin:0;padding-left:17px}
+  .subcard li{margin:4px 0;font-size:13px;line-height:1.5}
+  .encpill{font-family:"JetBrains Mono",monospace;font-size:11px;background:#101114;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:#e9d98a;white-space:nowrap}
+
+  .maptable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13px}
+  .maptable th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;padding:0 12px 8px;border-bottom:1px solid var(--line)}
+  .maptable td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .maptable tr:hover td{background:var(--panel)}
+  .maptable .ch{font-family:"JetBrains Mono",monospace;color:var(--ink-dim);white-space:nowrap;width:74px}
+  .maptable .fn{color:var(--ink)}
+  .maptable .fn small{color:var(--ink-faint);font-family:"JetBrains Mono",monospace;font-size:10.5px;margin-left:6px}
+  .maptable .grp{font-family:"JetBrains Mono",monospace;font-size:11px;white-space:nowrap;width:96px}
+  .g-dim{color:#c9c9c9}.g-col{color:#d46fd5}.g-bea{color:#e0913a}.g-ctl{color:#8b9098}
+
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;font-size:12px;color:var(--ink-faint)}
+  footer p{margin:4px 0;font-size:12px}
+
+  .pagepill{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#16222e;border:1px solid #2f4d69;border-radius:4px;padding:1px 5px;color:#7fc7ff;white-space:nowrap;margin-left:5px;vertical-align:1px}
+  @media print{body{background:#fff;color:#111}.fg,.step,.note,.flagnote,.swatch,.chiprow,.cmdblock,.subcard{break-inside:avoid}nav.toc{display:none}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Programmer Reference</p>
+  <h1>Driving the ADJ&nbsp;Ultra&nbsp;Hex&nbsp;Bar&nbsp;12 <span class="thin">— six zones, six colours each</span></h1>
+  <p class="lede">A working reference for the Ultra Hex Bar 12 in 36-channel mode: twelve hex LEDs controlled as six zones of two, each with the full RGBWA+UV set. The mode that buys you pixel control by giving up every global function the smaller modes have — no master dimmer, no strobe, no macros.</p>
+  <div class="spectrum"></div>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Fixture:</b> ADJ Ultra Hex Bar 12</span>
+    <span><b>Mode:</b> 36 Channel (36 ch)</span>
+    <span><b>Chart:</b> ADJ Ultra Hex Bar 12 DMX Traits</span>
+  </div>
+  <nav class="toc">
+    <a href="#fixture">The fixture</a>
+    <a href="#flow">The loop</a>
+    <a href="#groups">Feature groups</a>
+    <a href="#housekeeping">Housekeeping</a>
+    <a href="#sheet">Reading the sheet</a>
+    <a href="#map">36-ch map</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 0 ============ -->
+<section id="fixture">
+  <div class="sec-head"><span class="sec-num">00</span><h2>What you're actually patching</h2></div>
+  <p class="sec-sub">A 40-inch bar of twelve 10 W hex LEDs. In 36-channel mode they come up as six addressable zones — and nothing else.</p>
+
+  <div class="subcard">
+    <h6>Twelve LEDs, six zones</h6>
+    <ul>
+      <li>The LEDs are ganged in pairs: <b>1&amp;2, 3&amp;4, 5&amp;6, 7&amp;8, 9&amp;10, 11&amp;12</b>. Six zones is the finest control this fixture offers — there is no mode that addresses a single LED.</li>
+      <li>Each zone carries the full hex set: <b>Red · Green · Blue · White · Amber · UV</b>, 8-bit each. 6 zones × 6 colours = the whole 36 channels.</li>
+      <li>40° beam, 2.88 kHz refresh (flicker-free on camera), 90 W draw, IEC daisy-chain up to seven bars.</li>
+      <li>Not to be confused with the shorter <a href="grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html" style="color:var(--accent)">Ultra Hex Bar 6</a>, whose pixel mode is 18 channels across three zones.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>What 36-channel mode gives up</h6>
+    <ul>
+      <li><b>No master dimmer.</b> Intensity is the colour values themselves.</li>
+      <li><b>No strobe channel</b>, no colour macros, no built-in programs, no program speed, and no dim-curve channel — those live only in the smaller personalities (see the comparison in §05).</li>
+      <li>What you get in exchange is the only mode with per-zone colour. It's a straight trade: pixel control for every global function.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>How it lands in grandMA3</h6>
+    <ul>
+      <li>Expect six subfixtures, one per zone, each with six colour attributes. <code>Fixture 50.1 Thru 50.6</code> style selection, then <b>MAtricks</b> to fan colour along the bar.</li>
+      <li>Everything is 8-bit. Low-level fades and slow colour crossfades will step where a 16-bit fixture glides — worth knowing before you build a five-minute sunset on these.</li>
+      <li><b>UV</b> won't come out of the Colour Picker. It's an additive emitter you set by hand or store into a preset; same for Amber and White if your picker is driving RGB only.</li>
+    </ul>
+  </div>
+
+  <div class="flagnote">
+    <span class="tag">Verify on your profile</span>
+    <p>Whether the six zones import as subfixtures or as thirty-six flat attributes, and whether the GDTF synthesises a virtual dimmer, depend on the library revision. Patch one, expand it in the fixture sheet, and read the structure before scripting. If a Dimmer encoder appears, it's virtual — the fixture has no dimmer channel in this mode.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="flow">
+  <div class="sec-head"><span class="sec-num">01</span><h2>The loop every parameter follows</h2></div>
+  <p class="sec-sub">Same four beats as any grandMA3 fixture. Here "select" usually means picking one of the six zones, or all six for a wash.</p>
+
+  <div class="spine">
+    <div class="step"><span class="n">01</span><h4>Select</h4><p>Pick the bar, or a zone subfixture. Yellow ID text = selected.</p></div>
+    <div class="step"><span class="n">02</span><h4>Choose a group</h4><p>On this fixture in this mode, that means Colour.</p></div>
+    <div class="step"><span class="n">03</span><h4>Set the value</h4><p>Colour Picker for RGB, encoders for White / Amber / UV.</p></div>
+    <div class="step"><span class="n">04</span><h4>Keep or drop</h4><p>Active values (white-on-red) store. <code>Clear</code> steps them out.</p></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Where a control actually lives</span>
+    <p>The encoder bar shows <b>up to five dual encoders at a time</b>. A feature group with more than that spreads across several <b>encoder pages</b>, one per feature — the Encoder Page button to the left of the encoders names the current feature and shows how many pages the group has. Tap it to cycle, or tap and swipe for the list. Wherever a control on this fixture is not on the first page of its group, this document flags it <span class="pagepill">later page</span>.</p>
+  </div>
+
+  <h3>Selecting zones</h3>
+  <div class="cmdblock">
+    <span class="row"><span class="k">Fixture</span> 50 <span class="c">— the whole bar (all six zones)</span></span>
+    <span class="row"><span class="k">Fixture</span> 50.1 <span class="k">Thru</span> 50.6 <span class="c">— the six zones, as subfixtures</span></span>
+    <span class="row"><span class="k">At</span> 50 <span class="c">— only does something if the profile has a virtual dimmer</span></span>
+  </div>
+  <p class="muted">Confirm the sub-ID scheme by expanding the fixture in the sheet. Once selected, <b>MAtricks</b> fans colour across the six zones for a wave or chase along the bar — the same workflow as any pixel fixture, at six cells.</p>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="groups">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Feature group by feature group</h2></div>
+  <p class="sec-sub">In 36-channel mode one group carries the entire fixture: Colour. Dimmer is empty unless your profile supplies a virtual one, and Beam, Position, Gobo, Focus, Control and Shapers have nothing at all.</p>
+
+  <!-- Color -->
+  <div class="fg" style="--fgc:#cf5bd0">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Color</h3><span class="fg-ptype">Preset Type 4</span></div>
+    <p class="fg-lead">Six zones × six emitters, 8-bit each — the whole 36 channels.</p>
+
+    <div class="subcard">
+      <h6>Per-zone hex mixing</h6>
+      <ul>
+        <li><span class="encpill">Red</span> <span class="encpill">Green</span> <span class="encpill">Blue</span> <span class="encpill">White</span> <span class="encpill">Amber</span> <span class="encpill">UV</span> on every zone. Six emitters do not fit on one encoder page, so <b>UV sits on the second page</b> <span class="pagepill">page 2</span> — reach it with the Encoder Page button. Zone 1 is channels 1–6, and each zone after it is six channels further along.</li>
+        <li><b>White</b> and <b>Amber</b> are what make this bar usable as a wash rather than a colour effect — RGB-only whites from hex LEDs read green. <b>UV</b> is a separate emitter with no visible colour of its own; treat it as an effect layer you add on top.</li>
+        <li>Select all six zones and drive them with <b>MAtricks + colour phasers</b> for chases and rainbows along the bar.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <span class="tag">Colour is also your intensity</span>
+      <p>With no dimmer channel, level and colour are the same numbers. grandMA3's intensity machinery — executor faders set to Master, intensity group masters, the grand master — scales the <b>Dimmer</b> attribute, so in this mode it reaches nothing: pull a fader and the bar stays exactly as bright as it was. Plan for that. Either patch a profile with a virtual dimmer, or accept that these bars come down only when a cue changes their colour values, and keep them off any executor you expect to master.</p>
+    </div>
+
+    <div class="diablo"><b>ULTRA HEX BAR 12 · CH 1–36</b> If you want a real master dimmer, a strobe and the macro engine, that's <b>12-channel mode</b> — at the cost of per-zone colour, since it drives the whole bar as one. The two modes solve different problems; there's no mode that does both.</div>
+  </div>
+
+  <!-- Dimmer -->
+  <div class="fg" style="--fgc:#c9c9c9">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Dimmer</h3><span class="fg-ptype">Preset Type 1 · virtual only</span></div>
+    <p class="fg-lead" style="margin-bottom:0">Empty in 36-channel mode. Any Dimmer encoder you see is one the profile invented and scales the emitters for you — useful, but it's the console doing arithmetic, not the fixture. The dimming <em>curve</em> (Standard, Stage, TV, Architectural, Theatre) is a DMX channel only in 12-channel mode; here the fixture uses whatever its own menu holds, so set it on the unit and leave it alone.</p>
+  </div>
+
+  <!-- Not present -->
+  <div class="fg" style="--fgc:#3a3d42">
+    <div class="fg-top"><span class="fg-dot"></span><h3>Beam · Position · Gobo · Focus · Control · Shapers</h3><span class="fg-ptype">not in this mode</span></div>
+    <p class="fg-lead" style="margin-bottom:0">All empty. The strobe, the 64 colour macros, the 20 built-in programs and the sound-active modes exist on the fixture but have no channel in 36-channel mode — they're reachable only from the smaller personalities or the fixture's own panel. For strobe effects here, build a dimmer-style phaser on the colour values instead.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="housekeeping">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Programmer housekeeping</h2></div>
+  <p class="sec-sub">Two mechanics that save you from mystery states while building looks — identical to any grandMA3 fixture.</p>
+
+  <h3>Activate vs. deactivate</h3>
+  <p>Only <b>active</b> values store by default. A value can sit in the programmer <em>inactive</em> — present, affecting output, but skipped by Store/Update. <code>Please Please</code> activates everything for the selection; <code>Off</code> then a tap on a value knocks that one out; <code>Off</code> + a feature-group bank button releases the whole group.</p>
+
+  <h3>The three states of Clear</h3>
+  <div class="cmdblock">
+    <span class="row">Clear ×1 <span class="c">— deselect fixtures (values stay, still active)</span></span>
+    <span class="row">Clear ×2 <span class="c">— values stay but go deactivated (a store now = empty)</span></span>
+    <span class="row">Clear ×3 <span class="c">— programmer emptied, values released</span></span>
+  </div>
+  <p class="muted">Hold <code>Clear</code> for a second to jump straight to a full release.</p>
+
+  <div class="note">
+    <span class="tag">Store all six zones</span>
+    <p>It's easy to build a look on two zones and leave the other four tracking from an earlier cue. Before storing, select the whole bar and <code>Please Please</code> so every zone lands in the cue — on a fixture with no dimmer, a zone you forgot is a zone that stays lit.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .xref{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--accent-soft);border-left:2px solid var(--accent);border-radius:8px;padding:16px 18px;margin:14px 0;transition:border-color .15s}
+  .xref:hover,.xref:focus{border-color:var(--accent);outline:none}
+  .xref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .xref h4{font-family:"Space Grotesk",sans-serif;font-size:17px;color:#fff;margin:0 0 6px;font-weight:600}
+  .xref p{font-size:13px;color:var(--ink-dim);margin:0}
+</style>
+<section id="sheet">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Reading the sheet</h2></div>
+  <p class="sec-sub">Cell colours, layer colours and the little indicator rectangles are the console talking, not the fixture — so they live in one shared document rather than being repeated here.</p>
+
+  <a class="xref" href="grandMA3_Reading_the_Fixture_Sheet.html">
+    <span class="k">Shared legend</span>
+    <h4>grandMA3 — Reading the fixture sheet →</h4>
+    <p>Every text / background combination in the value cells, the layer colours (relative, individual fade and delay, phaser, GridPos), and what each indicator chip means.</p>
+  </a>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from. On this bar, watch the shamrock GridPos layer — it's how MAtricks addresses the six zones.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 ============ -->
+<section id="map">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The 36-channel map</h2></div>
+  <p class="sec-sub">One pattern, six times: a six-channel hex block per zone, in R·G·B·W·A·UV order. 6 × 6 = 36, with nothing else in the footprint.</p>
+
+  <h3>The per-zone block <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(6 ch, ×6)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Offset</th><th>Attribute / function</th><th>Group</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">+1</td><td class="fn">Red <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+2</td><td class="fn">Green <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+3</td><td class="fn">Blue <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+4</td><td class="fn">White <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+5</td><td class="fn">Amber <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+      <tr><td class="ch">+6</td><td class="fn">UV <small>8-bit</small></td><td class="grp g-col">Color</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Where each zone starts</h3>
+  <table class="maptable">
+    <thead><tr><th>Zone</th><th>LEDs</th><th>Spans</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">Zone 1</td><td class="fn">Pixels 1 &amp; 2</td><td class="grp">1–6</td></tr>
+      <tr><td class="ch">Zone 2</td><td class="fn">Pixels 3 &amp; 4</td><td class="grp">7–12</td></tr>
+      <tr><td class="ch">Zone 3</td><td class="fn">Pixels 5 &amp; 6</td><td class="grp">13–18</td></tr>
+      <tr><td class="ch">Zone 4</td><td class="fn">Pixels 7 &amp; 8</td><td class="grp">19–24</td></tr>
+      <tr><td class="ch">Zone 5</td><td class="fn">Pixels 9 &amp; 10</td><td class="grp">25–30</td></tr>
+      <tr><td class="ch">Zone 6</td><td class="fn">Pixels 11 &amp; 12</td><td class="grp">31–36</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">6 zones × 6 emitters = 36, and that's the entire footprint — no dimmer, strobe, macro or control channel anywhere in it. Fourteen bars fit in a universe.</p>
+
+  <h3>What the other modes carry <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint)">(for comparison)</span></h3>
+  <table class="maptable">
+    <thead><tr><th>Mode</th><th>What you get</th><th>Zones</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">6 ch</td><td class="fn">R·G·B·W·A·UV, whole bar</td><td class="grp g-non">1</td></tr>
+      <tr><td class="ch">7 ch</td><td class="fn">The six emitters, then master dimmer <small>ch 7</small></td><td class="grp g-non">1</td></tr>
+      <tr><td class="ch">8 ch</td><td class="fn">+ strobe <small>ch 7</small>, master dimmer <small>ch 8</small></td><td class="grp g-non">1</td></tr>
+      <tr><td class="ch">12 ch</td><td class="fn">+ colour macros <small>7</small>, strobe <small>8</small>, dimmer <small>9</small>, programs <small>10</small>, speed / sound sensitivity <small>11</small>, dim curve <small>12</small></td><td class="grp g-non">1</td></tr>
+      <tr><td class="ch">36 ch</td><td class="fn">Per-zone hex mixing, nothing global</td><td class="grp g-col">6</td></tr>
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:12.5px">12-channel mode is the one to switch to if a show needs a real master dimmer and strobe more than it needs six zones — with its own override to watch for, since a colour macro on channel 7 makes channels 1–6 stop working. Modes are set from the fixture's panel: <code>MODE</code> to DMX, <code>SET UP</code> for the address, then <code>SET UP</code> again to pick the channel mode.</p>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> channel functions are from the ADJ Ultra Hex Bar 12 DMX Traits chart and user manual (document v1.1, 36-channel mode). grandMA3 subfixture structure and attribute <em>spellings</em> — whether zones import as subfixtures, and how UV is named — depend on the GDTF/library revision. Expand the fixture in the sheet to read the live structure before scripting.</p>
+  <p>Sheet colours, layers and indicator chips are documented once in <a href="grandMA3_Reading_the_Fixture_Sheet.html">Reading the fixture sheet</a>, because they describe the console, not the fixture.</p>
+</footer>
+
+</div>
+</body>
+</html>

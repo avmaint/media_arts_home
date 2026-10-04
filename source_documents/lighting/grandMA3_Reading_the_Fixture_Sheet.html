@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>grandMA3 — Reading the Fixture Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#151619;
+    --panel:#1c1e22;
+    --panel-2:#232529;
+    --cell:#45484e;            /* MA medium-gray value cell */
+    --cell-dark:#34363b;
+    --line:#2c2f34;
+    --ink:#d9dce1;
+    --ink-dim:#8b9098;
+    --ink-faint:#61656c;
+    --accent:#e8c020;          /* MA "selected fixture" yellow */
+    --accent-soft:#7a6a1e;
+    /* MA value colors (default theme approximations) */
+    --ma-red:#b7222a;
+    --ma-red-txt:#e2494c;
+    --ma-cyan:#22b8cc;
+    --ma-cyan-br:#1fd0e6;
+    --ma-cyan-dk:#1a7c8b;
+    --ma-green:#3faa5c;
+    --ma-magenta:#cf5bd0;
+    --ma-white:#eef0f3;
+    --ma-yellow:#e6c020;
+    --ma-yellow-dim:#9a8626;
+    --ma-mauve:#a97fb0;
+    --ma-orange:#d78a2b;
+    --ma-purple:#8a5cd0;
+    --ma-shamrock:#2fa572;
+    --ma-seagreen-deep:#1e6a58;
+    --ma-seagreen:#31a07f;
+    --ma-cuefade:#24306b;
+    --ma-blue:#3b6fd0;
+    --ma-pink:#e0a5c0;
+    --ma-lavender:#b9a5e0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+  /* ---- Masthead ---- */
+  header.mast{
+    border-bottom:1px solid var(--line);
+    padding:56px 24px 30px;max-width:900px;margin:0 auto;
+  }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent)}
+  h1{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;
+    font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 14px;
+    letter-spacing:-.015em;color:#fff;
+  }
+  h1 .thin{color:var(--ink-dim);font-weight:400}
+  .lede{color:var(--ink-dim);max-width:60ch;margin:0}
+  .meta{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-faint);
+    margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 20px;
+  }
+  .meta b{color:var(--ink-dim);font-weight:500}
+
+  /* ---- Section scaffolding ---- */
+  section{padding-top:52px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{
+    font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);
+    font-weight:500;padding-top:6px;
+  }
+  h2{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;
+    font-size:clamp(21px,3.4vw,27px);margin:0;color:#fff;letter-spacing:-.01em;
+  }
+  .sec-sub{color:var(--ink-dim);margin:2px 0 26px;padding-left:44px;max-width:64ch}
+  @media(max-width:560px){.sec-sub{padding-left:0}}
+
+  h3{
+    font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:17px;
+    color:#fff;margin:30px 0 4px;
+  }
+  p{margin:0 0 14px}
+  .muted{color:var(--ink-dim)}
+
+  /* ---- Command chips ---- */
+  code,.cmd{
+    font-family:"JetBrains Mono",monospace;font-size:13px;
+  }
+  code{
+    background:var(--panel-2);color:#e9d98a;border:1px solid var(--line);
+    padding:1px 6px;border-radius:4px;white-space:nowrap;
+  }
+  .cmdblock{
+    background:#101114;border:1px solid var(--line);border-left:2px solid var(--accent);
+    border-radius:6px;padding:14px 16px;margin:12px 0 6px;overflow-x:auto;
+  }
+  .cmdblock .row{display:block;font-family:"JetBrains Mono",monospace;font-size:12.5px;
+    line-height:2;color:#e9d98a;white-space:nowrap}
+  .cmdblock .row .c{color:var(--ink-faint)}   /* comment */
+  .cmdblock .row .k{color:#7fc7ff}            /* keyword tint */
+
+  /* ---- Workflow spine ---- */
+  .spine{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 4px}
+  @media(max-width:680px){.spine{grid-template-columns:1fr 1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
+  .step .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .step h4{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .step p{font-size:13px;color:var(--ink-dim);margin:0}
+
+  /* ---- Feature group cards ---- */
+  .fg{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;margin:16px 0;position:relative;overflow:hidden;
+  }
+  .fg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--fgc,var(--accent))}
+  .fg-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .fg-dot{width:11px;height:11px;border-radius:2px;background:var(--fgc,var(--accent));flex:none}
+  .fg-top h3{margin:0}
+  .fg-ptype{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-faint);
+    border:1px solid var(--line);border-radius:20px;padding:2px 9px;margin-left:auto}
+  .fg-lead{color:var(--ink-dim);font-size:13.5px;margin:6px 0 10px}
+  .fg h5{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--ink-faint);margin:16px 0 6px}
+  .fg ul{margin:0 0 4px;padding-left:18px}
+  .fg li{margin:3px 0;font-size:13.5px}
+  .diablo{font-size:12.5px;color:var(--ink-dim);border-top:1px dashed var(--line);margin-top:14px;padding-top:10px}
+  .diablo b{color:var(--accent);font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em}
+
+  /* ---- Callout ---- */
+  .note{
+    background:linear-gradient(180deg,rgba(232,192,32,.06),rgba(232,192,32,0));
+    border:1px solid var(--accent-soft);border-radius:8px;padding:16px 18px;margin:18px 0;
+  }
+  .note .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+  .note p{margin:0;font-size:13.5px;color:var(--ink)}
+
+  /* ---- Color legend ---- */
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .swatch{
+    display:flex;gap:13px;align-items:flex-start;
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:11px 13px;
+  }
+  /* the sample cell mimics an MA fixture-sheet value cell */
+  .cell{
+    flex:none;width:64px;height:40px;border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500;
+    background:var(--cell);color:var(--ma-white);
+    border:1px solid rgba(0,0,0,.35);
+  }
+  .swatch .desc{font-size:12.5px;line-height:1.45}
+  .swatch .desc b{color:#fff;font-weight:600;display:block;font-size:12.5px;margin-bottom:1px}
+  .swatch .desc span{color:var(--ink-dim)}
+
+  /* chip legend (the little rectangles) */
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}
+  @media(max-width:640px){.chips{grid-template-columns:1fr}}
+  .chiprow{display:flex;gap:12px;align-items:center;background:var(--panel);
+    border:1px solid var(--line);border-radius:8px;padding:9px 13px}
+  .chipcell{flex:none;width:56px;height:34px;background:var(--cell-dark);border-radius:4px;
+    position:relative;border:1px solid rgba(0,0,0,.35)}
+  .chipcell i{position:absolute;top:3px;height:4px;border-radius:1px}
+  .chipcell i.full{left:6px;right:6px}
+  .chipcell i.left{left:6px;width:14px}
+  .chipcell i.right{right:6px;width:14px}
+  .chiprow .desc{font-size:12.5px;line-height:1.45}
+  .chiprow .desc b{color:#fff;font-weight:600;font-family:"JetBrains Mono",monospace;font-size:11px}
+  .chiprow .desc span{color:var(--ink-dim);display:block}
+
+  /* ---- Footer ---- */
+  footer{border-top:1px solid var(--line);margin-top:60px;padding-top:22px;
+    font-size:12px;color:var(--ink-faint)}
+  footer a{color:var(--ink-dim)}
+  footer p{margin:4px 0;font-size:12px}
+
+  /* nav */
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  nav.toc a{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;
+    color:var(--ink-dim);text-decoration:none;border:1px solid var(--line);
+    border-radius:20px;padding:5px 12px;transition:border-color .15s,color .15s;
+  }
+  nav.toc a:hover,nav.toc a:focus{color:var(--accent);border-color:var(--accent-soft);outline:none}
+
+  @media print{
+    body{background:#fff;color:#111}
+    .fg,.step,.note,.swatch,.chiprow,.cmdblock{break-inside:avoid}
+    nav.toc{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <p class="eyebrow">grandMA3 · Console Reference</p>
+  <h1>Reading the fixture sheet <span class="thin">— colours, layers and chips</span></h1>
+  <p class="lede">Every colour the grandMA3 fixture sheet throws at you, decoded: what the text colour means, what the background means, what the extra layers look like, and what those little rectangles above a cell are telling you. None of this is fixture-specific — it describes the console, so it reads the same whatever you have patched.</p>
+  <div class="meta">
+    <span><b>Console:</b> grandMA3 (v2.x)</span>
+    <span><b>Theme:</b> default colour theme</span>
+    <span><b>Applies to:</b> every patched fixture</span>
+  </div>
+  <nav class="toc">
+    <a href="#values">Value colours</a>
+    <a href="#layers">Layer colours</a>
+    <a href="#chips">Indicator chips</a>
+    <a href="#fixtures">Fixture references</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<!-- ============ SECTION 1 ============ -->
+<section id="values">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Reading the value cells</h2></div>
+  <p class="sec-sub">Two questions answer almost every cell. <b>What colour is the text?</b> — that's where the value comes from. <b>What colour is the background?</b> — that's whether it's active, and what the console is doing with it right now.</p>
+
+  <div class="note">
+    <span class="tag">The short version</span>
+    <p><b>White on red</b> is yours and will store. <b>Red text on grey</b> is yours but deactivated and won't. Everything else on a grey background is playback telling you where the level came from.</p>
+  </div>
+
+  <p class="muted" style="padding-left:44px;max-width:64ch">These are the absolute-value combinations for the default colour theme.</p>
+
+  <div class="legend">
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:#b9bdc3">50</div><div class="desc"><b>Grey text · grey cell</b><span>Default level — untouched, nothing to store.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-red-txt)">50</div><div class="desc"><b>Red text · grey cell</b><span>In the programmer but <em>deactivated</em>. Won't store or update.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-red);color:#fff">50</div><div class="desc"><b>White text · red cell</b><span>Active programmer value. This is what stores. Your "I'm editing this" state.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-cyan)">50</div><div class="desc"><b>Cyan text · grey cell</b><span>New value in the selected sequence's current cue (dimmer: a higher level).</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-green)">30</div><div class="desc"><b>Green text · grey cell</b><span>Dimmer only — a descending value in the current cue of the selected sequence.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-magenta)">50</div><div class="desc"><b>Magenta text · grey cell</b><span>Tracked value in the current cue of the selected sequence.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:#fff">50</div><div class="desc"><b>White text · grey cell</b><span>Blocked value in the current cue of the selected sequence.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-yellow)">50</div><div class="desc"><b>Yellow text · grey cell</b><span>New / blocked value from a sequence that <em>isn't</em> selected.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--cell);color:var(--ma-yellow-dim)">50</div><div class="desc"><b>Dim-yellow text · grey cell</b><span>Tracked value from a non-selected sequence.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-seagreen-deep);color:#000">50</div><div class="desc"><b>Black text · deep sea-green</b><span>Move-in-black completed — the attribute has pre-positioned.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-seagreen);color:#000">50</div><div class="desc"><b>Black text · sea-green</b><span>Currently fading through a move-in-black.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-cuefade);color:#eef">50</div><div class="desc"><b>Dark-blue cell</b><span>Attribute is mid-fade through a cue transition; text colour still shows the source.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:#000;color:#333">—</div><div class="desc"><b>Black cell</b><span>No such attribute on this fixture (e.g. a white emitter the fixture doesn't have).</span></div></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Why a value won't store</span>
+    <p>If a change refuses to end up in your cue, it's almost always deactivated — red text on grey, not white on red. Re-select the fixtures and press <code>Please Please</code> to reactivate, then store.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="layers">
+  <div class="sec-head"><span class="sec-num">02</span><h2>The other layers</h2></div>
+  <p class="sec-sub">Beyond the absolute value, an attribute can carry extra layers — relative offsets, individual timing, phasers. They all follow one rule: <b>white text on the layer's colour = it's in your programmer</b>; the layer's colour as <em>text</em> on grey = it's coming from the selected cue.</p>
+
+  <div class="legend">
+    <div class="swatch"><div class="cell" style="background:var(--ma-mauve);color:#fff">-5</div><div class="desc"><b>Mauve</b><span>Relative value (an offset rather than an absolute).</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-green);color:#fff">2s</div><div class="desc"><b>Green</b><span>Individual fade time on that attribute.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-orange);color:#fff">1s</div><div class="desc"><b>Orange</b><span>Individual delay time on that attribute.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-purple);color:#fff">~</div><div class="desc"><b>Purple</b><span>Phaser value — every phaser layer shares this one colour.</span></div></div>
+    <div class="swatch"><div class="cell" style="background:var(--ma-shamrock);color:#fff">3</div><div class="desc"><b>Shamrock</b><span>GridPos value (MAtricks grid position). Deactivated shows as shamrock text on grey.</span></div></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Dimmed = other part</span>
+    <p>A darkened version of any programmer colour means the data lives in a programmer <em>part</em> other than the one the sheet is currently showing — not a different meaning, just a different part.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="chips">
+  <div class="sec-head"><span class="sec-num">03</span><h2>The little rectangles (indicator chips)</h2></div>
+  <p class="sec-sub">Those small colour bars sitting at the top of the fixture name and the value cells are <b>indicators</b>, not values. A bar above the <em>name</em> means active programmer info for that fixture; a bar above only a <em>value</em> means it's outputting from a sequence. Their colour tells you which kind of data is present.</p>
+
+  <div class="chips">
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-red)"></i></div><div class="desc"><b>Red</b><span>Active absolute programmer value.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-mauve)"></i></div><div class="desc"><b>Mauve</b><span>Active relative programmer value.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-green)"></i></div><div class="desc"><b>Green</b><span>Individual fade time.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-orange)"></i></div><div class="desc"><b>Orange</b><span>Individual delay time.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-purple)"></i></div><div class="desc"><b>Purple</b><span>Phaser value.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-cyan-br)"></i></div><div class="desc"><b>Bright cyan</b><span>Absolute value pulled from a preset.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-cyan-dk)"></i></div><div class="desc"><b>Dark cyan</b><span>Relative value pulled from a preset.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-blue)"></i></div><div class="desc"><b>Blue</b><span>Parked attribute.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="left" style="background:#fff"></i></div><div class="desc"><b>White · left side</b><span>Layer info in the programmer that won't store as active.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><i class="right" style="background:#fff"></i></div><div class="desc"><b>White · right side</b><span>Coming from the DMX Tester — not stored with active values.</span></div></div>
+  </div>
+
+  <h3>Two more you'll bump into</h3>
+  <div class="chips">
+    <div class="chiprow"><div class="chipcell"><i class="full" style="background:var(--ma-yellow);left:20px;right:20px"></i></div><div class="desc"><b>Small yellow (while editing a preset)</b><span>This attribute holds the <em>global</em> value for all fixtures of that type in the preset.</span></div></div>
+    <div class="chiprow"><div class="chipcell"><span style="position:absolute;top:3px;right:3px;width:8px;height:8px;background:var(--ma-green);border-radius:1px"></span></div><div class="desc"><b>Green square · top-right of a cell</b><span>An active recipe value is driving that attribute.</span></div></div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Above the ID / type</span>
+    <p>Chips sitting above the <b>IDType</b> (not the value) flag a group master on that fixture: <span style="color:var(--ma-pink)">light pink</span> = positive/negative/scaling master, <span style="color:var(--ma-lavender)">lavender</span> = additive master, <span style="color:var(--ma-blue)">blue</span> = Master React set to None.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<style>
+  .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0}
+  @media(max-width:680px){.refs{grid-template-columns:1fr}}
+  .ref{
+    display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;padding:16px 18px;transition:border-color .15s;
+  }
+  .ref:hover,.ref:focus{border-color:var(--accent-soft);outline:none}
+  .ref .k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--accent)}
+  .ref h4{font-family:"Space Grotesk",sans-serif;font-size:16px;color:#fff;margin:8px 0 6px;font-weight:600}
+  .ref p{font-size:12.5px;color:var(--ink-dim);margin:0}
+</style>
+<section id="fixtures">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Fixture-specific references</h2></div>
+  <p class="sec-sub">The per-fixture guides cover the programmer loop, feature group by feature group, and the channel map. They point back here for the colours.</p>
+
+  <div class="refs">
+    <a class="ref" href="grandMA3_Diablo_Programmer_Reference.html">
+      <span class="k">Ayrton</span>
+      <h4>Diablo</h4>
+      <p>56-ch Extended — every layer, by hand.</p>
+    </a>
+    <a class="ref" href="grandMA3_ACME_Tornado_Programmer_Reference.html">
+      <span class="k">ACME</span>
+      <h4>Tornado</h4>
+      <p>170-ch Mode 5 — five heads, forty pixels.</p>
+    </a>
+    <a class="ref" href="grandMA3_Portman_P2_EVO_Programmer_Reference.html">
+      <span class="k">Portman</span>
+      <h4>P2 EVO</h4>
+      <p>69-ch Standard Fine — filament and glow, six times over.</p>
+    </a>
+    <a class="ref" href="grandMA3_Acclaim_Cylinder_One_Spectrum_Programmer_Reference.html">
+      <span class="k">Acclaim</span>
+      <h4>Cylinder One Spectrum</h4>
+      <p>13-ch 16-bit — five emitters or one calibrated white.</p>
+    </a>
+    <a class="ref" href="grandMA3_ADJ_Ultra_Hex_Bar_12_Programmer_Reference.html">
+      <span class="k">ADJ</span>
+      <h4>Ultra Hex Bar 12</h4>
+      <p>36-ch — six zones, six colours each.</p>
+    </a>
+    <a class="ref" href="grandMA3_ADJ_Ultra_Hex_Bar_6_Programmer_Reference.html">
+      <span class="k">ADJ</span>
+      <h4>Ultra Hex Bar 6</h4>
+      <p>18-ch — three zones, six colours each.</p>
+    </a>
+    <a class="ref" href="grandMA3_Elation_KL_CYC_S_Programmer_Reference.html">
+      <span class="k">Elation</span>
+      <h4>KL CYC S</h4>
+      <p>32-ch Extended 2 Zone — two RGBMA segments.</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p><b>On accuracy:</b> colour shades match the grandMA3 <em>default colour theme</em>; a custom theme will shift them, though the meanings hold. Compiled from the grandMA3 User Manual (System Colors, Colored Indicators, Programmer, and Encoder Bar sections). Reference only — verify against your show file and console version.</p>
+  <p>Shared legend for the fixture programmer references in this library. These colours describe the console, not the fixture, so they are documented once here.</p>
+</footer>
+
+</div>
+</body>
+</html>
