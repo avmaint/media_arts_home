@@ -7,3 +7,9 @@ messages.json
 .DS_Store
 server.log
 .server.pid
+
+# Generated programmer-reference HTML (published separately)
+manuals/**/*.html
+
+# Claude Code local config
+.claude/
