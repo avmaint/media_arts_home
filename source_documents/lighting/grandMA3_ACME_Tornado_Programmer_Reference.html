@@ -152,6 +152,18 @@
   <div class="sec-head"><span class="sec-num">00</span><h2>What you're actually patching</h2></div>
   <p class="sec-sub">The Tornado isn't one head — it's five, on a bar, each ringed by pixels. Understanding that structure is the whole job; the feature groups fall out of it.</p>
 
+  <div class="note">
+    <span class="tag">First light — open the shutters</span>
+    <p>A freshly patched Tornado is <b>dark even at full dimmer</b>: both shutters default <b>Closed</b> and both dimmer masters default <b>0</b>. There are <b>two shutter stages</b> — <code>Shutter1</code> (beam) and <code>Shutter2</code> (ring) — so opening "all shutters" means both. To get output:</p>
+    <div class="cmdblock">
+      <span class="row"><span class="k">Group</span> "Tornado ALL" <span class="c">— or Fixture 301 Thru 305</span></span>
+      <span class="row"><span class="k">Attribute</span> "Shutter1" <span class="k">At</span> "Open" <span class="c">— beam shutters, all bars</span></span>
+      <span class="row"><span class="k">Attribute</span> "Shutter2" <span class="k">At</span> "Open" <span class="c">— ring shutters, all bars</span></span>
+      <span class="row"><span class="k">At</span> <span class="k">Full</span> <span class="c">— intensity up (masters + cells)</span></span>
+    </div>
+    <p style="margin:6px 0 0"><code>At "Open"</code> recalls the attribute's named <em>Open</em> channel set, so there's no DMX value to guess. Leave shutters open for normal use; the strobe/pulse ranges on the same two attributes are in <b>Beam</b>, and the intensity model is in <b>Dimmer</b>.</p>
+  </div>
+
   <div class="subcard">
     <h6>Five independent heads</h6>
     <ul>
