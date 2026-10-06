@@ -139,6 +139,8 @@
     <a href="#housekeeping">Housekeeping</a>
     <a href="#sheet">Reading the sheet</a>
     <a href="#map">69-ch map</a>
+    <a href="#selgroups">Selection groups</a>
+    <a href="#looks">Handy looks</a>
   </nav>
 </header>
 
@@ -403,6 +405,118 @@
     </tbody>
   </table>
   <p class="muted" style="font-size:12.5px">12 main + 2 glow master + (6 pixels × 8 glow) = 62, plus 7 global = 69. Everything is Dimmer (warm sources, glow master) or Colour (glow cells), except the two strobes (Beam) and the macro/control tail (Control). Three units addressed back to back land at 1 / 70 / 139 — still seven fixtures to a universe.</p>
+</section>
+
+<!-- ============ SECTION 06 ============ -->
+<section id="selgroups">
+  <div class="sec-head"><span class="sec-num">06</span><h2>The selection groups</h2></div>
+  <p class="sec-sub">Not the feature groups above - these are the <em>selection</em> groups the <code>build_evo_groups</code> macro stores in the group pool (400-407), so a programmer grabs a sensible set of cells with one tap.</p>
+
+  <table class="maptable">
+    <thead><tr><th>Group</th><th>Name</th><th>Selects</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">400</td><td class="fn">P2 EVO ALL</td><td>all three bars (401 + 402 + 403)</td></tr>
+      <tr><td class="ch">401-403</td><td class="fn">P2 EVO 1 / 2 / 3</td><td>each whole bar - group number echoes the fixture ID</td></tr>
+      <tr><td class="ch">404</td><td class="fn">P2 EVO Halos PerBar</td><td>18 halo cells, 6 wide, bars stacked</td></tr>
+      <tr><td class="ch">405</td><td class="fn">P2 EVO Glows PerBar</td><td>18 glow cells, 6 wide, bars stacked</td></tr>
+      <tr><td class="ch">406</td><td class="fn">P2 EVO Halos Linear</td><td>18 halo cells, 18 wide, bars end-to-end</td></tr>
+      <tr><td class="ch">407</td><td class="fn">P2 EVO Glows Linear</td><td>18 glow cells, 18 wide, bars end-to-end</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Two grids, because the cells only lay out on one axis</h3>
+  <p>The halo and glow cells carry a native 6-wide matrix, so grandMA3 honours an <b>X</b> placement but collapses a <b>Y</b> one - a true 6x3 (cell by fixture) will not build. Instead there are two 1-D layouts, and between them they cover every look.</p>
+
+  <div class="subcard">
+    <h6>PerBar - groups 404 / 405 (6 wide, bars stacked)</h6>
+    <ul>
+      <li>X = cell 1-6, running <b>along each body</b>; all three bars get the same thing.</li>
+      <li>The orientation-proof axis - X follows the bar whether it hangs vertical or horizontal.</li>
+      <li>Use for: per-bar gradients, and "cell N of each" (MAtricks X = N).</li>
+    </ul>
+  </div>
+  <div class="subcard">
+    <h6>Linear - groups 406 / 407 (18 wide, bars end-to-end)</h6>
+    <ul>
+      <li>X = 1-18 across the whole run: 401 = 1-6, 402 = 7-12, 403 = 13-18.</li>
+      <li>Use for: sweeps and chases that travel across all three bars.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="tag">Driving the glow - correction</span>
+    <p>Earlier in this doc the glow was described as RGBW behind a single master that had to be raised before colour showed. In practice the glow cells take <code>At</code> directly: <code>Group 405 At Full</code> plus a colour lights them. Colour attributes are <code>ColorRGB_R</code>, <code>ColorRGB_G</code>, <code>ColorRGB_B</code> - the virtual <code>Hue</code> / <code>Saturation</code> names are not valid on this profile.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 07 ============ -->
+<section id="looks">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Handy looks</h2></div>
+  <p class="sec-sub">A cookbook: the look, then the command line that builds it. The first group are console-validated; the dynamic ones at the end are recipes to dial in and confirm. The <code>demo_evo_looks</code> plugin steps through the validated set live.</p>
+
+  <h3>Warm wash</h3>
+  <p class="muted">All three bars, halo (warm white) at full.</p>
+  <div class="cmdblock"><span class="row">Clear ; Group 400 ; At Full</span></div>
+
+  <h3>Per-bar intensity ramp</h3>
+  <p class="muted">Halo brightness ramps cell 1 to 6; all three bars identical.</p>
+  <div class="cmdblock"><span class="row">Clear ; Group 404 ; At 0 Thru 100</span></div>
+
+  <h3>Per-bar colour gradient</h3>
+  <p class="muted">Glow red (cell 1) to blue (cell 6); all three bars identical.</p>
+  <div class="cmdblock">
+    <span class="row">Clear ; Group 405 ; At Full</span>
+    <span class="row">Attribute "ColorRGB_R" At 100 Thru 0</span>
+    <span class="row">Attribute "ColorRGB_B" At 0 Thru 100</span>
+  </div>
+
+  <h3>Continuous colour sweep</h3>
+  <p class="muted">Glow red to blue spread across all 18 cells (bar 1 red ... bar 3 blue).</p>
+  <div class="cmdblock">
+    <span class="row">Clear ; Group 407 ; At Full</span>
+    <span class="row">Attribute "ColorRGB_R" At 100 Thru 0</span>
+    <span class="row">Attribute "ColorRGB_B" At 0 Thru 100</span>
+  </div>
+
+  <h3>Cell 1 of each</h3>
+  <p class="muted">First halo pixel of every bar at full; the rest dark. (The reliable explicit form; the grid equivalent is MAtricks X = 1 on group 404.)</p>
+  <div class="cmdblock"><span class="row">Clear ; Fixture 401.1.1 + Fixture 402.1.1 + Fixture 403.1.1 ; At Full</span></div>
+
+  <h3 style="margin-top:36px">Dynamic looks - recipes to validate</h3>
+  <div class="flagnote">
+    <span class="tag">Draft - build and confirm at the console</span>
+    <p>These are movement looks. In grandMA3 movement means a <b>phaser</b>, dialled in the Phaser editor plus MAtricks rather than one command line - so these are recipes, not copy-paste one-liners. Validate, then add the finished version to <code>demo_evo_looks</code>.</p>
+  </div>
+
+  <div class="subcard">
+    <h6>Colour chase along the body</h6>
+    <ul>
+      <li>Select <b>Group 405</b> (Glows PerBar), <code>At Full</code>, give it a colour.</li>
+      <li>Turn the colour into a 2-step phaser (e.g. red / blue) in the Phaser editor.</li>
+      <li>MAtricks: <b>Phase</b> across <b>X</b> (0 to 360) so the colour travels cell 1 to 6; set a <b>Speed</b>. All three bars chase in sync.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Continuous colour chase across the run</h6>
+    <ul>
+      <li>As above but on <b>Group 407</b> (Glows Linear), so the chase travels end-to-end across all 18 cells.</li>
+    </ul>
+  </div>
+
+  <div class="subcard">
+    <h6>Twinkle</h6>
+    <ul>
+      <li>Select <b>Group 404</b> (Halos PerBar), build a dim phaser (e.g. 10% / 100%).</li>
+      <li>MAtricks: <b>Shuffle</b> the selection, then <b>Phase</b> across the grid so the bright point scatters; a <b>Width</b> below 100% keeps most cells low. Vary Speed to taste.</li>
+      <li>Same shuffle-plus-phase technique as the Tornado twinkle.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="tag">The demo stepper</span>
+    <p>The <code>demo_evo_looks</code> Lua plugin (in <code>grandma3_utilities/plugins</code>) walks the validated looks: it builds each, pops its name with <b>Continue</b> / <b>Cancel</b>, and on Cancel leaves that look in the programmer to modify - a fast way for a new programmer to see what a look takes.</p>
+  </div>
 </section>
 
 <footer>
